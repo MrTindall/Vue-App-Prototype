@@ -1,22 +1,68 @@
 .progress-container {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     margin-top: 10px;
+}
+
+.progress-container span {
+    margin-bottom: 5px;
+    text-align: right;
 }
 
 .progress {
     height: 15px;
-    width: 150px;
     margin-top: 5px;
+    width: 130px;
+
 }
 
 #add-task-btn {
     width: 250px;
+    margin-top: 10px;
 }
 
-/* Style for bottom navbar on mobile */
 @media (max-width: 991.98px) {
     .navbar-nav {
         flex-direction: row;
         justify-content: space-between;
+    }
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    border-radius: 0;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 2px solid #0d6efd;
+}
+
+.table-responsive {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .progress-container {
+        align-items: flex-end;
+    }
+
+    .progress-container span {
+        margin-bottom: 10px;
+        text-align: right;
+    }
+
+    .progress-container .progress {
+        width: 100%;
+    }
+
+    #add-task-btn {
+        width: 100%;
+        margin-top: 10px;
     }
 }
