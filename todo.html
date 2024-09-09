@@ -60,7 +60,7 @@
     </nav>
 
     <div class="container mt-4">
-        <div class="accordion" id="taskAccordion">
+        <div class="accordion" id="taskAccordions">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingToday">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -81,13 +81,67 @@
                         </div>
                         <div class="todoAddContent" id="contentToday">
                             <!-- tasks added here -->
-                            <h3>test</h3>
-                        </div>
-                        <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#addTaskModal">
-                                + Add Task
-                            </button>
+                            <div class="container text-center">
+                                <ul class="list-group list-group-flush text-start">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <h3>Task</h3>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="list-group list-group-flush text-start ps-5">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>An item</span>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>A second item</span>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>A third item</span>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2 ">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>A fourth item</span>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span>And a fifth one</span>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-outline-success btn-sm me-2">Complete</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm me-2">Edit</button>
+                                            <button type="button" class="btn btn-outline-danger btn-sm">Remove</button>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
+                                    data-bs-target="#addTaskModal">
+                                    + Add Task
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +169,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -146,7 +200,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -177,7 +231,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -208,7 +262,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -239,7 +293,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -270,7 +324,7 @@
                             <h3>test</h3>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class=" btn btn-outline-primary w-25" data-bs-toggle="modal"
                                 data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
@@ -297,21 +351,6 @@
                             <label for="taskName" class="form-label">Event/Task Name</label>
                             <input type="text" class="form-control" id="taskName" placeholder="Event/Task Name">
                         </div>
-                        <!-- Start Date -->
-                        <div class="mb-3">
-                            <label for="startDate" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="startDate">
-                        </div>
-                        <!-- End Date -->
-                        <div class="mb-3">
-                            <label for="endDate" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="endDate">
-                        </div>
-                        <!-- Reoccurring Radio Button -->
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="reoccurring" name="reoccurring">
-                            <label class="form-check-label" for="reoccurring">Reoccurring</label>
-                        </div>
                         <!-- Subtask Input -->
                         <div class="mb-3">
                             <label for="subtask" class="form-label">Subtask</label>
@@ -320,7 +359,8 @@
                     </form>
                     <!-- Add Subtasks Button -->
                     <div class="text-end">
-                        <button type="button" class="btn btn-outline-primary" id="addSubtaskBtn">+Add Subtasks</button>
+                        <button type="button" class="btn btn-outline-primary w-50" id="addSubtaskBtn">+Add
+                            Subtasks</button>
                     </div>
                 </div>
                 <div class="modal-footer">
