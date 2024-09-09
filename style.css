@@ -1,0 +1,18 @@
+.progress-container span {
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.progress {
+    height: 15px;
+    margin-top: 5px;
+    width: 140px;
+}
+
+@media (max-width: 768px) {
+    .progress {
+            height: 15px;
+            margin-top: 5px;
+            width: 80px;
+        }
+}
