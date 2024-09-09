@@ -81,7 +81,8 @@
                             </div>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
                         </div>
@@ -108,7 +109,8 @@
                             </div>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
                         </div>
@@ -135,7 +137,8 @@
                             </div>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
                         </div>
@@ -162,7 +165,8 @@
                             </div>
                         </div>
                         <div class="mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addTaskModal">
                                 + Add Task
                             </button>
                         </div>
@@ -173,53 +177,53 @@
     </div>
 
     <!-- Add Task Modal -->
-<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addTaskModalLabel">Add Task</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="taskForm">
-                    <!-- Event/Task Name -->
-                    <div class="mb-3">
-                        <label for="taskName" class="form-label">Event/Task Name</label>
-                        <input type="text" class="form-control" id="taskName" placeholder="Event/Task Name">
-                    </div>
-                    <!-- Start Date -->
-                    <div class="mb-3">
-                        <label for="startDate" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="startDate">
-                    </div>
-                    <!-- End Date -->
-                    <div class="mb-3">
-                        <label for="endDate" class="form-label">End Date</label>
-                        <input type="date" class="form-control" id="endDate">
-                    </div>
-                    <!-- Reoccurring Radio Button -->
-                    <div class="mb-3 form-check">
-                        <input type="radio" class="form-check-input" id="reoccurring" name="reoccurring">
-                        <label class="form-check-label" for="reoccurring">Reoccurring</label>
-                    </div>
-                    <!-- Subtask Input -->
-                    <div class="mb-3">
-                        <label for="subtask" class="form-label">Subtask</label>
-                        <input type="text" class="form-control" id="subtask" placeholder="Subtask Here">
-                    </div>
-                </form>
-                <!-- Add Subtasks Button -->
-                <div class="text-end">
-                    <button type="button" class="btn btn-primary" id="addSubtaskBtn">+Add Subtasks</button>
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addTaskModalLabel">Add Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id="saveTaskBtn">Save Task</button>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <!-- Event/Task Name -->
+                        <div class="mb-3">
+                            <label for="taskName" class="form-label">Event/Task Name</label>
+                            <input type="text" class="form-control" id="taskName" placeholder="Event/Task Name">
+                        </div>
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label for="startDate" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="startDate">
+                        </div>
+                        <!-- End Date -->
+                        <div class="mb-3">
+                            <label for="endDate" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="endDate">
+                        </div>
+                        <!-- Reoccurring Radio Button -->
+                        <div class="mb-3 form-check">
+                            <input type="radio" class="form-check-input" id="reoccurring" name="reoccurring">
+                            <label class="form-check-label" for="reoccurring">Reoccurring</label>
+                        </div>
+                        <!-- Subtask Input -->
+                        <div class="mb-3">
+                            <label for="subtask" class="form-label">Subtask</label>
+                            <input type="text" class="form-control" id="subtask" placeholder="Subtask Here">
+                        </div>
+                    </form>
+                    <!-- Add Subtasks Button -->
+                    <div class="text-end">
+                        <button type="button" class="btn btn-primary" id="addSubtaskBtn">+Add Subtasks</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="saveTaskBtn">Save Task</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
