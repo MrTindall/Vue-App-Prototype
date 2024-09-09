@@ -1,10 +1,3 @@
-.progress-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 10px;
-}
-
 .progress-container span {
     margin-bottom: 5px;
     text-align: right;
@@ -14,7 +7,6 @@
     height: 15px;
     margin-top: 5px;
     width: 130px;
-
 }
 
 #add-task-btn {
