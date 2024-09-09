@@ -8,11 +8,13 @@
     margin-top: 5px;
     width: 130px;
 }
-
-#add-task-btn {
+#taskAccordion .btn-primary {
+    width: 400px;
+}
+/* #add-task-btn {
     width: 250px;
     margin-top: 10px;
-}
+} */
 
 @media (max-width: 990px) {
     .navbar-nav {
