@@ -8,7 +8,9 @@
     margin-top: 5px;
     width: 140px;
 }
-
+.spaceBottom{
+    margin-bottom: 80px;
+}
 @media (max-width: 768px) {
     .progress {
             height: 15px;
