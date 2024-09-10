@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    background-color: #242424;
+}
+
 .progress-container span {
     margin-bottom: 5px;
     text-align: right;
@@ -14,28 +18,58 @@
     width: 140px;
 }
 
+
 .navContainer .navbar {
-    height: 120px;
+
     font-size: 20px;
+    border-bottom: solid 2px white;
 }
 
 .navbar-brand {
     font-size: 20px;
 }
 
+.navbar.navbar-light {
+    border-top: solid 2px white;
+}
+
 .spaceBottom {
     margin-bottom: 80px;
 }
+.card {
+    color: white;
+    background-color: rgb(0, 114, 180);
+    border: solid 2px white;
+}
 
-.container-fluid .img-thumbnail {
+.container .img-thumbnail {
     width: 100%;
-    height: 500px;
+    height: 400px;
     object-fit: cover;
+}
+.contentContainer {
+    margin-bottom: 30px;
 }
 
 h3.text-center {
     margin-bottom: 40px;
 }
+
+.container-fluid.navContainer {
+    background-color: rgb(0, 114, 180);
+    height: 120px;
+}
+
+.navbar.navbar-light.bg-light.fixed-bottom.d-lg-none .container-fluid {
+    background-color: rgb(0, 114, 180);
+    height: 80px;
+
+}
+
+.textColor {
+    color: rgb(255, 255, 255);
+}
+
 @media (max-width: 768px) {
     .progress {
         height: 15px;
@@ -43,9 +77,7 @@ h3.text-center {
         width: 80px;
     }
 
-    .container-fluid .img-thumbnail {
-        width: 100%;
-        height: 400px;
-
+    .container-fluid.navContainer {
+        background-color: rgb(0, 114, 180);
     }
 }
