@@ -26,7 +26,7 @@
                             <a class="nav-link active" aria-current="page" href="todo.html">Todo</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link textColor" href="settings.html">Settings</a>
+                            <a class="nav-link textColor" href="">Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -45,30 +45,69 @@
                     <a class="nav-link active" href="todo.html">Todo</a>
                 </li> -->
                 <li class="nav-item flex-fill left">
-                    <a class="nav-link textColor text-center" href="settings.html">Settings</a>
+                    <a class="nav-link textColor text-center" href="">Settings</a>
                 </li>
             </ul>
         </div>
     </nav>
+    
 
     <div class="container-fluid my-5 contentContainer">
         <div class="row">
-            <div class="col-sm-6 mb-3 mb-sm-0 mb-2">
+            <!-- TODO Column -->
+            <div class="col-md-6 mb-3">
                 <div class="card">
-                    <div class="card-body m-0">
-                        <h5 class="card-title text-center">TODO</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <div class="card-body m-0 px-2">
+                        <h3 class="card-title text-center">TODO</h3>
+                        <div class="container">
+                            <ul class="list-group list-group-flush py-0 underline">
+                                <h5 class="my-3">Incline DB Press</h5>
+                                <div class="row align-items-start">
+                                    <div class="col-5">
+                                        <li class="list-group-item p-0">
+                                            <p>Set: 3</p>
+                                        </li>
+                                    </div>
+                                    <div class="col-3 px-1">
+                                        <button type="button" class="qtyChange mx-1">Increase</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="button" class="qtyChange mx-1">Decrease</button>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+
+            <!-- COMPLETE Column -->
+            <div class="col-md-6 mb-3">
                 <div class="card contentContainer">
                     <div class="card-body">
-                        <h5 class="card-title text-center">COMPLETE</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <h3 class="card-title text-center">COMPLETE</h3>
+                        <ul class="list-group list-group-flush py-0 underline">
+                            <h5 class="my-3">Push Ups</h5>
+                            <div class="row align-items-start">
+                                <div class="col-5">
+                                    <li class="list-group-item p-0">
+                                        <p>Set: 3</p>
+                                    </li>
+                                </div>
+                                <div class="col-3 px-1">
+                                    <button type="button" class="qtyChange mx-1">Increase</button>
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" class="qtyChange mx-1">Decrease</button>
+                                </div>
+                            </div>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center bottomSpacer">
+            <button type="button" class="addWorkout">Add Workout</button>
         </div>
     </div>
 
