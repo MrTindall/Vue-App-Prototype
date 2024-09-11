@@ -101,11 +101,11 @@
                         <div class="container">
                             <ul class="list-group list-group-flush pb-3 px-3 ">
                                 <div class="underline">
-                                    <h5 class="my-3">Decline DB Press</h5>
+                                    <h5 class="my-3 text-decoration-line-through">Decline DB Press</h5>
                                     <div class="row align-items-start pb-3">
                                         <div class="col-7">
                                             <li class="list-group-item p-0">
-                                                <p>Set: 3</p>
+                                                <p class="text-decoration-line-through">Set: 0</p>
                                             </li>
                                         </div>
                                         <div class="col-5 px-1">
@@ -128,7 +128,35 @@
             </div>
         </div>
         <div class="text-center bottomSpacer">
-            <button type="button" class="addWorkout">Add Workout</button>
+            <button type="button" class="addWorkout" data-bs-toggle="modal" data-bs-target="#addWorkoutModal">Add Workout</button>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addWorkoutModalLabel">Add Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="workoutName" class="form-label">Workout Name</label>
+                                <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="workoutSets" class="form-label">Number of Sets</label>
+                                <input type="number" class="form-control" id="workoutSets" placeholder="Enter number of sets">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Save Workout</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

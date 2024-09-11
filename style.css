@@ -102,6 +102,10 @@ h3.text-center {
 }
 
 .qtyChange:hover, .qtyChange:active {
+    background-color: var(--secondary-color);
+}
+
+.qtyChange:active {
     background-color: var(--secondary-color-border);
 }
 
@@ -126,7 +130,7 @@ button.addWorkout:hover {
     padding-bottom: 40px;
 }
 
-.addWorkout:active {
+button.addWorkout:active {
     background-color: var(--secondary-color-border);
 }
 
@@ -150,6 +154,25 @@ button.addWorkout:hover {
     background-repeat: no-repeat;
     height: 45vh;
     border-bottom: 2px solid white;
+}
+
+.modal-background-color {
+    background-color: var(--main-color);
+    color: white;
+}
+.btn-bg-color {
+    background-color: white;
+    color: var(--dark-color);
+}
+
+.btn-bg-color:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+.btn.btn-primary.btn-bg-color:active {
+    background-color: var(--secondary-color-border);
+    color: var(--dark-color);
 }
 
 @media (max-width: 768px) {
