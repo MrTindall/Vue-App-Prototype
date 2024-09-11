@@ -109,9 +109,9 @@ body {
 button.addWorkout {
     font-weight: 600;
     font-size: 20px;
-    height: 50px;
-    width: 200px;
-    border-radius: 8px;
+    height: 60px;
+    width: 180px;
+    border-radius: 12px;
     border: 0;
     background-color: white;
     color: var(--dark-color);
