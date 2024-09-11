@@ -58,10 +58,6 @@ body {
     object-fit: cover;
 }
 
-h3.text-center {
-    margin-bottom: 40px;
-}
-
 .container-fluid.navContainer {
     background-color: var(--main-color);
     height: 120px;
@@ -94,8 +90,8 @@ h3.text-center {
     font-weight: 600;
     color: var(--dark-color);
     background-color: white;
-    width: 150px;
-    height: 30px;
+    width: 180px;
+    height: 40px;
     border-radius: 12px;
     border: 0;
     margin: 2px;
@@ -113,9 +109,8 @@ h3.text-center {
 button.addWorkout {
     font-weight: 600;
     font-size: 20px;
-    margin-top: 20px;
     height: 50px;
-    width: 250px;
+    width: 200px;
     border-radius: 8px;
     border: 0;
     background-color: white;
@@ -177,7 +172,8 @@ button.addWorkout:active {
 
 @media (max-width: 768px) {
     .qtyChange {
-        width: 120px;
+        font-size: 12px;
+        width: 100px;
         height: 30px;
     }
     .background-image {
@@ -186,5 +182,20 @@ button.addWorkout:active {
 
     .navbar-brand {
         margin: auto;
+    }
+
+    button.addWorkout {
+
+        height: 40px;
+        width: 150px;
+
+    }
+}
+
+@media (max-width: 1200px) {
+    .qtyChange {
+        font-size: 12px;
+        width: 100px;
+        height: 30px;
     }
 }

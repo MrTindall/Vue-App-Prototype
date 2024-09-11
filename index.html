@@ -53,9 +53,8 @@
         </div>
     </nav>
 
+    <!-- Image is for educational purpose only -->
     <div class="background-image"></div>
-
-
 
     <div class="container-fluid my-5 contentContainer">
         <div class="row">
@@ -63,24 +62,34 @@
             <div class="col-md-6 mb-3">
                 <div class="card">
                     <div class="card-body m-0 px-2">
-                        <h3 class="card-title text-center">TODO</h3>
+                        <div class="d-flex">
+                            <div class="p-2 flex-grow-1">
+                                <h3 class="card-title text-start">TODO</h3>
+                            </div>
+                            <div class="p-2"><button type="button" class="addWorkout" data-bs-toggle="modal"
+                                    data-bs-target="#addWorkoutModal">Add
+                                    Workout
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="container">
-                            <ul class="list-group list-group-flush pb-3 px-3 ">
+                            <ul class="list-group list-group-flush pb-3 px-2 ">
                                 <div class="underline">
-                                    <h5 class="my-3">Incline DB Press</h5>
-                                    <div class="row align-items-start pb-3">
-                                        <div class="col-7">
+                                    <p class="my-3">Incline DB Press</p>
+                                    <div class="row pb-3">
+                                        <div class="col-4">
                                             <li class="list-group-item p-0">
                                                 <p>Set: 3</p>
                                             </li>
                                         </div>
-                                        <div class="col-5 px-1">
+                                        <div class="col-8 px-1">
                                             <div class="row">
-                                                <div class="col">
-                                                    <button type="button" class="qtyChange mx-1">Increase</button>
+                                                <div class="col-6 px-0 text-end">
+                                                    <button type="button" class="qtyChange">Increase</button>
                                                 </div>
-                                                <div class="col">
-                                                    <button type="button" class="qtyChange mx-1">Decrease</button>
+                                                <div class="col-6 px-0">
+                                                    <button type="button" class="qtyChange">Decrease</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,29 +101,46 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- COMPLETE Column -->
             <div class="col-md-6 mb-3">
                 <div class="card">
                     <div class="card-body m-0 px-2">
-                        <h3 class="card-title text-center">COMPLETE</h3>
+                        <div class="d-flex">
+                            <div class="p-2 flex-grow-1">
+                                <h3 class="card-title text-start">COMPLETE</h3>
+                            </div>
+                            <div class="p-2">
+                                <button type="button" class="addWorkout">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                
                         <div class="container">
-                            <ul class="list-group list-group-flush pb-3 px-3 ">
-                                <div class="underline">
-                                    <h5 class="my-3 text-decoration-line-through">Decline DB Press</h5>
-                                    <div class="row align-items-start pb-3">
-                                        <div class="col-7">
+                            <ul class="list-group list-group-flush pb-3 px-2 ">
+                                <div class="underline text-decoration-line-through">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="workoutComplete">
+                                        <label class="form-check-label" for="workoutComplete">
+                                            <p class="text-decoration-line-through">DB Decline Press</p>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="row pb-3">
+                                        <div class="col-4">
                                             <li class="list-group-item p-0">
-                                                <p class="text-decoration-line-through">Set: 0</p>
+                                                <p>Set: 3</p>
                                             </li>
                                         </div>
-                                        <div class="col-5 px-1">
+                                        <div class="col-8 px-1">
                                             <div class="row">
-                                                <div class="col">
-                                                    <button type="button" class="qtyChange mx-1">Increase</button>
+                                                <div class="col-6 px-0 text-end">
+                                                    <button type="button" class="qtyChange">Increase</button>
                                                 </div>
-                                                <div class="col">
-                                                    <button type="button" class="qtyChange mx-1">Decrease</button>
+                                                <div class="col-6 px-0">
+                                                    <button type="button" class="qtyChange">Decrease</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,17 +148,16 @@
                                 </div>
                             </ul>
                         </div>
-
+                
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-center bottomSpacer">
-            <button type="button" class="addWorkout" data-bs-toggle="modal" data-bs-target="#addWorkoutModal">Add Workout</button>
-        </div>
-        
+        <div class="text-center bottomSpacer"></div>
+
         <!-- Modal -->
-        <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content modal-background-color">
                     <div class="modal-header">
@@ -143,11 +168,13 @@
                         <form>
                             <div class="mb-3">
                                 <label for="workoutName" class="form-label">Workout Name</label>
-                                <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+                                <input type="text" class="form-control" id="workoutName"
+                                    placeholder="Enter workout name">
                             </div>
                             <div class="mb-3">
                                 <label for="workoutSets" class="form-label">Number of Sets</label>
-                                <input type="number" class="form-control" id="workoutSets" placeholder="Enter number of sets">
+                                <input type="number" class="form-control" id="workoutSets"
+                                    placeholder="Enter number of sets">
                             </div>
                         </form>
                     </div>
