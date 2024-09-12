@@ -56,139 +56,86 @@
     <!-- Image is for educational purpose only -->
     <div class="background-image"></div>
 
-    <div class="container-fluid my-5 contentContainer">
-        <div class="row">
-            <!-- TODO Column -->
-            <div class="col-md-6 mb-3">
-                <div class="card">
-                    <div class="card-body m-0 px-2">
-                        <div class="d-flex">
-                            <div class="p-2 flex-grow-1">
-                                <h3 class="card-title text-start">TODO</h3>
-                            </div>
-                            <div class="p-2">
-                                <button type="button" class="addWorkout" data-bs-toggle="modal"
-                                    data-bs-target="#addWorkoutModal">Add
-                                </button>
-                            </div>
-                        </div>
+    <div class="container my-5 contentContainer">
+        <ul class="nav nav-tabs workoutTabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">WORKOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">COMPLETE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BUILDER</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">HISTORY</a>
+            </li>
+        </ul>
+        <div class="card">
+            <div class="card-body m-0 px-2 py-0">
+                <div class="d-flex">
+                    <div class="p-2 flex-grow-1">
+                        <h3 class="card-title text-start">{Workout of day}</h3>
+                    </div>
+                    <div class="p-2">
+                        <button type="button" class="addWorkout" data-bs-toggle="modal"
+                            data-bs-target="#addWorkoutModal">Add
+                        </button>
+                    </div>
+                </div>
 
-                        <div class="container">
-                            <ul class="list-group list-group-flush pb-3 px-2 ">
+                <div class="container-fluid p-0">
+                    <ul class="list-group list-group-flush WorkoutContent">
+                        <div class="d-flex flex-row">
+                            <li class="list-group-item">Exercise: DB Incline Press</li>
+                            <li class="list-group-item">Weight: 40</li>
+                            <li class="list-group-item">Set: 3</li>
+                            <li class="list-group-item">A fourth item</li>
+                            <li class="list-group-item text-end">
                                 <div>
-                                    <li class="list-group-item p-0">
-                                        <p>DB Incline Press</p>
-                                    </li>
-                        
-                                    <div class="row pb-3">
-                                        <div class="col-3">
-                                            <li class="list-group-item p-0">
-                                                <p>Set: 3</p>
-                                            </li>
-                                        </div>
-                                        <div class="col-9 px-1">
-                                            <div class="d-flex flex-row-reverse">
-                                                <div class="p-0">
-                                                    <button type="button" class="qtyChange">Decrease</button>
-                                                </div>
-                                                <div class="p-0">
-                                                    <button type="button" class="qtyChange">Increase</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button type="button" class="qtyChange">+</button>
+                                    <button type="button" class="qtyChange">-</button>
+                                    <button type="button" class="qtyChange">x</button>
                                 </div>
-                            </ul>
+                            </li>
                         </div>
-                    </div>
+                    </ul>
                 </div>
             </div>
+            <div class="bottomSpacer"></div>
+        </div>
+    </div>
+    
 
-
-            <!-- COMPLETE Column -->
-            <div class="col-md-6 mb-3">
-                <div class="card">
-                    <div class="card-body m-0 px-2">
-                        <div class="d-flex">
-                            <div class="p-2 flex-grow-1">
-                                <h3 class="card-title text-start">COMPLETE</h3>
-                            </div>
-                            <div class="p-2">
-                                <button type="button" class="addWorkout">
-                                    Remove
-                                </button>
-                            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addWorkoutModalLabel">Add Workout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="workoutName" class="form-label">Workout Name</label>
+                            <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
                         </div>
-
-                        <div class="container">
-                            <ul class="list-group list-group-flush pb-3 px-2 ">
-                                <div class="text-decoration-line-through">
-                                    <li class="list-group-item p-0">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="workoutComplete">
-                                            <label class="form-check-label" for="workoutComplete">
-                                                <p class="text-decoration-line-through">DB Decline Press</p>
-                                            </label>
-                                        </div>
-                                    </li>
-
-                                    <div class="row pb-3">
-                                        <div class="col-3">
-                                            <li class="list-group-item p-0">
-                                                <p>Set: 0</p>
-                                            </li>
-                                        </div>
-                                        <div class="col-9 px-1">
-                                            <div class="d-flex flex-row-reverse">
-                                                <div class="p-0">
-                                                    <button type="button" class="qtyChange">Decrease</button>
-                                                </div>
-                                                <div class="p-0">
-                                                    <button type="button" class="qtyChange">Increase</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ul>
+                        <div class="mb-3">
+                            <label for="workoutSets" class="form-label">Number of Sets</label>
+                            <input type="number" class="form-control" id="workoutSets"
+                                placeholder="Enter number of sets">
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-bg-color">Save Workout</button>
                 </div>
             </div>
         </div>
-        <div class="text-center bottomSpacer"></div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content modal-background-color">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addWorkoutModalLabel">Add Workout</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="workoutName" class="form-label">Workout Name</label>
-                                <input type="text" class="form-control" id="workoutName"
-                                    placeholder="Enter workout name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="workoutSets" class="form-label">Number of Sets</label>
-                                <input type="number" class="form-control" id="workoutSets"
-                                    placeholder="Enter number of sets">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Save Workout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
 
 

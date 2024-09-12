@@ -45,11 +45,23 @@ body {
 .navbar.navbar-light {
     border-top: solid 2px white;
 }
+.nav.nav-tabs.workoutTabs{
+    border: 0;
+
+}
+.workoutTabs .nav-item a {
+    color: white;
+    font-weight: 600;
+}
+.workoutTabs .nav-item a[aria-current="page"] {
+    color: var(--dark-color);
+}
 
 .card {
     color: white;
     background-color: var(--main-color);
     border: solid 2px white;
+    border-top-left-radius: 0 ;
 }
 
 .container .img-thumbnail {
@@ -84,17 +96,20 @@ body {
 .textColor {
     color: white;
 }
+.list-group-item {
+    font-size: 20px;
+}
 
 .qtyChange {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--dark-color);
     background-color: white;
-    width: 180px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
     border-radius: 12px;
     border: 0;
-    margin: 2px;
+    /* margin: 2px; */
 }
 
 .qtyChange:hover, .qtyChange:active {
