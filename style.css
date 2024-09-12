@@ -125,7 +125,7 @@ body {
     background-color: var(--main-color);
     border: 2px solid white;
     width: 40px;
-    height: 30px;
+    height: 28px;
     border-radius: 12px;
     color: white;
 }
@@ -248,6 +248,13 @@ button.addWorkout:active {
 
         height: 30px;
         width: 80px;
+    }
+    .list-group-item {
+        font-size: 16px;
+    }
+    .qtyChange {
+        width: 40px;
+        height: 25px;
     }
 }
 
