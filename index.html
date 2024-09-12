@@ -54,97 +54,143 @@
     </nav>
 
     <!-- Image is for educational purpose only -->
-    <div class="background-image"></div>
+    <!-- <div class="background-image"></div> -->
 
-    <div class="container my-5 contentContainer">
+    <div class="container my-3 contentContainer">
         <ul class="nav nav-tabs workoutTabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">WORKOUT</a>
+                <a class="nav-link active" data-bs-toggle="tab" href="#workoutTab">WORKOUT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">COMPLETED</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#completedTab">COMPLETED</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">BUILDER</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#builderTab">BUILDER</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">HISTORY</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#historyTab">HISTORY</a>
             </li>
         </ul>
-        <div class="card">
-            <div class="card-body m-0 px-2 py-0">
-                <div class="d-flex">
-                    <div class="p-2 flex-grow-1">
-                        <h3 class="card-title text-start">Push</h3>
-                    </div>
-                    <div class="py-2">
-                        <button type="button" class="addWorkout me-3" data-bs-toggle="modal"
-                            data-bs-target="#addWorkoutModal">Add
-                        </button>
-                    </div>
-                </div>
 
-                <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item underline">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                <span>Exercise: DB Incline Press</span>
-                                <span>Weight: 40</span>
-                                <span>Set: 3</span>
-                                <div class="text-center">
-                                    <button type="button" class="qtyChange">+</button>
-                                    <button type="button" class="qtyChange">-</button>
-                                    <button type="button" class="removeChange" data-bs-toggle="modal"
-                                        data-bs-target="#removeWorkoutModal">x</button>
-                                </div>
+        <div class="tab-content">
+            <!-- Workout Tab -->
+            <div class="tab-pane fade show active" id="workoutTab">
+                <div class="card">
+                    <div class="card-body m-0 px-2 py-0">
+                        <div class="d-flex">
+                            <div class="p-2 flex-grow-1">
+                                <h3 class="card-title text-start">Push</h3>
                             </div>
-                        </li>
-                        <li class="list-group-item underline">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                <span>Exercise: DB Incline Press</span>
-                                <span>Weight: 40</span>
-                                <span>Set: 3</span>
-                                <div class="text-center">
-                                    <button type="button" class="qtyChange">+</button>
-                                    <button type="button" class="qtyChange">-</button>
-                                    <button type="button" class="removeChange" data-bs-toggle="modal"
-                                        data-bs-target="#removeWorkoutModal">x</button>
-                                </div>
+                            <div class="py-2">
+                                <button type="button" class="addWorkout me-3" data-bs-toggle="modal"
+                                    data-bs-target="#removeWorkoutModal">Remove
+                                </button>
+                                <button type="button" class="addWorkout me-3" data-bs-toggle="modal"
+                                    data-bs-target="#addWorkoutModal">Add
+                                </button>
+
                             </div>
-                        </li>
-                        <li class="list-group-item underline">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                <span>Exercise: DB Incline Press</span>
-                                <span>Weight: 40</span>
-                                <span>Set: 3</span>
-                                <div class="text-center">
-                                    <button type="button" class="qtyChange">+</button>
-                                    <button type="button" class="qtyChange">-</button>
-                                    <button type="button" class="removeChange" data-bs-toggle="modal"
-                                        data-bs-target="#removeWorkoutModal">x</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item underline">
-                            <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                <span>Exercise: DB Incline Press</span>
-                                <span>Weight: 40</span>
-                                <span>Set: 3</span>
-                                <div class="text-center">
-                                    <button type="button" class="qtyChange">+</button>
-                                    <button type="button" class="qtyChange">-</button>
-                                    <button type="button" class="removeChange" data-bs-toggle="modal"
-                                        data-bs-target="#removeWorkoutModal">x</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+
+                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item underline">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    id="flexSwitchCheckDefault">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                            </div>
+                                            Exercise: DB Incline Press
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            Weight: 40 lbs
+                                            <div>
+                                                <button type="button" class="qtyChange plus ms-2">+</button>
+                                                <button type="button" class="qtyChange minus">-</button>
+                                            </div>
+                                        </span>
+                                        <span class="d-flex justify-content-between  py-1">
+                                            Set: 3
+                                            <div>
+                                                <button type="button" class="qtyChange plus ms-2">+</button>
+                                                <button type="button" class="qtyChange minus">-</button>
+                                            </div>
+                                        </span>
+                                        <span></span>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <div class="bottomSpacer"></div>
             </div>
-            <div class="bottomSpacer"></div>
+
+            <!-- Completed Tab -->
+            <div class="tab-pane fade" id="completedTab">
+                <div class="card">
+                    <div class="card-body m-0 px-2 py-0">
+                        <div class="d-flex">
+                            <div class="p-2 flex-grow-1">
+                                <h3 class="card-title text-start">Push</h3>
+                            </div>
+                            <div class="py-2">
+                                <button type="button" class="addWorkout me-3" data-bs-toggle="modal"
+                                    data-bs-target="#removeWorkoutModal">Remove
+                                </button>
+                                <button type="button" class="addWorkout me-3" data-bs-toggle="modal"
+                                    data-bs-target="#archiveWorkoutModal">Archive
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item underline">
+                                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    id="flexSwitchCheckDefault">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                            </div>
+                                            <p class="text-decoration-line-through">Exercise: DB Incline Press</p>
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1 text-decoration-line-through">
+                                            Weight: 40 lbs
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            <p class="text-decoration-line-through">Set: 3</p>
+                                            <div>
+                                                <button type="button" class="qtyChange plus ms-2">+</button>
+                                                <button type="button" class="qtyChange minus">-</button>
+                                            </div>
+                                        </span>
+                                        <span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomSpacer"></div>
+            </div>
+            <!-- Builder Tab -->
+            <div class="tab-pane fade" id="builderTab">
+                <h3>Builder Content</h3>
+            </div>
+
+            <!-- History Tab -->
+            <div class="tab-pane fade" id="historyTab">
+                <h3>History Content</h3>
+            </div>
         </div>
-        <div class="bottomSpacer"></div>
     </div>
+
 
     <!-- Modal Remove Workout-->
     <div class="modal fade" id="removeWorkoutModal" tabindex="-1" aria-labelledby="removeWorkoutModalLabel"
@@ -153,6 +199,26 @@
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
                     <h5 class="modal-title" id="removeWorkoutModalLabel">Are you sure you would like to remove this
+                        workout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Archive Workout-->
+    <div class="modal fade" id="archiveWorkoutModal" tabindex="-1" aria-labelledby="archiveWorkoutModal"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="archiveWorkoutModal">Are you ready to archive this
                         workout?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

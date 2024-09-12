@@ -1,6 +1,6 @@
 :root {
     --main-color: rgb(0, 114, 180);
-    --dark-color: rgb(0, 0, 0);
+    --dark-color: rgb(25, 25, 25);
     --secondary-color: rgb(255, 174, 0);
     --secondary-color-border: rgb(209, 143, 0);
 }
@@ -67,7 +67,7 @@ body {
     background-color: var(--main-color);
     border: solid 2px white;
     border-top-left-radius: 0;
-    height: 500px;
+    height: 480px;
 }
 
 .container .img-thumbnail {
@@ -106,6 +106,7 @@ body {
 .list-group-item {
     font-size: 20px;
 }
+
 .WorkoutContent {
     border: 3px solid white;
     height: 410px;
@@ -120,42 +121,53 @@ body {
     font-size: 15px;
     font-weight: 600;
     color: var(--dark-color);
-    background-color: white;
+    background-color: var(--main-color);
+    border: 2px solid white;
     width: 40px;
     height: 30px;
     border-radius: 12px;
-    border: 0;
+    color: white;
+}
+
+.plus:hover {
+    background-color: rgb(56, 168, 56);
+}
+
+.plus:active {
+    background-color: rgb(42, 125, 42);
+}
+
+.minus:hover {
+    background-color: var(--secondary-color);
+}
+
+.minus:active {
+    background-color: var(--secondary-color-border);
 }
 
 .removeChange {
     font-size: 15px;
     font-weight: 600;
     color: var(--dark-color);
-    background-color: white;
+    background-color: var(--main-color);
     width: 40px;
     height: 30px;
     border-radius: 12px;
-    border: 0;
+    border: 2px solid white;
+    color: white;
 }
 
-.removeChange:hover,
-.removeChange:active {
+.removeChange:hover {
     background-color: rgb(255, 70, 70);
 }
 
-.qtyChange:hover,
-.qtyChange:active {
-    background-color: var(--secondary-color);
+.removeChange:active {
+    background-color: rgb(172, 46, 46);
 }
-
-.qtyChange:active {
-    background-color: var(--secondary-color-border);
-}
-
 
 button.addWorkout {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     height: 40px;
     width: 130px;
     border-radius: 12px;
@@ -169,7 +181,7 @@ button.addWorkout:hover {
 }
 
 .bottomSpacer {
-    padding-bottom: 40px;
+    padding-bottom: 80px;
 }
 
 button.addWorkout:active {
@@ -194,7 +206,7 @@ button.addWorkout:active {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 45vh;
+    height: 60vh;
     /* border-bottom: 2px solid white; */
 }
 
@@ -218,7 +230,11 @@ button.addWorkout:active {
     color: var(--dark-color);
 }
 
-@media (max-width: 768px) {
+#flexSwitchCheckDefault:checked {
+    background-color: rgb(56, 168, 56);
+}
+
+@media (max-width:1200px) {
     .background-image {
         border-bottom: 0;
     }
@@ -231,7 +247,6 @@ button.addWorkout:active {
 
         height: 30px;
         width: 80px;
-
     }
 }
 
