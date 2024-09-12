@@ -111,9 +111,10 @@ body {
     border: 3px solid white;
     height: 410px;
     border-radius: 12px;
+    background-color: var(--dark-color);
 }
 
-.WorkoutContent .list-group.list-group-flush {
+.WorkoutContent .list-group.list-group-flush li{
     border-radius: 12px;
 }
 
@@ -231,7 +232,7 @@ button.addWorkout:active {
 }
 
 #flexSwitchCheckDefault:checked {
-    background-color: rgb(56, 168, 56);
+    background-color: rgb(255, 70, 70);
 }
 
 @media (max-width:1200px) {
