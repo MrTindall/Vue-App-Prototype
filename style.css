@@ -67,6 +67,7 @@ body {
     background-color: var(--main-color);
     border: solid 2px white;
     border-top-left-radius: 0;
+    height: 500px;
 }
 
 .container .img-thumbnail {
@@ -104,6 +105,15 @@ body {
 
 .list-group-item {
     font-size: 20px;
+}
+.WorkoutContent {
+    border: 3px solid white;
+    height: 410px;
+    border-radius: 12px;
+}
+
+.WorkoutContent .list-group.list-group-flush {
+    border-radius: 12px;
 }
 
 .qtyChange {
@@ -147,7 +157,7 @@ button.addWorkout {
     font-weight: 600;
     font-size: 20px;
     height: 40px;
-    width: 140px;
+    width: 130px;
     border-radius: 12px;
     border: 0;
     background-color: white;
@@ -219,8 +229,8 @@ button.addWorkout:active {
 
     button.addWorkout {
 
-        height: 40px;
-        width: 150px;
+        height: 30px;
+        width: 80px;
 
     }
 }
