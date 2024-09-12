@@ -86,28 +86,51 @@
 
                 <div class="container-fluid p-0">
                     <ul class="list-group list-group-flush WorkoutContent">
-                        <div class="d-flex flex-row">
+                        <div class="d-flex flex-column flex-lg-row">
                             <li class="list-group-item">Exercise: DB Incline Press</li>
                             <li class="list-group-item">Weight: 40</li>
                             <li class="list-group-item">Set: 3</li>
-                            <li class="list-group-item">A fourth item</li>
-                            <li class="list-group-item text-end">
+                            <li class="list-group-item flex-grow-1">A fourth item</li>
+                            <li class="list-group-item text-lg-end">
                                 <div>
                                     <button type="button" class="qtyChange">+</button>
                                     <button type="button" class="qtyChange">-</button>
-                                    <button type="button" class="qtyChange">x</button>
+                                    <button type="button" class="removeChange" data-bs-toggle="modal"
+                                        data-bs-target="#removeWorkoutModal">x</button>
                                 </div>
                             </li>
                         </div>
                     </ul>
                 </div>
+
             </div>
             <div class="bottomSpacer"></div>
         </div>
+        <div class="bottomSpacer"></div>
     </div>
-    
 
-    <!-- Modal -->
+    <!-- Modal Remove Workout-->
+    <div class="modal fade" id="removeWorkoutModal" tabindex="-1" aria-labelledby="removeWorkoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="removeWorkoutModalLabel">Are you sure you would like to remove this
+                        workout?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Add Workout-->
     <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -136,7 +159,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

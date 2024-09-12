@@ -35,9 +35,11 @@ body {
 .navbar-brand {
     font-size: 25px;
 }
+
 .nav-link:hover {
     color: var(--secondary-color);
 }
+
 .navbar-brand:hover {
     color: var(--secondary-color);
 }
@@ -45,14 +47,17 @@ body {
 .navbar.navbar-light {
     border-top: solid 2px white;
 }
-.nav.nav-tabs.workoutTabs{
+
+.nav.nav-tabs.workoutTabs {
     border: 0;
 
 }
+
 .workoutTabs .nav-item a {
     color: white;
     font-weight: 600;
 }
+
 .workoutTabs .nav-item a[aria-current="page"] {
     color: var(--dark-color);
 }
@@ -61,7 +66,7 @@ body {
     color: white;
     background-color: var(--main-color);
     border: solid 2px white;
-    border-top-left-radius: 0 ;
+    border-top-left-radius: 0;
 }
 
 .container .img-thumbnail {
@@ -96,6 +101,7 @@ body {
 .textColor {
     color: white;
 }
+
 .list-group-item {
     font-size: 20px;
 }
@@ -109,10 +115,26 @@ body {
     height: 30px;
     border-radius: 12px;
     border: 0;
-    /* margin: 2px; */
 }
 
-.qtyChange:hover, .qtyChange:active {
+.removeChange {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark-color);
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    border-radius: 12px;
+    border: 0;
+}
+
+.removeChange:hover,
+.removeChange:active {
+    background-color: rgb(255, 70, 70);
+}
+
+.qtyChange:hover,
+.qtyChange:active {
     background-color: var(--secondary-color);
 }
 
@@ -124,8 +146,8 @@ body {
 button.addWorkout {
     font-weight: 600;
     font-size: 20px;
-    height: 60px;
-    width: 180px;
+    height: 40px;
+    width: 140px;
     border-radius: 12px;
     border: 0;
     background-color: white;
@@ -159,7 +181,7 @@ button.addWorkout:active {
     padding: 0;
     margin: 0;
     background-image: url('img/yoga.jpg');
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 45vh;
@@ -170,6 +192,7 @@ button.addWorkout:active {
     background-color: var(--main-color);
     color: white;
 }
+
 .btn-bg-color {
     background-color: white;
     color: var(--dark-color);
@@ -186,11 +209,6 @@ button.addWorkout:active {
 }
 
 @media (max-width: 768px) {
-    .qtyChange {
-        font-size: 12px;
-        width: 100px;
-        height: 30px;
-    }
     .background-image {
         border-bottom: 0;
     }
@@ -208,9 +226,9 @@ button.addWorkout:active {
 }
 
 @media (max-width: 1100px) {
-    .qtyChange {
-        font-size: 12px;
-        width: 100px;
-        height: 30px;
+    .workoutTabs .nav-item a {
+        color: white;
+        font-weight: 600;
+        font-size: 10px;
     }
 }
