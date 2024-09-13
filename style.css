@@ -1,8 +1,8 @@
 :root {
     --main-color: rgb(1, 80, 126);
     --dark-color: rgb(25, 25, 25);
-    --secondary-color: rgb(255, 174, 0);
-    --secondary-color-border: rgb(209, 143, 0);
+    --secondary-color: rgb(153, 153, 153);
+    --secondary-color-border: rgb(94, 94, 94);
 }
 
 * {
@@ -55,7 +55,9 @@ body {
     background-color: var(--main-color);
     border: solid 2px white;
     border-radius: 0;
-    height: 66vh;
+    height: 75vh;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
 }
 
 .container .img-thumbnail {
@@ -120,11 +122,11 @@ body {
 }
 
 .plus:hover {
-    background-color: rgb(56, 168, 56);
+    background-color: var(--secondary-color);
 }
 
 .plus:active {
-    background-color: rgb(42, 125, 42);
+    background-color: var(--secondary-color-border);
 }
 
 .minus:hover {
@@ -175,6 +177,24 @@ button.addWorkout:hover {
 }
 
 button.addWorkout:active {
+    background-color: var(--secondary-color-border);
+}
+
+.startWorkout {
+    font-weight: 600;
+    font-size: 16px;
+    height: 50px;
+    width: 200px;
+    border-radius: 12px;
+    border: 0;
+    background-color: white;
+    color: var(--dark-color);
+}
+
+button.startWorkout:hover {
+    background-color: var(--secondary-color);
+}
+button.startWorkout:active {
     background-color: var(--secondary-color-border);
 }
 

@@ -34,7 +34,7 @@
     </div>
 
     <!-- Bottom Navbar for Mobile -->
-    <nav class="navbar navbar-light bg-light fixed-bottom d-lg-none py-0">
+    <!-- <nav class="navbar navbar-light bg-light fixed-bottom d-lg-none py-0">
         <div class="container-fluid">
             <ul class="navbar-nav flex-row w-100 justify-content-around">
                 <li class="nav-item flex-fill right">
@@ -45,8 +45,9 @@
                 </li>
             </ul>
         </div>
-    </nav>
-    <div class="container my-3 contentContainer">
+    </nav> -->
+
+    <div class="container-fluid my-3 contentContainer">
         <ul class="nav nav-tabs workoutTabs">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="#workoutTab">WORKOUT</a>
@@ -58,7 +59,7 @@
                 <a class="nav-link" data-bs-toggle="tab" href="#builderTab">BUILDER</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#historyTab">HISTORY</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#settingsTab">SETTINGS</a>
             </li>
         </ul>
 
@@ -197,9 +198,14 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="py-3 d-flex justify-content-around">
+                            <button type="button" class="startWorkout" data-bs-toggle="modal"
+                                data-bs-target="#startWorkoutModal">Start 
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="bottomSpacer"></div>
+                <!-- <div class="bottomSpacer"></div> -->
             </div>
 
             <!-- Completed Tab -->
@@ -213,10 +219,10 @@
                             <div class="py-2 d-flex justify-content-end">
                                 <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
                                     data-bs-target="#removeWorkoutModal">Remove
-                                </button>
+                                <!-- </button>
                                 <button type="button" class="addWorkout" data-bs-toggle="modal"
                                     data-bs-target="#archiveWorkoutModal">Archive
-                                </button>
+                                </button> -->
                             </div>
                         </div>
 
@@ -248,17 +254,22 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="py-3 d-flex justify-content-around">
+                        <button type="button" class="startWorkout" data-bs-toggle="modal" data-bs-target="#finishWorkoutModal">Finish
+                        </button>
+                    </div>
                 </div>
-                <div class="bottomSpacer"></div>
+                <!-- <div class="bottomSpacer"></div> -->
             </div>
+
             <!-- Builder Tab -->
             <div class="tab-pane fade" id="builderTab">
                 <h3>Builder Content</h3>
             </div>
 
-            <!-- History Tab -->
-            <div class="tab-pane fade" id="historyTab">
-                <h3>History Content</h3>
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settingsTab">
+                <h3>Settings</h3>
             </div>
         </div>
     </div>
@@ -302,26 +313,29 @@
         </div>
     </div>
 
-
     <!-- Modal Add Workout-->
     <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addWorkoutModalLabel">Add Workout</h5>
+                    <h5 class="modal-title" id="addWorkoutModalLabel">Add Exercise</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="workoutName" class="form-label">Workout Name</label>
+                            <label for="workoutName" class="form-label">Exercise Name</label>
                             <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
                         </div>
                         <div class="mb-3">
                             <label for="workoutSets" class="form-label">Number of Sets</label>
                             <input type="number" class="form-control" id="workoutSets"
                                 placeholder="Enter number of sets">
+                        </div>
+                        <div class="mb-3">
+                            <label for="workoutSets" class="form-label">Weight</label>
+                            <input type="number" class="form-control" id="workoutSets" placeholder="Enter number of sets">
                         </div>
                     </form>
                 </div>
@@ -333,7 +347,54 @@
         </div>
     </div>
 
+    <!-- Modal start Workout-->
+    <div class="modal fade" id="startWorkoutModal" tabindex="-1" aria-labelledby="startWorkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="startWorkoutModalLabel">Start Workout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="workoutName" class="form-label">Workout Name</label>
+                            <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-bg-color">Start Workout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal finish Workout-->
+    <div class="modal fade" id="finishWorkoutModal" tabindex="-1" aria-labelledby="finishWorkoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="finishWorkoutModalLabel">Finish Workout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="workoutName" class="form-label">{Report Stuff}</label>
+                            <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-bg-color">Finish Workout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
