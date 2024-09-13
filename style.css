@@ -1,5 +1,5 @@
 :root {
-    --main-color: rgb(0, 114, 180);
+    --main-color: rgb(1, 80, 126);
     --dark-color: rgb(25, 25, 25);
     --secondary-color: rgb(255, 174, 0);
     --secondary-color-border: rgb(209, 143, 0);
@@ -114,7 +114,7 @@ body {
     background-color: var(--dark-color);
 }
 
-.WorkoutContent .list-group.list-group-flush li{
+.WorkoutContent .list-group.list-group-flush li {
     border-radius: 12px;
 }
 
@@ -182,7 +182,7 @@ button.addWorkout:hover {
 }
 
 .bottomSpacer {
-    padding-bottom: 80px;
+    padding-bottom: 75px;
 }
 
 button.addWorkout:active {
@@ -249,9 +249,11 @@ button.addWorkout:active {
         height: 30px;
         width: 80px;
     }
+
     .list-group-item {
         font-size: 16px;
     }
+
     .qtyChange {
         width: 40px;
         height: 25px;
