@@ -14,26 +14,14 @@ body {
     background-color: var(--dark-color);
 }
 
-.progress-container span {
-    margin-bottom: 5px;
-    text-align: right;
-}
-
-.progress {
-    height: 15px;
-    margin-top: 5px;
-    width: 140px;
-}
-
-
 .navContainer .navbar {
 
-    font-size: 25px;
+    font-size: 2.5vh;
     border-bottom: solid 2px white;
 }
 
 .navbar-brand {
-    font-size: 25px;
+    font-size: 2.5vh;
 }
 
 .nav-link:hover {
@@ -67,7 +55,7 @@ body {
     background-color: var(--main-color);
     border: solid 2px white;
     border-radius: 0;
-    height: 480px;
+    height: 66vh;
 }
 
 .container .img-thumbnail {
@@ -78,12 +66,13 @@ body {
 
 .container-fluid.navContainer {
     background-color: var(--main-color);
-    height: 120px;
+    height: 15vh;
 }
 
 .navbar.navbar-light.bg-light.fixed-bottom.d-lg-none .container-fluid {
     font-size: 20px;
     background-color: var(--main-color);
+    height: 8vh;
 
 }
 
@@ -109,7 +98,7 @@ body {
 
 .WorkoutContent {
     border: 3px solid white;
-    height: 410px;
+    height: 55vh;
     border-radius: 12px;
     background-color: var(--dark-color);
 }
