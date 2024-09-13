@@ -111,7 +111,7 @@ body {
 
 .WorkoutContentRemove {
     border: 3px solid white;
-    height: 45vh;
+    height: 47vh;
     border-radius: 12px;
     background-color: var(--dark-color);
 }
