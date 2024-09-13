@@ -16,12 +16,12 @@ body {
 
 .navContainer .navbar {
 
-    font-size: 2.5vh;
+    font-size: 3vh;
     border-bottom: solid 2px white;
 }
 
 .navbar-brand {
-    font-size: 2.5vh;
+    font-size: 3vh;
 }
 
 .nav-link:hover {
@@ -247,10 +247,6 @@ button.startWorkout:active {
 @media (max-width:1200px) {
     .background-image {
         border-bottom: 0;
-    }
-
-    .navbar-brand {
-        margin: auto;
     }
 
     button.addWorkout {
