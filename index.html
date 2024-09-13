@@ -51,7 +51,7 @@
                             </div>
                             <div class="py-2 d-flex justify-content-end">
                                 <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                    data-bs-target="#removeWorkoutModal">Remove
+                                    data-bs-target="#removeWorkoutModal" id="removeStart">Remove
                                 </button>
                                 <button type="button" class="addWorkout" data-bs-toggle="modal"
                                     data-bs-target="#addWorkoutModal">Add
@@ -195,9 +195,10 @@
                             </div>
                             <div class="py-2 d-flex justify-content-end">
                                 <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                    data-bs-target="#removeWorkoutModal">Remove
-                                    <!-- </button>
-                                <button type="button" class="addWorkout" data-bs-toggle="modal"
+                                    data-bs-target="#removeWorkoutModal" id="removeComplete">Remove
+                                 </button>
+                                
+                                <!-- <button type="button" class="addWorkout" data-bs-toggle="modal"
                                     data-bs-target="#archiveWorkoutModal">Archive
                                 </button> -->
                             </div>
@@ -219,7 +220,7 @@
                                             <span class="text-decoration-line-through">Weight: 40 lbs</span>
                                         </span>
                                         <span class="d-flex justify-content-between py-1">
-                                            <span class="text-decoration-line-through">Set: 3</span>
+                                            <span class="text-decoration-line-through">Set: 0</span>
                                             <div>
                                                 <button type="button" class="qtyChange plus ms-2">+</button>
                                                 <button type="button" class="qtyChange minus">-</button>
@@ -256,11 +257,15 @@
     <!-- Modal Remove Workout-->
     <div class="modal fade" id="removeWorkoutModal" tabindex="-1" aria-labelledby="removeWorkoutModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="removeWorkoutModalLabel">This will remove the selected exercise(s).</h5>
+                <div class="modal-header"> 
+                    <h5 class="modal-title" id="removeWorkoutModalLabel">Remove Exercise
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>This will remove the selected exercise(s).</h5>
                 </div>
                 <form>
                     <div class="modal-footer">
@@ -275,7 +280,7 @@
     <!-- Modal Archive Workout-->
     <div class="modal fade" id="archiveWorkoutModal" tabindex="-1" aria-labelledby="archiveWorkoutModal"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
                     <h5 class="modal-title" id="archiveWorkoutModal">This will archive current workout.</h5>
@@ -294,7 +299,7 @@
     <!-- Modal Add Workout-->
     <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addWorkoutModalLabel">Add Exercise</h5>
@@ -329,7 +334,7 @@
     <!-- Modal start Workout-->
     <div class="modal fade" id="startWorkoutModal" tabindex="-1" aria-labelledby="startWorkoutModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
                     <h5 class="modal-title" id="startWorkoutModalLabel">Start Workout</h5>
@@ -339,7 +344,12 @@
                     <form>
                         <div class="mb-3">
                             <label for="workoutName" class="form-label">Workout Name</label>
-                            <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+                            <select class="form-select" aria-label="workoutName">
+                                <option selected>Open this select menu</option>
+                                <option value="1">Push</option>
+                                <option value="2">Pull</option>
+                                <option value="3">Legs</option>
+                            </select>
                         </div>
                     </form>
                 </div>
@@ -354,7 +364,7 @@
     <!-- Modal finish Workout-->
     <div class="modal fade" id="finishWorkoutModal" tabindex="-1" aria-labelledby="finishWorkoutModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content modal-background-color">
                 <div class="modal-header">
                     <h5 class="modal-title" id="finishWorkoutModalLabel">Finish Workout</h5>

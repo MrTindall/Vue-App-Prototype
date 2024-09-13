@@ -244,6 +244,9 @@ button.startWorkout:active {
 #flexSwitchCheckDefault:checked {
     background-color: rgb(255, 70, 70);
 }
+.modal-body {
+    height: 60vh;
+}
 
 @media (max-width:1200px) {
     .background-image {
