@@ -1,5 +1,7 @@
 :root {
     --main-color: rgb(1, 80, 126);
+    --main-color_dark: rgb(0, 57, 90);
+    --main-color_darker: rgb(0, 44, 70);
     --dark-color: rgb(25, 25, 25);
     --secondary-color: rgb(153, 153, 153);
     --secondary-color-border: rgb(94, 94, 94);
@@ -133,19 +135,19 @@ body {
 }
 
 .plus:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color_dark);
 }
 
 .plus:active {
-    background-color: var(--secondary-color-border);
+    background-color: var(--main-color_darker);
 }
 
 .minus:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color_dark);
 }
 
 .minus:active {
-    background-color: var(--secondary-color-border);
+    background-color: var(--main-color_darker);
 }
 
 .removeChange {
@@ -168,27 +170,27 @@ body {
     background-color: rgb(172, 46, 46);
 }
 
+.bottomSpacer {
+    padding-bottom: 75px;
+}
+
 button.addWorkout {
     font-weight: 600;
     font-size: 16px;
     height: 40px;
     width: 130px;
     border-radius: 12px;
-    border: 0;
-    background-color: white;
-    color: var(--dark-color);
+    border: 2px solid white;
+    background-color: var(--main-color);
+    color: white;
 }
 
 button.addWorkout:hover {
-    background-color: var(--secondary-color);
-}
-
-.bottomSpacer {
-    padding-bottom: 75px;
+    background-color: var(--main-color_dark);
 }
 
 button.addWorkout:active {
-    background-color: var(--secondary-color-border);
+    background-color: var(--main-color_darker);
 }
 
 .startWorkout {
@@ -197,16 +199,16 @@ button.addWorkout:active {
     height: 50px;
     width: 200px;
     border-radius: 12px;
-    border: 0;
-    background-color: white;
-    color: var(--dark-color);
+    border: 2px solid white;
+    background-color: var(--main-color);
+    color: white;
 }
 
 button.startWorkout:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color_dark);
 }
 button.startWorkout:active {
-    background-color: var(--secondary-color-border);
+    background-color: var(--main-color_darker);;
 }
 
 .list-group-item {
@@ -253,7 +255,7 @@ button.startWorkout:active {
 }
 
 #flexSwitchCheckDefault:checked {
-    background-color: rgb(255, 70, 70);
+    background-color: var(--main-color_darker);
 }
 .modal-body {
     height: 60vh;
