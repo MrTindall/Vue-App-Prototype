@@ -263,7 +263,6 @@ button.startWorkout:active {
 
 .iconImage {
     height: 8vh;
-    width: 16vh;
 }
 
 @media (max-width:1200px) {
