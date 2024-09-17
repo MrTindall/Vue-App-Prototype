@@ -1,7 +1,7 @@
 :root {
     --main-color: rgb(1, 80, 126);
-    --main-color_dark: rgb(0, 57, 90);
-    --main-color_darker: rgb(0, 44, 70);
+    --main-color_dark: rgb(0, 55, 87);
+    --main-color_darker: rgb(0, 40, 63);
     --dark-color: rgb(25, 25, 25);
     --secondary-color: rgb(153, 153, 153);
     --secondary-color-border: rgb(94, 94, 94);
@@ -27,11 +27,14 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+    color: var(--main-color_dark);
 }
 
+.nav-link:active {
+    color: var(--main-color_darker);
+}
 .navbar-brand:hover {
-    color: var(--secondary-color);
+    color: var(--main-color_dark);
 }
 
 .navbar.navbar-light {
@@ -162,14 +165,6 @@ body {
     color: white;
 }
 
-.removeChange:hover {
-    background-color: rgb(255, 70, 70);
-}
-
-.removeChange:active {
-    background-color: rgb(172, 46, 46);
-}
-
 .bottomSpacer {
     padding-bottom: 75px;
 }
@@ -240,23 +235,16 @@ button.startWorkout:active {
 }
 
 .btn-bg-color {
-    background-color: var(--main-color);
-    color: white;
-    border: 2px solid white;
+    background-color: white;
+    color: var(--main-color_darker);
 }
 
 .btn-bg-color:hover {
-    background-color: var(--main-color_dark);
-    border: 2px solid white;
+    background-color: var(--secondary-color);
 }
 
 .btn.btn-primary.btn-bg-color:active {
     background-color: var(--main-color_darker);
-    border: 2px solid white;
-}
-
-.btn.btn-secondary {
-
     border: 2px solid white;
 }
 
