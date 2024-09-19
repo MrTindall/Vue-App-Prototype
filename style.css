@@ -289,6 +289,9 @@ button.startWorkout:active {
 .iconImage {
     height: 14vh;
 }
+.input-group-text {
+    width: 20px;
+}
 
 @media (max-width:1200px) {
     .background-image {
