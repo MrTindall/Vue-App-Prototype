@@ -63,6 +63,12 @@ body {
     height: 75vh;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
+    padding: 0;
+}
+
+.card-body-exercisesList {
+    height: fit-content;
+    border-radius: 12px;
 }
 
 .container .img-thumbnail {
@@ -188,6 +194,31 @@ button.addWorkout:active {
     background-color: var(--main-color_darker);
 }
 
+button.editWorkout {
+    font-weight: 600;
+    font-size: 12px;
+    height: 40px;
+    width: 80px;
+    border-radius: 12px;
+    border: 2px solid white;
+    background-color: var(--main-color);
+    color: white;
+}
+
+button.editWorkout:hover {
+    background-color: var(--main-color_dark);
+}
+
+button.editWorkout:active {
+    background-color: var(--main-color_darker);
+}
+
+button.save{
+    width: 160px;
+}
+
+
+
 .startWorkout {
     font-weight: 600;
     font-size: 16px;
@@ -273,6 +304,9 @@ button.startWorkout:active {
     .list-group-item {
         font-size: 16px;
     }
+        button.save {
+            width: 80px;
+        }
 }
 
 @media (max-width: 1100px) {
