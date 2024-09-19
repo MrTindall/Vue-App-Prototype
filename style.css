@@ -134,7 +134,7 @@ body {
 
 .WorkoutContentBuild{
     border: 3px solid white;
-    height: 30vh;
+    height: 40vh;
     border-radius: 12px;
     background-color: var(--dark-color);
 }
@@ -302,7 +302,7 @@ button.startWorkout:active {
 }
 
 .modal-body.builder {
-    height: 70vh;
+    height: 75vh;
 }
 
 .iconImage {
