@@ -239,6 +239,56 @@
 
             <!-- Builder Tab -->
             <div class="tab-pane fade" id="builderTab">
+                <div class="card">
+                    <div class="card-body m-0 px-2 py-0">
+                        <div class="d-flex pt-2">
+                            <div class="p-2 flex-grow-1">
+                                <h3 class="card-title text-start">Workout Library</h3>
+                            </div>
+                            <div class="py-2 d-flex justify-content-end">
+                                <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
+                                    data-bs-target="#deleteWorkoutModal" id="deleteComplete">Delete
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item mt-3 mx-2">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    id="flexSwitchCheckDefault">
+                                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                            </div>
+                                            <span class="">{Workout Name}</span>
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            <span class="">Total Exercises:</span>
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            <span class="">Set: 0</span>
+                                            <div>
+                                                <button type="button" class="qtyChange minus">-</button>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="py-3 d-flex justify-content-around">
+                        <button type="button" class="startWorkout" data-bs-toggle="modal"
+                            data-bs-target="#finishWorkoutModal">Finish
+                        </button>
+                    </div>
+                </div>
+                <!-- <div class="bottomSpacer"></div> -->
+            </div>
+
+            <!-- Builder Tab -->
+            <div class="tab-pane fade" id="builderTab">
                 <h3>Builder Content</h3>
             </div>
 
@@ -262,6 +312,75 @@
                 </div>
                 <div class="modal-body">
                     <h5>This will remove the selected exercise(s).</h5>
+                    <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item mt-3 mx-2">
+                                <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                    <span class="d-flex py-1">
+                                        DB Incline Press
+                                    </span>
+                                    <span class="d-flex justify-content-between py-1">
+                                        Weight: 40 lbs
+                                    </span>
+                                    <span class="d-flex justify-content-between  py-1">
+                                        Set: 3
+                                    </span>
+                                    <span></span>
+                                </div>
+                            </li>
+                            <li class="list-group-item mt-3 mx-2">
+                                <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                    <span class="d-flex py-1">
+                                        DB Incline Press
+                                    </span>
+                                    <span class="d-flex justify-content-between py-1">
+                                        Weight: 40 lbs
+                                    </span>
+                                    <span class="d-flex justify-content-between  py-1">
+                                        Set: 3
+                                    </span>
+                                    <span></span>
+                                </div>
+                            </li>
+                            <li class="list-group-item mt-3 mx-2">
+                                <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                    <span class="d-flex py-1">
+                                        DB Incline Press
+                                    </span>
+                                    <span class="d-flex justify-content-between py-1">
+                                        Weight: 40 lbs
+                                    </span>
+                                    <span class="d-flex justify-content-between  py-1">
+                                        Set: 3
+                                    </span>
+                                    <span></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Builder Remove Workout-->
+    <div class="modal fade" id="deleteWorkoutModal" tabindex="-1" aria-labelledby="deleteWorkoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-background-color">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteWorkoutModalLabel">Delete Workout
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>This will delete the selected workout(s).</h5>
                     <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
                         <ul class="list-group list-group-flush mb-3">
                             <li class="list-group-item mt-3 mx-2">
