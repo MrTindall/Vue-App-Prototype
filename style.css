@@ -33,6 +33,7 @@ body {
 .nav-link:active {
     color: var(--main-color_darker);
 }
+
 .navbar-brand:hover {
     color: var(--main-color_dark);
 }
@@ -131,6 +132,17 @@ body {
     border-radius: 12px;
 }
 
+.WorkoutContentBuild{
+    border: 3px solid white;
+    height: 30vh;
+    border-radius: 12px;
+    background-color: var(--dark-color);
+}
+
+.WorkoutContentBuild .list-group.list-group-flush li {
+    border-radius: 12px;
+}
+
 .qtyChange {
     font-size: 15px;
     font-weight: 600;
@@ -213,7 +225,7 @@ button.editWorkout:active {
     background-color: var(--main-color_darker);
 }
 
-button.save{
+button.save {
     width: 160px;
 }
 
@@ -233,8 +245,10 @@ button.save{
 button.startWorkout:hover {
     background-color: var(--main-color_dark);
 }
+
 button.startWorkout:active {
-    background-color: var(--main-color_darker);;
+    background-color: var(--main-color_darker);
+    ;
 }
 
 .list-group-item {
@@ -282,15 +296,39 @@ button.startWorkout:active {
 #flexSwitchCheckDefault:checked {
     background-color: var(--main-color_darker);
 }
+
 .modal-body {
     height: 60vh;
+}
+
+.modal-body.builder {
+    height: 80vh;
 }
 
 .iconImage {
     height: 14vh;
 }
+
 .input-group-text {
-    width: 20px;
+    height: 40px;
+}
+
+.inputField {
+    width: 100vw;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.btn-outline-secondary {
+    color: white;
+}
+
+.btn-outline-secondary:hover {
+    color: var(--main-color_dark)
+}
+
+.btn-outline-secondary:active {
+    color: var(--main-color_darker)
 }
 
 @media (max-width:1200px) {
@@ -307,9 +345,18 @@ button.startWorkout:active {
     .list-group-item {
         font-size: 16px;
     }
-        button.save {
-            width: 80px;
-        }
+
+    button.save {
+        width: 80px;
+    }
+
+    .input-group-text {
+        height: 30px;
+    }
+
+    .inputField {
+        height: 30px;
+    }
 }
 
 @media (max-width: 1100px) {
