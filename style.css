@@ -354,14 +354,6 @@ button.startWorkout:active {
     button.save {
         width: 80px;
     }
-
-    .input-group-text {
-        height: 30px;
-    }
-
-    .inputField {
-        height: 30px;
-    }
 }
 
 @media (max-width: 1100px) {
