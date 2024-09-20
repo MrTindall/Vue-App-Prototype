@@ -132,7 +132,7 @@ body {
     border-radius: 12px;
 }
 
-.WorkoutContentBuild{
+.WorkoutContentBuild {
     border: 3px solid white;
     height: 40vh;
     border-radius: 12px;
@@ -312,20 +312,15 @@ button.startWorkout:active {
 .iconImage {
     height: 14vh;
 }
-
 .input-group-text {
-    height: 40px;
+    width: 110px;
+    color: white;
+    background-color: var(--main-color)
 }
-
-.inputField {
-    width: 100vw;
-    height: 40px;
-    margin-right: 5px;
-}
-
 .btn-outline-secondary {
     color: white;
-        width: 80px;
+    width: 80px;
+    border: 1px solid white;
 
 }
 
@@ -337,7 +332,7 @@ button.startWorkout:active {
     color: var(--main-color_darker)
 }
 
-.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split{
+.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split {
     width: 30px;
 }
 
