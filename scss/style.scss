@@ -1,26 +1,25 @@
-﻿/* holding this for reference */
-:root {
-    --main-color: rgb(1, 80, 126);
-    --main-color_dark: rgb(0, 55, 87);
-    --main-color_darker: rgb(0, 40, 63);
-    --dark-color: rgb(25, 25, 25);
-    --secondary-color: rgb(153, 153, 153);
-    --secondary-color-border: rgb(94, 94, 94);
-}
+$primary: rgb(1, 80, 126);
+$primary-dark: rgb(0, 55, 87);
+$primary-darker: rgb(0, 40, 63);
+$dark: rgb(25, 25, 25);
+$secondary-color: rgb(153, 153, 153);
+$secondary-color-dark: rgb(94, 94, 94);
+$light-text-color: rgb(255, 255, 255);
+$display-font-weight: 600;
 
-* {
-    margin: 0;
-    padding: 0;
-}
+// include bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 
 body {
-    background-color: var(--dark-color);
+    background-color: $dark;
 }
 
-.navContainer .navbar {
-
-    font-size: 3vh;
-    border-bottom: solid 2px white;
+.navContainer {
+    .navbar {
+        font-size: 3vh;
+        border-bottom: solid 2px white;
+    }
 }
 
 .navbar-brand {
@@ -28,15 +27,15 @@ body {
 }
 
 .nav-link:hover {
-    color: var(--main-color_dark);
+    color: $primary-dark;
 }
 
 .nav-link:active {
-    color: var(--main-color_darker);
+    color: $primary-darker;
 }
 
 .navbar-brand:hover {
-    color: var(--main-color_dark);
+    color: $primary-dark;
 }
 
 .navbar.navbar-light {
@@ -45,21 +44,23 @@ body {
 
 .nav.nav-tabs.workoutTabs {
     border: 0;
-
 }
 
-.workoutTabs .nav-item a {
-    color: white;
-    font-weight: 600;
+.workoutTabs {
+    .nav-item a {
+        color: $light-text-color;
+        font-weight: $display-font-weight;
+    }
 }
 
-.workoutTabs .nav-item a[aria-current="page"] {
-    color: var(--dark-color);
-}
-
+.workoutTabs {
+    .nav-item a[aria-current="page"] {
+        color: $dark;
+    }    
+} 
 .card {
-    color: white;
-    background-color: var(--main-color);
+    color: $light-text-color;
+    background-color: $primary;
     border: solid 2px white;
     border-radius: 0;
     height: 75vh;
@@ -73,23 +74,26 @@ body {
     border-radius: 12px;
 }
 
-.container .img-thumbnail {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
+.container {
+    .img-thumbnail {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+} 
 
 .container-fluid.navContainer {
-    background-color: var(--main-color);
+    background-color: $primary;
     height: 15vh;
 }
 
-.navbar.navbar-light.bg-light.fixed-bottom.d-lg-none .container-fluid {
-    font-size: 20px;
-    background-color: var(--main-color);
-    height: 9vh;
-
-}
+.navbar.navbar-light.bg-light.fixed-bottom.d-lg-none {
+    .container-fluid {
+        font-size: 20px;
+        background-color: $primary;
+        height: 9vh;
+    }
+} 
 
 .nav-item.flex-fill {
     padding: 10px;
@@ -104,7 +108,7 @@ body {
 }
 
 .textColor {
-    color: white;
+    color: $light-text-color;
 }
 
 .list-group-item {
@@ -115,73 +119,79 @@ body {
     border: 3px solid white;
     height: 55vh;
     border-radius: 12px;
-    background-color: var(--dark-color);
+    background-color: $dark;
 }
 
-.WorkoutContent .list-group.list-group-flush li {
-    border-radius: 12px;
+.WorkoutContent {
+    .list-group.list-group-flush li {
+        border-radius: 12px;
+    }
 }
 
 .WorkoutContentRemove {
     border: 3px solid white;
     height: 47vh;
     border-radius: 12px;
-    background-color: var(--dark-color);
+    background-color: $dark;
 }
 
-.WorkoutContentRemove .list-group.list-group-flush li {
-    border-radius: 12px;
+.WorkoutContentRemove {
+    .list-group.list-group-flush li {
+        border-radius: 12px;
+    }
 }
 
 .WorkoutContentBuild {
     border: 3px solid white;
     height: 40vh;
     border-radius: 12px;
-    background-color: var(--dark-color);
+    background-color: $dark;
 }
 
-.WorkoutContentBuild .list-group.list-group-flush li {
-    border-radius: 12px;
+.WorkoutContentBuild {
+    .list-group.list-group-flush li {
+        border-radius: 12px;
+    }
 }
 
 .qtyChange {
     font-size: 15px;
-    font-weight: 600;
-    color: var(--dark-color);
-    background-color: var(--main-color);
+    font-weight: $display-font-weight;
+    color: $dark;
+    background-color: $primary;
     border: 2px solid white;
     width: 35px;
     height: 26px;
     border-radius: 12px;
-    color: white;
+    color: $light-text-color;
 }
 
 .plus:hover {
-    background-color: var(--main-color_dark);
+    background-color: $primary-dark;
 }
 
 .plus:active {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
 }
 
 .minus:hover {
-    background-color: var(--main-color_dark);
+    background-color: $primary-dark;
 }
 
 .minus:active {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
 }
 
 .removeChange {
     font-size: 15px;
-    font-weight: 600;
-    color: var(--dark-color);
-    background-color: var(--main-color);
+    font-weight: $display-font-weight;
+    color: $dark;
+    background-color: $primary;
     width: 40px;
     height: 30px;
     border-radius: 12px;
     border: 2px solid white;
-    color: white;
+    color: $light-text-color;
 }
 
 .bottomSpacer {
@@ -189,41 +199,41 @@ body {
 }
 
 button.addWorkout {
-    font-weight: 600;
+    font-weight: $display-font-weight;
     font-size: 16px;
     height: 40px;
     width: 130px;
     border-radius: 12px;
     border: 2px solid white;
-    background-color: var(--main-color);
-    color: white;
+    background-color: $primary;
+    color: $light-text-color;
 }
 
 button.addWorkout:hover {
-    background-color: var(--main-color_dark);
+    background-color: $primary-dark;
 }
 
 button.addWorkout:active {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
 }
 
 button.editWorkout {
-    font-weight: 600;
+    font-weight: $display-font-weight;
     font-size: 12px;
     height: 40px;
     width: 80px;
     border-radius: 12px;
     border: 2px solid white;
-    background-color: var(--main-color);
-    color: white;
+    background-color: $primary;
+    color: $light-text-color;
 }
 
 button.editWorkout:hover {
-    background-color: var(--main-color_dark);
+    background-color: $primary-dark;
 }
 
 button.editWorkout:active {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
 }
 
 button.save {
@@ -234,34 +244,30 @@ button.add {
     width: 160px;
 }
 
-
-
 .startWorkout {
-    font-weight: 600;
+    font-weight: $display-font-weight;
     font-size: 16px;
     height: 50px;
     width: 200px;
     border-radius: 12px;
     border: 2px solid white;
-    background-color: var(--main-color);
-    color: white;
+    background-color: $primary;
+    color: $light-text-color;
 }
 
 button.startWorkout:hover {
-    background-color: var(--main-color_dark);
+    background-color: $primary-dark;
 }
 
 button.startWorkout:active {
-    background-color: var(--main-color_darker);
-    ;
+    background-color: $primary-darker;
 }
 
 .list-group-item {
-    color: white;
-    background-color: var(--main-color);
+    color: $light-text-color;
+    background-color: $primary;
     border: 0;
 }
-
 
 .underline {
     border-bottom: 3px solid white;
@@ -275,31 +281,30 @@ button.startWorkout:active {
     background-position: center;
     background-repeat: no-repeat;
     height: 60vh;
-    /* border-bottom: 2px solid white; */
 }
 
 .modal-background-color {
-    background-color: var(--main-color);
-    color: white;
+    background-color: $primary;
+    color: $light-text-color;
     border: 2px solid white;
 }
 
 .btn-bg-color {
-    background-color: white;
-    color: var(--main-color_darker);
+    background-color: $light-text-color;
+    color: $primary-darker;
 }
 
 .btn-bg-color:hover {
-    background-color: var(--secondary-color);
+    background-color: $secondary-color;
 }
 
 .btn.btn-primary.btn-bg-color:active {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
     border: 2px solid white;
 }
 
 #flexSwitchCheckDefault:checked {
-    background-color: var(--main-color_darker);
+    background-color: $primary-darker;
 }
 
 .modal-body {
@@ -313,24 +318,25 @@ button.startWorkout:active {
 .iconImage {
     height: 14vh;
 }
+
 .input-group-text {
     width: 110px;
-    color: white;
-    background-color: var(--main-color)
+    color: $light-text-color;
+    background-color: $primary;
 }
+
 .btn-outline-secondary {
-    color: white;
+    color: $light-text-color;
     width: 80px;
     border: 1px solid white;
-
 }
 
 .btn-outline-secondary:hover {
-    color: var(--main-color_dark)
+    color: $primary-dark;
 }
 
 .btn-outline-secondary:active {
-    color: var(--main-color_darker)
+    color: $primary-darker;
 }
 
 .btn-outline-secondary.dropdown-toggle.dropdown-toggle-split {
@@ -343,7 +349,6 @@ button.startWorkout:active {
     }
 
     button.addWorkout {
-
         height: 30px;
         width: 80px;
     }
@@ -359,8 +364,8 @@ button.startWorkout:active {
 
 @media (max-width: 1100px) {
     .workoutTabs .nav-item a {
-        color: white;
-        font-weight: 600;
+        color: $light-text-color;
+        font-weight: $display-font-weight;
         font-size: 10px;
     }
 }
