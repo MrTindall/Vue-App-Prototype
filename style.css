@@ -229,6 +229,10 @@ button.save {
     width: 160px;
 }
 
+button.add {
+    width: 160px;
+}
+
 
 
 .startWorkout {
@@ -321,6 +325,8 @@ button.startWorkout:active {
 
 .btn-outline-secondary {
     color: white;
+        width: 80px;
+
 }
 
 .btn-outline-secondary:hover {
@@ -329,6 +335,10 @@ button.startWorkout:active {
 
 .btn-outline-secondary:active {
     color: var(--main-color_darker)
+}
+
+.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split{
+    width: 30px;
 }
 
 @media (max-width:1200px) {
