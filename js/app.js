@@ -7,11 +7,13 @@ const app = Vue.createApp({
                 weight: 0,
                 sets: 0,
                 remove: false,
+                completeRemove: false,
+
             },
             exerciseList: [
-                {name: 'Bench Press', weight: 185, sets: 3, remove: false},
-                {name: 'Incline DB Press', weight: 50, sets: 3, remove: false},
-                {name: 'Pushups', weight: 0, sets: 3, remove: false},
+                {name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false},
+                {name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false},
+                {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false},
             ],
         }
     },
@@ -38,10 +40,18 @@ const app = Vue.createApp({
             }
         },
 
-        // TODO: need to get this working
-        removeGrtZeroExercise(itemList) {
-            
-        }
+        removeGrtZeroExercise(list) {
+            for(exercise of list) {
+                exercise.sets = 0;
+                exercise.remove = false;
+            } 
+        },
+
+        removeEquZeroExercise(list) {
+            for(exercise of list) {
+                exercise.completeRemove = true;
+            } 
+        },
     },
 
     // computed: values that are updated and cached if dependencies change
@@ -54,19 +64,19 @@ const app = Vue.createApp({
 
         completeList(){
             return this.exerciseList.filter(function(exercise) {
-                return exercise.sets <= 0;
+                return exercise.sets <= 0 && exercise.completeRemove == false;
             })
         },
 
         removeGrtZero(){
             return this.exerciseList.filter(function(exercise){
-                return exercise.remove == true && exercise.sets > 0
+                return exercise.remove == true && exercise.sets > 0 
             })
         },
 
         removeEquZero(){
             return this.exerciseList.filter(function(exercise){
-                return exercise.remove == true && exercise.sets === 0
+                return exercise.remove == true && exercise.completeRemove == false
             })
         },
 

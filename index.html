@@ -76,15 +76,19 @@
                                             <span class="d-flex justify-content-between py-1">
                                                 Weight: {{exercise.weight}} lbs
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addWeight(exercise)">+</button>
-                                                    <button type="button" class="qtyChange minus" @click="subtractWeight(exercise)">-</button>
+                                                    <button type="button" class="qtyChange plus ms-2"
+                                                        @click="addWeight(exercise)">+</button>
+                                                    <button type="button" class="qtyChange minus"
+                                                        @click="subtractWeight(exercise)">-</button>
                                                 </div>
                                             </span>
                                             <span class="d-flex justify-content-between  py-1">
                                                 Set: {{exercise.sets}}
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(exercise)">+</button>
-                                                    <button type="button" class="qtyChange minus" @click="subtractSet(exercise)">-</button>
+                                                    <button type="button" class="qtyChange plus ms-2"
+                                                        @click="addSet(exercise)">+</button>
+                                                    <button type="button" class="qtyChange minus"
+                                                        @click="subtractSet(exercise)">-</button>
                                                 </div>
                                             </span>
                                             <span></span>
@@ -111,7 +115,7 @@
                                 </div>
                                 <div class="py-2 d-flex justify-content-end">
                                     <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                        data-bs-target="#removeWorkoutModal" id="removeComplete">Remove
+                                        data-bs-target="#removeWorkoutModalComplete" id="removeComplete">Remove
                                     </button>
                                 </div>
                             </div>
@@ -123,19 +127,21 @@
                                             <span class="d-flex py-1">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="flexSwitchCheckDefault">
+                                                        id="flexSwitchCheckDefault" v-model="exercise.remove">
                                                     <label class="form-check-label"
                                                         for="flexSwitchCheckDefault"></label>
                                                 </div>
                                                 <span class="text-decoration-line-through">{{exercise.name}}</span>
                                             </span>
                                             <span class="d-flex justify-content-between py-1">
-                                                <span class="text-decoration-line-through">Weight: {{exercise.weight}} lbs</span>
+                                                <span class="text-decoration-line-through">Weight: {{exercise.weight}}
+                                                    lbs</span>
                                             </span>
                                             <span class="d-flex justify-content-between py-1">
                                                 <span class="text-decoration-line-through">Set: {{exercise.sets}}</span>
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(exercise)">+</button>
+                                                    <button type="button" class="qtyChange plus ms-2"
+                                                        @click="addSet(exercise)">+</button>
                                                 </div>
                                             </span>
                                             <span></span>
@@ -295,7 +301,7 @@
                                 <li class="list-group-item mt-3 mx-2" v-for="exercise in removeGrtZero">
                                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                                         <span class="d-flex py-1">
-                                        {{exercise.name}}
+                                            {{exercise.name}}
                                         </span>
                                         <span class="d-flex justify-content-between py-1">
                                             Weight: {{exercise.weight}} lbs
@@ -312,7 +318,50 @@
                     <form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-bg-color" @click="removeGrtZeroExercise(itemList)">Remove</button>
+                            <button type="button" class="btn btn-primary btn-bg-color"
+                                @click="removeGrtZeroExercise(removeGrtZero)">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Remove Workout Complete-->
+        <div class="modal fade" id="removeWorkoutModalComplete" tabindex="-1"
+            aria-labelledby="removeWorkoutModalCompleteLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="removeWorkoutModalLabel">Remove Exercise
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>This will remove the selected exercise(s).</h5>
+                        <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item mt-3 mx-2" v-for="exercise in removeEquZero">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            {{exercise.name}}
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            Weight: {{exercise.weight}} lbs
+                                        </span>
+                                        <span class="d-flex justify-content-between  py-1">
+                                            Set: {{exercise.sets}}
+                                        </span>
+                                        <span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-bg-color"
+                                @click="removeEquZeroExercise(removeEquZero)">Remove</button>
                         </div>
                     </form>
                 </div>
