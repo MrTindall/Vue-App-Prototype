@@ -292,16 +292,16 @@
                         <h5>This will remove the selected exercise(s).</h5>
                         <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
                             <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item mt-3 mx-2">
+                                <li class="list-group-item mt-3 mx-2" v-for="item in removeGrtZero">
                                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                                         <span class="d-flex py-1">
-                                            DB Incline Press
+                                        {{item.exercise}}
                                         </span>
                                         <span class="d-flex justify-content-between py-1">
-                                            Weight: 40 lbs
+                                            Weight: {{item.weight}} lbs
                                         </span>
                                         <span class="d-flex justify-content-between  py-1">
-                                            Set: 3
+                                            Set: {{item.sets}}
                                         </span>
                                         <span></span>
                                     </div>
@@ -312,7 +312,7 @@
                     <form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
+                            <button type="button" class="btn btn-primary btn-bg-color" @click="removeGrtZeroExercise(itemList)">Remove</button>
                         </div>
                     </form>
                 </div>

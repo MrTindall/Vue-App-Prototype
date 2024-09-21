@@ -9,7 +9,7 @@ const app = Vue.createApp({
                 remove: false,
             },
             exerciseList: [
-                {exercise: 'Bench Press', weight: 185, sets: 3, remove: true},
+                {exercise: 'Bench Press', weight: 185, sets: 3, remove: false},
                 {exercise: 'Incline DB Press', weight: 50, sets: 3, remove: false},
                 {exercise: 'Pushups', weight: 0, sets: 3, remove: false},
             ],
@@ -37,6 +37,13 @@ const app = Vue.createApp({
                 item.weight -= 2.5;
             }
         },
+
+        // TODO: need to get this working
+        removeGrtZeroExercise(removeGrtZero) {
+            for(item in removeGrtZero){
+                item.sets - item.sets;
+            }
+        }
     },
 
     // computed: values that are updated and cached if dependencies change
@@ -51,7 +58,20 @@ const app = Vue.createApp({
             return this.exerciseList.filter(function(item) {
                 return item.sets <= 0;
             })
-        }
+        },
+
+        removeGrtZero(){
+            return this.exerciseList.filter(function(item){
+                return item.remove == true && item.sets > 0
+            })
+        },
+
+        removeEquZero(){
+            return this.exerciseList.filter(function(item){
+                return item.remove == true && item.sets === 0
+            })
+        },
+
     },
 
     //mounted:  called after the instance has been mounted,
