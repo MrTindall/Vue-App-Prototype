@@ -41,7 +41,17 @@ const app = Vue.createApp({
 
     // computed: values that are updated and cached if dependencies change
     computed: {
+        todoList(){
+            return this.exerciseList.filter(function(item) {
+                return item.sets > 0;
+            })
+        },
 
+        completeList(){
+            return this.exerciseList.filter(function(item) {
+                return item.sets <= 0;
+            })
+        }
     },
 
     //mounted:  called after the instance has been mounted,
