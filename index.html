@@ -62,29 +62,29 @@
 
                             <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
                                 <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item mt-3 mx-2" v-for="item in todoList">
+                                    <li class="list-group-item mt-3 mx-2" v-for="exercise in todoList">
                                         <div class="d-flex flex-column flex-lg-row justify-content-between">
                                             <span class="d-flex py-1">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="flexSwitchCheckDefault" v-model="item.remove">
+                                                        id="flexSwitchCheckDefault" v-model="exercise.remove">
                                                     <label class="form-check-label"
                                                         for="flexSwitchCheckDefault"></label>
                                                 </div>
-                                                {{item.exercise}}
+                                                {{exercise.name}}
                                             </span>
                                             <span class="d-flex justify-content-between py-1">
-                                                Weight: {{item.weight}} lbs
+                                                Weight: {{exercise.weight}} lbs
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addWeight(item)">+</button>
-                                                    <button type="button" class="qtyChange minus" @click="subtractWeight(item)">-</button>
+                                                    <button type="button" class="qtyChange plus ms-2" @click="addWeight(exercise)">+</button>
+                                                    <button type="button" class="qtyChange minus" @click="subtractWeight(exercise)">-</button>
                                                 </div>
                                             </span>
                                             <span class="d-flex justify-content-between  py-1">
-                                                Set: {{item.sets}}
+                                                Set: {{exercise.sets}}
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(item)">+</button>
-                                                    <button type="button" class="qtyChange minus" @click="subtractSet(item)">-</button>
+                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(exercise)">+</button>
+                                                    <button type="button" class="qtyChange minus" @click="subtractSet(exercise)">-</button>
                                                 </div>
                                             </span>
                                             <span></span>
@@ -118,7 +118,7 @@
 
                             <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
                                 <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item mt-3 mx-2" v-for="item in completeList">
+                                    <li class="list-group-item mt-3 mx-2" v-for="exercise in completeList">
                                         <div class="d-flex flex-column flex-lg-row justify-content-between">
                                             <span class="d-flex py-1">
                                                 <div class="form-check form-switch">
@@ -127,15 +127,15 @@
                                                     <label class="form-check-label"
                                                         for="flexSwitchCheckDefault"></label>
                                                 </div>
-                                                <span class="text-decoration-line-through">{{item.exercise}}</span>
+                                                <span class="text-decoration-line-through">{{exercise.name}}</span>
                                             </span>
                                             <span class="d-flex justify-content-between py-1">
-                                                <span class="text-decoration-line-through">Weight: {{item.weight}} lbs</span>
+                                                <span class="text-decoration-line-through">Weight: {{exercise.weight}} lbs</span>
                                             </span>
                                             <span class="d-flex justify-content-between py-1">
-                                                <span class="text-decoration-line-through">Set: {{item.sets}}</span>
+                                                <span class="text-decoration-line-through">Set: {{exercise.sets}}</span>
                                                 <div>
-                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(item)">+</button>
+                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(exercise)">+</button>
                                                 </div>
                                             </span>
                                             <span></span>
@@ -292,16 +292,16 @@
                         <h5>This will remove the selected exercise(s).</h5>
                         <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
                             <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item mt-3 mx-2" v-for="item in removeGrtZero">
+                                <li class="list-group-item mt-3 mx-2" v-for="exercise in removeGrtZero">
                                     <div class="d-flex flex-column flex-lg-row justify-content-between">
                                         <span class="d-flex py-1">
-                                        {{item.exercise}}
+                                        {{exercise.name}}
                                         </span>
                                         <span class="d-flex justify-content-between py-1">
-                                            Weight: {{item.weight}} lbs
+                                            Weight: {{exercise.weight}} lbs
                                         </span>
                                         <span class="d-flex justify-content-between  py-1">
-                                            Set: {{item.sets}}
+                                            Set: {{exercise.sets}}
                                         </span>
                                         <span></span>
                                     </div>
