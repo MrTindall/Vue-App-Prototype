@@ -23,44 +23,416 @@
             </div>
         </nav>
     </div>
+    <div id="app" class="container-fluid">
+        <div class="container-fluid my-3 contentContainer">
+            <ul class="nav nav-tabs workoutTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#workoutTab">WORKOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#completedTab">COMPLETED</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#builderTab">BUILDER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#historyTab">History</a>
+                </li>
+            </ul>
 
-    <div class="container-fluid my-3 contentContainer">
-        <ul class="nav nav-tabs workoutTabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#workoutTab">WORKOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#completedTab">COMPLETED</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#builderTab">BUILDER</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#historyTab">History</a>
-            </li>
-        </ul>
+            <div class="tab-content">
+                <!-- Workout Tab -->
+                <div class="tab-pane fade show active" id="workoutTab">
+                    <div class="card">
+                        <div class="card-body m-0 px-2 py-0">
+                            <div class="d-flex pt-2">
+                                <div class="p-2 flex-grow-1">
+                                    <h3 class="card-title text-start">Push</h3>
+                                </div>
+                                <div class="py-2 d-flex justify-content-end">
+                                    <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
+                                        data-bs-target="#removeWorkoutModal" id="removeStart">Remove
+                                    </button>
+                                    <button type="button" class="addWorkout" data-bs-toggle="modal"
+                                        data-bs-target="#addWorkoutModal">Add
+                                    </button>
 
-        <div class="tab-content">
-            <!-- Workout Tab -->
-            <div class="tab-pane fade show active" id="workoutTab">
-                <div class="card">
-                    <div class="card-body m-0 px-2 py-0">
-                        <div class="d-flex pt-2">
-                            <div class="p-2 flex-grow-1">
-                                <h3 class="card-title text-start">Push</h3>
+                                </div>
                             </div>
-                            <div class="py-2 d-flex justify-content-end">
-                                <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                    data-bs-target="#removeWorkoutModal" id="removeStart">Remove
-                                </button>
-                                <button type="button" class="addWorkout" data-bs-toggle="modal"
-                                    data-bs-target="#addWorkoutModal">Add
-                                </button>
 
+                            <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item mt-3 mx-2" v-for="item in exerciseList">
+                                        <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                            <span class="d-flex py-1">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="flexSwitchCheckDefault" v-model="item.remove">
+                                                    <label class="form-check-label"
+                                                        for="flexSwitchCheckDefault"></label>
+                                                </div>
+                                                {{item.exercise}}
+                                            </span>
+                                            <span class="d-flex justify-content-between py-1">
+                                                Weight: {{item.weight}}
+                                                <div>
+                                                    <button type="button" class="qtyChange plus ms-2" @click="addWeight(item)">+</button>
+                                                    <button type="button" class="qtyChange minus" @click="subtractWeight(item)">-</button>
+                                                </div>
+                                            </span>
+                                            <span class="d-flex justify-content-between  py-1">
+                                                Set: {{item.sets}}
+                                                <div>
+                                                    <button type="button" class="qtyChange plus ms-2" @click="addSet(item)">+</button>
+                                                    <button type="button" class="qtyChange minus" @click="subtractSet(item)">-</button>
+                                                </div>
+                                            </span>
+                                            <span></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="py-3 d-flex justify-content-around">
+                                <button type="button" class="startWorkout" data-bs-toggle="modal"
+                                    data-bs-target="#startWorkoutModal">Start
+                                </button>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                <!-- Completed Tab -->
+                <div class="tab-pane fade" id="completedTab">
+                    <div class="card">
+                        <div class="card-body m-0 px-2 py-0">
+                            <div class="d-flex pt-2">
+                                <div class="p-2 flex-grow-1">
+                                    <h3 class="card-title text-start">Push</h3>
+                                </div>
+                                <div class="py-2 d-flex justify-content-end">
+                                    <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
+                                        data-bs-target="#removeWorkoutModal" id="removeComplete">Remove
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item mt-3 mx-2">
+                                        <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                            <span class="d-flex py-1">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="flexSwitchCheckDefault">
+                                                    <label class="form-check-label"
+                                                        for="flexSwitchCheckDefault"></label>
+                                                </div>
+                                                <span class="text-decoration-line-through">DB Incline Press</span>
+                                            </span>
+                                            <span class="d-flex justify-content-between py-1">
+                                                <span class="text-decoration-line-through">Weight: 40 lbs</span>
+                                            </span>
+                                            <span class="d-flex justify-content-between py-1">
+                                                <span class="text-decoration-line-through">Set: 0</span>
+                                                <div>
+                                                    <button type="button" class="qtyChange plus ms-2">+</button>
+                                                    <button type="button" class="qtyChange minus">-</button>
+                                                </div>
+                                            </span>
+                                            <span></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="py-3 d-flex justify-content-around">
+                            <button type="button" class="startWorkout" data-bs-toggle="modal"
+                                data-bs-target="#finishWorkoutModal">Finish
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <div class="bottomSpacer"></div> -->
+                </div>
+
+                <!-- Builder Tab -->
+                <div class="tab-pane fade" id="builderTab">
+                    <div class="card">
+                        <div class="card-body m-0 px-2 py-0">
+                            <div class="d-flex pt-2">
+                                <div class="p-2 flex-grow-1">
+                                    <h3 class="card-title text-start">Workout Library</h3>
+                                </div>
+                                <div class="py-2 d-flex justify-content-end">
+                                    <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteWorkoutModal" id="deleteComplete">Delete
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
+                                <ul class="list-group list-group-flush mb-3">
+                                    <li class="list-group-item mt-3 mx-2">
+                                        <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                            <span class="d-flex py-1">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="flexSwitchCheckDefault">
+                                                    <label class="form-check-label"
+                                                        for="flexSwitchCheckDefault"></label>
+                                                </div>
+                                                <span class="">{Workout Name}</span>
+                                            </span>
+                                            <span class="d-flex justify-content-between py-1">
+                                                <span class="">Total Exercises:</span>
+                                            </span>
+                                            <span class="d-flex justify-content-between py-1">
+                                                <span></span>
+                                                <span class="">
+                                                    <button class="addWorkout p-0" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#exercisesList1"
+                                                        aria-expanded="false" aria-controls="collapseExample1">
+                                                        Display
+                                                    </button>
+                                                    </p>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="collapse" id="exercisesList1">
+                                            <div class="card card-body card-body-exercisesList">
+                                                <ul class="list-group list-group-flush mb-3">
+                                                    <li class="list-group-item mt-3 mx-2 p-">
+                                                        <div class="d-flex justify-content-end py-1">
+                                                            <button type="button" class="editWorkout save">Save</button>
+                                                        </div>
+                                                        <ul class="list-group list-group-flush mb-3">
+                                                            <li class="list-group-item mt-3 p-0">
+                                                                <div
+                                                                    class="d-flex flex-column flex-lg-row justify-content-between">
+                                                                    <span class="d-flex py-1">
+                                                                        DB Incline Press
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-between py-1">
+                                                                        Weight: 40 lbs
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-between  py-1">
+                                                                        Set: 3
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-end py-1">
+                                                                        <div>
+                                                                            <button type="button"
+                                                                                class="editWorkout">Remove</button>
+                                                                            <button type="button"
+                                                                                class="editWorkout">Edit</button>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-group-item mt-3 p-0">
+                                                                <div
+                                                                    class="d-flex flex-column flex-lg-row justify-content-between">
+                                                                    <span class="d-flex py-1">
+                                                                        DB Incline Press
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-between py-1">
+                                                                        Weight: 40 lbs
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-between  py-1">
+                                                                        Set: 3
+                                                                    </span>
+                                                                    <span class="d-flex justify-content-end py-1">
+                                                                        <div>
+                                                                            <button type="button"
+                                                                                class="editWorkout">Remove</button>
+                                                                            <button type="button"
+                                                                                class="editWorkout">Edit</button>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="d-flex justify-content-end py-1">
+                                                            <button type="button" class="editWorkout add"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#buildWorkoutAddModal">Add</button>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="py-3 d-flex justify-content-around">
+                            <button type="button" class="startWorkout" data-bs-toggle="modal"
+                                data-bs-target="#buildWorkoutModal">Build
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div class="tab-pane fade" id="historyTab">
+                    <h3>History Content</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Remove Workout-->
+        <div class="modal fade" id="removeWorkoutModal" tabindex="-1" aria-labelledby="removeWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="removeWorkoutModalLabel">Remove Exercise
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>This will remove the selected exercise(s).</h5>
+                        <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item mt-3 mx-2">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            DB Incline Press
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            Weight: 40 lbs
+                                        </span>
+                                        <span class="d-flex justify-content-between  py-1">
+                                            Set: 3
+                                        </span>
+                                        <span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Delete Builder Remove Workout -->
+        <div class="modal fade" id="deleteWorkoutModal" tabindex="-1" aria-labelledby="deleteWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteWorkoutModalLabel">Delete Workout
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>This will delete the selected workout(s).</h5>
+                        <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item mt-3 mx-2">
+                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                                        <span class="d-flex py-1">
+                                            DB Incline Press
+                                        </span>
+                                        <span class="d-flex justify-content-between py-1">
+                                            Weight: 40 lbs
+                                        </span>
+                                        <span class="d-flex justify-content-between  py-1">
+                                            Set: 3
+                                        </span>
+                                        <span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Build Workout -->
+        <div class="modal fade" id="buildWorkoutModal" tabindex="-1" aria-labelledby="buildWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buildWorkoutModalLabel">Build Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body builder">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="WorkoutName1">Name</span>
+                            <input type="text" class="form-control" aria-label="WorkoutName"
+                                aria-describedby="WorkoutName1">
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Exercise</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="20">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Weight</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Sets</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="button" class="addWorkout me-2">Remove</button>
+                            <button type="button" class="addWorkout">Add</button>
+                        </div>
+
+                        <div class="container-fluid p-0 WorkoutContentBuild overflow-y-auto">
                             <ul class="list-group list-group-flush mb-3">
                                 <li class="list-group-item mt-3 mx-2">
                                     <div class="d-flex flex-column flex-lg-row justify-content-between">
@@ -74,70 +446,9 @@
                                         </span>
                                         <span class="d-flex justify-content-between py-1">
                                             Weight: 40 lbs
-                                            <div>
-                                                <button type="button" class="qtyChange plus ms-2">+</button>
-                                                <button type="button" class="qtyChange minus">-</button>
-                                            </div>
                                         </span>
                                         <span class="d-flex justify-content-between  py-1">
                                             Set: 3
-                                            <div>
-                                                <button type="button" class="qtyChange plus ms-2">+</button>
-                                                <button type="button" class="qtyChange minus">-</button>
-                                            </div>
-                                        </span>
-                                        <span></span>
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="py-3 d-flex justify-content-around">
-                            <button type="button" class="startWorkout" data-bs-toggle="modal"
-                                data-bs-target="#startWorkoutModal">Start
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="bottomSpacer"></div> -->
-            </div>
-
-            <!-- Completed Tab -->
-            <div class="tab-pane fade" id="completedTab">
-                <div class="card">
-                    <div class="card-body m-0 px-2 py-0">
-                        <div class="d-flex pt-2">
-                            <div class="p-2 flex-grow-1">
-                                <h3 class="card-title text-start">Push</h3>
-                            </div>
-                            <div class="py-2 d-flex justify-content-end">
-                                <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                    data-bs-target="#removeWorkoutModal" id="removeComplete">Remove
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-                            <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item mt-3 mx-2">
-                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                        <span class="d-flex py-1">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckDefault">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                            </div>
-                                            <span class="text-decoration-line-through">DB Incline Press</span>
-                                        </span>
-                                        <span class="d-flex justify-content-between py-1">
-                                            <span class="text-decoration-line-through">Weight: 40 lbs</span>
-                                        </span>
-                                        <span class="d-flex justify-content-between py-1">
-                                            <span class="text-decoration-line-through">Set: 0</span>
-                                            <div>
-                                                <button type="button" class="qtyChange plus ms-2">+</button>
-                                                <button type="button" class="qtyChange minus">-</button>
-                                            </div>
                                         </span>
                                         <span></span>
                                     </div>
@@ -145,533 +456,242 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="py-3 d-flex justify-content-around">
-                        <button type="button" class="startWorkout" data-bs-toggle="modal"
-                            data-bs-target="#finishWorkoutModal">Finish
-                        </button>
-                    </div>
+                    <form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-bg-color">Build</button>
+                        </div>
+                    </form>
                 </div>
-                <!-- <div class="bottomSpacer"></div> -->
             </div>
+        </div>
 
-            <!-- Builder Tab -->
-            <div class="tab-pane fade" id="builderTab">
-                <div class="card">
-                    <div class="card-body m-0 px-2 py-0">
-                        <div class="d-flex pt-2">
-                            <div class="p-2 flex-grow-1">
-                                <h3 class="card-title text-start">Workout Library</h3>
-                            </div>
-                            <div class="py-2 d-flex justify-content-end">
-                                <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
-                                    data-bs-target="#deleteWorkoutModal" id="deleteComplete">Delete
+        <!-- Modal Build Add Workout -->
+        <div class="modal fade" id="buildWorkoutAddModal" tabindex="-1" aria-labelledby="buildWorkoutAddModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buildWorkoutAddModalLabel">Add Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Exercise</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
                                 </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="20">
                             </div>
                         </div>
-
-                        <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-                            <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item mt-3 mx-2">
-                                    <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                        <span class="d-flex py-1">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch"
-                                                    id="flexSwitchCheckDefault">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                            </div>
-                                            <span class="">{Workout Name}</span>
-                                        </span>
-                                        <span class="d-flex justify-content-between py-1">
-                                            <span class="">Total Exercises:</span>
-                                        </span>
-                                        <span class="d-flex justify-content-between py-1">
-                                            <span></span>
-                                            <span class="">
-                                                <button class="addWorkout p-0" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#exercisesList1" aria-expanded="false"
-                                                    aria-controls="collapseExample1">
-                                                    Display
-                                                </button>
-                                                </p>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="collapse" id="exercisesList1">
-                                        <div class="card card-body card-body-exercisesList">
-                                            <ul class="list-group list-group-flush mb-3">
-                                                <li class="list-group-item mt-3 mx-2 p-">
-                                                    <div class="d-flex justify-content-end py-1">
-                                                        <button type="button" class="editWorkout save">Save</button>
-                                                    </div>
-                                                    <ul class="list-group list-group-flush mb-3">
-                                                        <li class="list-group-item mt-3 p-0">
-                                                            <div
-                                                                class="d-flex flex-column flex-lg-row justify-content-between">
-                                                                <span class="d-flex py-1">
-                                                                    DB Incline Press
-                                                                </span>
-                                                                <span class="d-flex justify-content-between py-1">
-                                                                    Weight: 40 lbs
-                                                                </span>
-                                                                <span class="d-flex justify-content-between  py-1">
-                                                                    Set: 3
-                                                                </span>
-                                                                <span class="d-flex justify-content-end py-1">
-                                                                    <div>
-                                                                        <button type="button"
-                                                                            class="editWorkout">Remove</button>
-                                                                        <button type="button"
-                                                                            class="editWorkout">Edit</button>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </li>
-                                                        <li class="list-group-item mt-3 p-0">
-                                                            <div
-                                                                class="d-flex flex-column flex-lg-row justify-content-between">
-                                                                <span class="d-flex py-1">
-                                                                    DB Incline Press
-                                                                </span>
-                                                                <span class="d-flex justify-content-between py-1">
-                                                                    Weight: 40 lbs
-                                                                </span>
-                                                                <span class="d-flex justify-content-between  py-1">
-                                                                    Set: 3
-                                                                </span>
-                                                                <span class="d-flex justify-content-end py-1">
-                                                                    <div>
-                                                                        <button type="button"
-                                                                            class="editWorkout">Remove</button>
-                                                                        <button type="button"
-                                                                            class="editWorkout">Edit</button>
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="d-flex justify-content-end py-1">
-                                                        <button type="button" class="editWorkout add"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#buildWorkoutAddModal">Add</button>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Weight</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Sets</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
                         </div>
                     </div>
-                    <div class="py-3 d-flex justify-content-around">
-                        <button type="button" class="startWorkout" data-bs-toggle="modal"
-                            data-bs-target="#buildWorkoutModal">Build
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- History Tab -->
-            <div class="tab-pane fade" id="historyTab">
-                <h3>History Content</h3>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Remove Workout-->
-    <div class="modal fade" id="removeWorkoutModal" tabindex="-1" aria-labelledby="removeWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="removeWorkoutModalLabel">Remove Exercise
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5>This will remove the selected exercise(s).</h5>
-                    <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
-                        <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item mt-3 mx-2">
-                                <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                    <span class="d-flex py-1">
-                                        DB Incline Press
-                                    </span>
-                                    <span class="d-flex justify-content-between py-1">
-                                        Weight: 40 lbs
-                                    </span>
-                                    <span class="d-flex justify-content-between  py-1">
-                                        Set: 3
-                                    </span>
-                                    <span></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Add Workout</button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Delete Builder Remove Workout -->
-    <div class="modal fade" id="deleteWorkoutModal" tabindex="-1" aria-labelledby="deleteWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteWorkoutModalLabel">Delete Workout
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5>This will delete the selected workout(s).</h5>
-                    <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
-                        <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item mt-3 mx-2">
-                                <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                    <span class="d-flex py-1">
-                                        DB Incline Press
-                                    </span>
-                                    <span class="d-flex justify-content-between py-1">
-                                        Weight: 40 lbs
-                                    </span>
-                                    <span class="d-flex justify-content-between  py-1">
-                                        Set: 3
-                                    </span>
-                                    <span></span>
-                                </div>
-                            </li> 
-                        </ul>
-                    </div>
-                </div>
-                <form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Remove</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Build Workout -->
-    <div class="modal fade" id="buildWorkoutModal" tabindex="-1" aria-labelledby="buildWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="buildWorkoutModalLabel">Build Workout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body builder">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="WorkoutName1">Name</span>
-                        <input type="text" class="form-control" aria-label="WorkoutName"
-                            aria-describedby="WorkoutName1">
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Exercise</button>
-                            <button type="button"
-                                class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control"
-                                aria-label="Text input with segmented dropdown button" required maxlength="20">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Weight</button>
-                            <button type="button"
-                                class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control"
-                                aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Sets</button>
-                            <button type="button"
-                                class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control"
-                                aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mb-3">
-                        <button type="button" class="addWorkout me-2">Remove</button>
-                        <button type="button" class="addWorkout">Add</button>
-                    </div>
-
-                    <div class="container-fluid p-0 WorkoutContentBuild overflow-y-auto">
-                        <ul class="list-group list-group-flush mb-3">
-                            <li class="list-group-item mt-3 mx-2">
-                                <div class="d-flex flex-column flex-lg-row justify-content-between">
-                                    <span class="d-flex py-1">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" role="switch"
-                                                id="flexSwitchCheckDefault">
-                                            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
-                                        </div>
-                                        DB Incline Press
-                                    </span>
-                                    <span class="d-flex justify-content-between py-1">
-                                        Weight: 40 lbs
-                                    </span>
-                                    <span class="d-flex justify-content-between  py-1">
-                                        Set: 3
-                                    </span>
-                                    <span></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Build</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Build Add Workout -->
-    <div class="modal fade" id="buildWorkoutAddModal" tabindex="-1" aria-labelledby="buildWorkoutAddModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="buildWorkoutAddModalLabel">Add Workout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Exercise</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="20">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Weight</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Sets</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-bg-color">Add Workout</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal Archive Workout-->
-    <div class="modal fade" id="archiveWorkoutModal" tabindex="-1" aria-labelledby="archiveWorkoutModal"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="archiveWorkoutModal">This will archive current workout.</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Archive</button>
+        <!-- Modal Archive Workout-->
+        <div class="modal fade" id="archiveWorkoutModal" tabindex="-1" aria-labelledby="archiveWorkoutModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="archiveWorkoutModal">This will archive current workout.</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Add Workout-->
-    <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addWorkoutModalLabel">Add Exercise</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Exercise</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="20">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Weight</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between py-1">
-                        <div class="input-group mb-3">
-                            <button type="button" class="btn btn-outline-secondary">Sets</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                                <li><a class="dropdown-item" href="#">Exercise 1</a></li>
-                            </ul>
-                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" required maxlength="5">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-bg-color">Save Workout</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal start Workout-->
-    <div class="modal fade" id="startWorkoutModal" tabindex="-1" aria-labelledby="startWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="startWorkoutModalLabel">Start Workout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
                     <form>
-                        <div class="mb-3">
-                            <label for="workoutName" class="form-label">Workout Name</label>
-                            <select class="form-select" aria-label="workoutName">
-                                <option selected>Open this select menu</option>
-                                <option value="1">Push</option>
-                                <option value="2">Pull</option>
-                                <option value="3">Legs</option>
-                            </select>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-bg-color">Archive</button>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-bg-color">Start Workout</button>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal finish Workout-->
-    <div class="modal fade" id="finishWorkoutModal" tabindex="-1" aria-labelledby="finishWorkoutModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-background-color">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="finishWorkoutModalLabel">Finish Workout</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="workoutName" class="form-label">{Report Stuff}</label>
-                            <input type="text" class="form-control" id="workoutName" placeholder="Enter workout name">
+        <!-- Modal Add Workout-->
+        <div class="modal fade" id="addWorkoutModal" tabindex="-1" aria-labelledby="addWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addWorkoutModalLabel">Add Exercise</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Exercise</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="20">
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btn-bg-color">Finish Workout</button>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Weight</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-outline-secondary">Sets</button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Exercise 1</a></li>
+                                </ul>
+                                <input type="text" class="form-control"
+                                    aria-label="Text input with segmented dropdown button" required maxlength="5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Save Workout</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Modal start Workout-->
+        <div class="modal fade" id="startWorkoutModal" tabindex="-1" aria-labelledby="startWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="startWorkoutModalLabel">Start Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="workoutName" class="form-label">Workout Name</label>
+                                <select class="form-select" aria-label="workoutName">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Push</option>
+                                    <option value="2">Pull</option>
+                                    <option value="3">Legs</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Start Workout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal finish Workout-->
+        <div class="modal fade" id="finishWorkoutModal" tabindex="-1" aria-labelledby="finishWorkoutModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="finishWorkoutModalLabel">Finish Workout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="workoutName" class="form-label">{Report Stuff}</label>
+                                <input type="text" class="form-control" id="workoutName"
+                                    placeholder="Enter workout name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Finish Workout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        app.mount('#app');
+    </script>
 </body>
 
 </html>
