@@ -205,13 +205,12 @@
                                         <div class="collapse" id="exercisesList1">
                                             <div class="card card-body card-body-exercisesList">
                                                 <ul class="list-group list-group-flush mb-3">
-                                                    <li class="list-group-item mt-3 mx-2 p-"
-                                                        v-for="exercise in exerciseLibraryList">
+                                                    <li class="list-group-item mt-3 mx-2 p-0">
                                                         <div class="d-flex justify-content-end py-1">
                                                             <button type="button" class="editWorkout save">Save</button>
                                                         </div>
                                                         <ul class="list-group list-group-flush mb-3">
-                                                            <li class="list-group-item mt-3 p-0">
+                                                            <li class="list-group-item mt-3 p-0" v-for="exercise in exerciseLibraryList">
                                                                 <div
                                                                     class="d-flex flex-column flex-lg-row justify-content-between">
                                                                     <span class="d-flex py-1">

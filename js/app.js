@@ -98,7 +98,7 @@ const app = Vue.createApp({
         },
 
         exerciseLibraryList() {
-        
+
         },
     },
 
