@@ -6,7 +6,7 @@ const app = Vue.createApp({
                 workoutName: '',
                 name: '',
                 weight: 0,
-                sets: 0,
+                sets: 3,
                 remove: false,
                 completeRemove: false,
 
@@ -58,49 +58,57 @@ const app = Vue.createApp({
 
         addExercise() {
             this.exerciseList.push(this.exercise);
-        }
+            this.exercise = {
+                workoutName: '',
+                name: '',
+                weight: 0,
+                sets: 3,
+                remove: false,
+                completeRemove: false,
+            };
+        },
     },
 
     // computed: values that are updated and cached if dependencies change
     computed: {
-        todoList() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.sets > 0;
-            })
-        },
-
-        completeList() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.sets <= 0 && exercise.completeRemove == false;
-            })
-        },
-
-        removeGrtZero() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.remove == true && exercise.sets > 0
-            })
-        },
-
-        removeEquZero() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.remove == true && exercise.completeRemove == false
-            })
-        },
-
-        workoutLibraryList() {
-            const uniqueWorkoutNames = new Set();
-
-            this.exerciseList.forEach(function (exercise) {
-                uniqueWorkoutNames.add(exercise.workoutName);
-            });
-
-            return Array.from(uniqueWorkoutNames);
-        },
-
-        exerciseLibraryList() {
-
-        },
+    todoList() {
+        return this.exerciseList.filter(function (exercise) {
+            return exercise.sets > 0;
+        })
     },
+
+    completeList() {
+        return this.exerciseList.filter(function (exercise) {
+            return exercise.sets <= 0 && exercise.completeRemove == false;
+        })
+    },
+
+    removeGrtZero() {
+        return this.exerciseList.filter(function (exercise) {
+            return exercise.remove == true && exercise.sets > 0
+        })
+    },
+
+    removeEquZero() {
+        return this.exerciseList.filter(function (exercise) {
+            return exercise.remove == true && exercise.completeRemove == false
+        })
+    },
+
+    workoutLibraryList() {
+        const uniqueWorkoutNames = new Set();
+
+        this.exerciseList.forEach(function (exercise) {
+            uniqueWorkoutNames.add(exercise.workoutName);
+        });
+
+        return Array.from(uniqueWorkoutNames);
+    },
+
+    exerciseLibraryList() {
+
+    },
+},
 
     //mounted:  called after the instance has been mounted,
     mounted: function () {
@@ -110,5 +118,5 @@ const app = Vue.createApp({
     // watch:   calls the function if the value changes
     watch: {
 
-    }
+}
 });
