@@ -16,8 +16,11 @@ const app = Vue.createApp({
                 { workoutName: 'Push', name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Push', name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Push', name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
+                { workoutName: 'Legs', name: 'Deadlift', weight: 335, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Legs', name: 'Squat', weight: 235, sets: 3, remove: false, completeRemove: false },
+                { workoutName: 'Legs', name: 'Lunges', weight: 40, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Pull', name: 'Pullups', weight: 235, sets: 3, remove: false, completeRemove: false },
+                { workoutName: 'Pull', name: 'DB Row', weight: 235, sets: 3, remove: false, completeRemove: false },
             ],
         }
     },
