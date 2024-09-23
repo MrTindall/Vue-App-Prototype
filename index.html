@@ -47,7 +47,7 @@
                         <div class="card-body m-0 px-2 py-0">
                             <div class="d-flex pt-2">
                                 <div class="p-2 flex-grow-1">
-                                    <h3 class="card-title text-start">Push</h3>
+                                    <h3 class="card-title text-start">{{ selectedWorkout }}</h3>
                                 </div>
                                 <div class="py-2 d-flex justify-content-end">
                                     <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
@@ -110,7 +110,7 @@
                         <div class="card-body m-0 px-2 py-0">
                             <div class="d-flex pt-2">
                                 <div class="p-2 flex-grow-1">
-                                    <h3 class="card-title text-start">Push</h3>
+                                    <h3 class="card-title text-start">{{selectedWorkout}}</h3>
                                 </div>
                                 <div class="py-2 d-flex justify-content-end">
                                     <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
@@ -296,7 +296,7 @@
                     <form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-bg-color"
+                            <button type="button" class="btn btn-primary btn-bg-color" data-bs-dismiss="modal"
                                 @click="removeGrtZeroExercise(removeGrtZero)">Remove</button>
                         </div>
                     </form>
@@ -338,7 +338,7 @@
                     <form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-bg-color"
+                            <button type="button" class="btn btn-primary btn-bg-color" data-bs-dismiss="modal"
                                 @click="removeEquZeroExercise(removeEquZero)">Remove</button>
                         </div>
                     </form>
@@ -670,20 +670,20 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <div class="mb-3">
-                                <label for="workoutName" class="form-label">Workout Name</label>
-                                <select class="form-select" aria-label="workoutName">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">Push</option>
-                                    <option value="2">Pull</option>
-                                    <option value="3">Legs</option>
-                                </select>
-                            </div>
+                          <div class="mb-3">
+                            <label for="workoutName" class="form-label">Workout Name</label>
+                            <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
+                              <option selected value="Start a Workout">Select your workout</option>
+                              <option v-for="exercise in workoutLibraryList" :key="exercise">
+                                {{ exercise }}
+                              </option>
+                            </select>
+                          </div>
                         </form>
-                    </div>
+                      </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Start Workout</button>
+                        <button type="button" class="btn btn-primary btn-bg-color" data-bs-dismiss="modal">Start Workout</button>
                     </div>
                 </div>
             </div>
@@ -701,15 +701,13 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="workoutName" class="form-label">{Report Stuff}</label>
-                                <input type="text" class="form-control" id="workoutName"
-                                    placeholder="Enter workout name">
+                                <h3 for="workoutName" class="form-label text-center">Congradulations on Finishing your {{selectedWorkout}} Workout!</h3>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-bg-color">Finish Workout</button>
+                        <button type="submit" class="btn btn-primary btn-bg-color"@submit.prevent="finishWorkout()">Finish Workout</button>
                     </div>
                 </div>
             </div>

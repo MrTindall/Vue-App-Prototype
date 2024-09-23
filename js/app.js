@@ -2,6 +2,7 @@ const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
+            selectedWorkout:'Start a Workout',
             exercise: {
                 workoutName: '',
                 name: '',
@@ -67,48 +68,57 @@ const app = Vue.createApp({
                 completeRemove: false,
             };
         },
+        finishWorkout() {
+            for (item of this.exerciseList) {
+                item.remove = false;
+                item.completeRemove = false;
+                this.selectedWorkout = ''
+            }
+        }
     },
 
     // computed: values that are updated and cached if dependencies change
     computed: {
-    todoList() {
-        return this.exerciseList.filter(function (exercise) {
-            return exercise.sets > 0;
-        })
+    
+        // used arrow function because of this for selectedWorkout
+        todoList() {
+            return this.exerciseList.filter((exercise) => {
+                return exercise.sets > 0 && exercise.workoutName.toLowerCase() === this.selectedWorkout.toLowerCase();
+            });
+        },
+
+        completeList() {
+            return this.exerciseList.filter((exercise) => {
+                return exercise.sets <= 0 && exercise.workoutName.toLowerCase() === this.selectedWorkout.toLowerCase() && exercise.completeRemove == false;
+            });
+        },
+
+        removeGrtZero() {
+            return this.exerciseList.filter(function (exercise) {
+                return exercise.remove == true && exercise.sets > 0
+            })
+        },
+
+        removeEquZero() {
+            return this.exerciseList.filter(function (exercise) {
+                return exercise.remove == true && exercise.completeRemove == false
+            })
+        },
+
+        workoutLibraryList() {
+            const uniqueWorkoutNames = new Set();
+
+            this.exerciseList.forEach(function (exercise) {
+                uniqueWorkoutNames.add(exercise.workoutName);
+            });
+
+            return Array.from(uniqueWorkoutNames);
+        },
+
+        exerciseLibraryList() {
+
+        },
     },
-
-    completeList() {
-        return this.exerciseList.filter(function (exercise) {
-            return exercise.sets <= 0 && exercise.completeRemove == false;
-        })
-    },
-
-    removeGrtZero() {
-        return this.exerciseList.filter(function (exercise) {
-            return exercise.remove == true && exercise.sets > 0
-        })
-    },
-
-    removeEquZero() {
-        return this.exerciseList.filter(function (exercise) {
-            return exercise.remove == true && exercise.completeRemove == false
-        })
-    },
-
-    workoutLibraryList() {
-        const uniqueWorkoutNames = new Set();
-
-        this.exerciseList.forEach(function (exercise) {
-            uniqueWorkoutNames.add(exercise.workoutName);
-        });
-
-        return Array.from(uniqueWorkoutNames);
-    },
-
-    exerciseLibraryList() {
-
-    },
-},
 
     //mounted:  called after the instance has been mounted,
     mounted: function () {
