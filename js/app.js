@@ -2,7 +2,7 @@ const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
-            selectedWorkout:'Start a Workout',
+            selectedWorkout: 'Start',
             exercise: {
                 workoutName: '',
                 name: '',
@@ -68,18 +68,19 @@ const app = Vue.createApp({
                 completeRemove: false,
             };
         },
-        finishWorkout() {
-            for (item of this.exerciseList) {
-                item.remove = false;
-                item.completeRemove = false;
-                this.selectedWorkout = ''
-            }
+        finishWorkout(list) {
+            list.forEach((item) => {
+              item.remove = false;
+              item.completeRemove = false;
+              item.sets = 3;
+            });
+            this.selectedWorkout = 'Start';
         }
     },
 
     // computed: values that are updated and cached if dependencies change
     computed: {
-    
+
         // used arrow function because of this for selectedWorkout
         todoList() {
             return this.exerciseList.filter((exercise) => {
@@ -128,5 +129,5 @@ const app = Vue.createApp({
     // watch:   calls the function if the value changes
     watch: {
 
-}
+    }
 });
