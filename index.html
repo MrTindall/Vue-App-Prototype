@@ -388,21 +388,44 @@
         </div>
 
         <!-- Modal Build Workout -->
+         <!-- First Part Modal -->
         <div class="modal fade" id="buildWorkoutModal" tabindex="-1" aria-labelledby="buildWorkoutModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content modal-background-color">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="buildWorkoutModalLabel">Build Workout</h5>
+                        <h5 class="modal-title" id="buildWorkoutModalLabel">Build Workout - Step 1</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body builder">
+                        <form>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="WorkoutName1">Name</span>
+                                <input type="text" class="form-control" aria-label="WorkoutName" aria-describedby="WorkoutName1"
+                                    v-model="exercise.workoutName" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary btn-bg-color" data-bs-target="#buildWorkoutModalStep2"
+                            data-bs-toggle="modal">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Second Part Modal -->
+        <div class="modal fade" id="buildWorkoutModalStep2" tabindex="-1" aria-labelledby="buildWorkoutModalStep2Label"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-background-color">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buildWorkoutModalStep2Label">Build Workout - Step 2</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body builder">
                         <form @submit.prevent="addExercise()">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="WorkoutName1">Name</span>
-                                <input type="text" class="form-control" aria-label="WorkoutName"
-                                    aria-describedby="WorkoutName1" v-model="exercise.workoutName">
-                            </div>
+                            <!-- Exercise Input -->
                             <div class="d-flex justify-content-between py-1">
                                 <div class="input-group mb-3">
                                     <button type="button" class="btn btn-outline-secondary">Exercise</button>
@@ -421,6 +444,8 @@
                                         v-model="exercise.name">
                                 </div>
                             </div>
+        
+                            <!-- Weight Input -->
                             <div class="d-flex justify-content-between py-1">
                                 <div class="input-group mb-3">
                                     <button type="button" class="btn btn-outline-secondary">Weight</button>
@@ -439,6 +464,8 @@
                                         v-model="exercise.weight">
                                 </div>
                             </div>
+        
+                            <!-- Sets Input -->
                             <div class="d-flex justify-content-between py-1">
                                 <div class="input-group mb-3">
                                     <button type="button" class="btn btn-outline-secondary">Sets</button>
@@ -457,11 +484,14 @@
                                         v-model="exercise.sets">
                                 </div>
                             </div>
+        
+                            <!-- Buttons for adding/removing -->
                             <div class="d-flex justify-content-end mb-3">
                                 <button type="button" class="addWorkout me-2">Remove</button>
                                 <button type="submit" class="addWorkout">Add</button>
                             </div>
-
+        
+                            <!-- Workout Content -->
                             <div class="container-fluid p-0 WorkoutContentBuild overflow-y-auto">
                                 <ul class="list-group list-group-flush mb-3">
                                     <li class="list-group-item mt-3 mx-2">
@@ -470,33 +500,28 @@
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox" role="switch"
                                                         id="flexSwitchCheckDefault">
-                                                    <label class="form-check-label"
-                                                        for="flexSwitchCheckDefault"></label>
+                                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                                                 </div>
                                                 DB Incline Press
                                             </span>
-                                            <span class="d-flex justify-content-between py-1">
-                                                Weight: 40 lbs
-                                            </span>
-                                            <span class="d-flex justify-content-between  py-1">
-                                                Set: 3
-                                            </span>
-                                            <span></span>
+                                            <span class="d-flex justify-content-between py-1">Weight: 40 lbs</span>
+                                            <span class="d-flex justify-content-between py-1">Set: 3</span>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </form>
                     </div>
-                    <form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary btn-bg-color">Build</button>
-                        </div>
-                    </form>
+        
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-target="#buildWorkoutModal"
+                            data-bs-toggle="modal">Back</button>
+                        <button type="button" class="btn btn-primary btn-bg-color">Build</button>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Modal Build Add Workout -->
         <div class="modal fade" id="buildWorkoutAddModal" tabindex="-1" aria-labelledby="buildWorkoutAddModalLabel"
