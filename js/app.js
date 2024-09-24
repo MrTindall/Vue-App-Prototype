@@ -2,7 +2,7 @@ const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
-            selectedWorkout: 'Start',
+            selectedWorkout: 'Start a Workout!',
             tempBuilderWorkoutName: '',
             exercise: {
                 workoutName: '',
