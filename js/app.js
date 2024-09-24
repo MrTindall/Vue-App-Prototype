@@ -3,6 +3,7 @@ const app = Vue.createApp({
     data: function () {
         return {
             selectedWorkout: 'Start',
+            tempBuilderWorkoutName: '',
             exercise: {
                 workoutName: '',
                 name: '',
@@ -22,6 +23,7 @@ const app = Vue.createApp({
                 { workoutName: 'Pull', name: 'Pullups', weight: 235, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Pull', name: 'DB Row', weight: 235, sets: 3, remove: false, completeRemove: false },
             ],
+            builderTempList: []
         }
     },
 
@@ -62,6 +64,43 @@ const app = Vue.createApp({
 
         addExercise() {
             this.exerciseList.push(this.exercise);
+            this.exercise = {
+                workoutName: '',
+                name: '',
+                weight: 0,
+                sets: 3,
+                remove: false,
+                completeRemove: false,
+            };
+        },
+        addBuildExercise() {
+            this.builderTempList.push(this.exercise);
+            this.exercise = {
+                workoutName: '',
+                name: '',
+                weight: 0,
+                sets: 3,
+                remove: false,
+                completeRemove: false,
+            };
+        },
+        setTempBuilderWorkoutName() {
+            tempBuilderWorkoutName = this.exercise.workoutName
+        },
+        addBuildExerciseToExerciseList() {
+            this.builderTempList.forEach((item) => {
+                const exerciseToAdd = {
+                    workoutName: tempBuilderWorkoutName,
+                    name: item.name,
+                    weight: item.weight,
+                    sets: item.sets,
+                    remove: false,
+                    completeRemove: false,
+                };
+                this.exerciseList.push(exerciseToAdd);
+            });
+
+            this.builderTempList = [];
             this.exercise = {
                 workoutName: '',
                 name: '',
