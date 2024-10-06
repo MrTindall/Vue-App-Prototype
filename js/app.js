@@ -139,7 +139,7 @@ const app = Vue.createApp({
         },
 
         exerciseLibraryList() {
-
+            // TODO: Create this list so that it returns exercise where workoutName == workoutLibraryList Object.item name
         },
     },
 
