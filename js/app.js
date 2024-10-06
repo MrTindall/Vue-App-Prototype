@@ -29,26 +29,6 @@ const app = Vue.createApp({
 
     // methods: usually "events" triggered by v-on:
     methods: {
-        addSet(item) {
-            item.sets++
-        },
-
-        subtractSet(item) {
-            if (item.sets > 0) {
-                item.sets--;
-            }
-        },
-
-        addWeight(item) {
-            item.weight = item.weight + 2.5
-        },
-
-        subtractWeight(item) {
-            if (item.weight > 0) {
-                item.weight -= 2.5;
-            }
-        },
-
         removeGrtZeroExercise(list) {
             for (item of list) {
                 item.sets = 0;
