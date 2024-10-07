@@ -12,6 +12,10 @@ app.component('ExerciseList', {
             type: Array,
             required: true,
         },
+        isButton: {
+            type: Boolean,
+            default: false,
+        }
     },
 
     methods: {
@@ -24,7 +28,7 @@ app.component('ExerciseList', {
 
     template: `
         <ul class="list-group list-group-flush mb-3">
-            <exercise-list-item v-for="item in list" :item="item"></exercise-list-item>
+            <exercise-list-item v-for="item in list" :item="item" :isButton="isButton"></exercise-list-item>
         </ul>
     `,
 });
