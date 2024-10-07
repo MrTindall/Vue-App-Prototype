@@ -9,6 +9,10 @@ app.component('ExerciseListItem', {
             type: Object,
             required: true,
         },
+        isButton: {
+            type: Boolean,
+            default: false,
+        }
     },
 
     methods: {
@@ -54,18 +58,18 @@ app.component('ExerciseListItem', {
                         Weight: {{item.weight}} lbs
                         <div v-show="isButton">
                             <button type="button" class="qtyChange plus ms-2"
-                                @click="addWeight(item)">+</button>
+                                @click="addWeight()">+</button>
                             <button type="button" class="qtyChange minus"
-                                @click="subtractWeight(item)">-</button>
+                                @click="subtractWeight()">-</button>
                         </div>
                     </span>
                     <span class="d-flex justify-content-between  py-1">
                         Set: {{item.sets}}
                         <div v-show="isButton">
                             <button type="button" class="qtyChange plus ms-2"
-                                @click="addSet(item)">+</button>
+                                @click="addSet()">+</button>
                             <button type="button" class="qtyChange minus"
-                                @click="subtractSet(item)">-</button>
+                                @click="subtractSet()">-</button>
                         </div>
                     </span>
                     <span></span>
