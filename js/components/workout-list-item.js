@@ -38,7 +38,7 @@ app.component('WorkoutListItem', {
                     <span class="testing">{{item.title}}</span>
                 </span>
                 <span class="d-flex justify-content-between py-1">
-                    <span class="">Total Exercises: {{}}</span>
+                    <span class="">Total Exercises: {{item.exercises.length}}</span>
                 </span>
                 <span class="d-flex justify-content-between py-1">
                     <span></span>

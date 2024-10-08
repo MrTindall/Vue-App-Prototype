@@ -58,7 +58,6 @@
                             </div>
 
                             <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-                                <!-- TODO: Fix isButton -->
                                 <exercise-list title="Todo List" :list="todoList" :is-button="true"></exercise-list>
                             </div>
                             <div class="py-3 d-flex justify-content-around">
@@ -69,6 +68,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Completed Tab -->
                 <div class="tab-pane fade" id="completedTab">
                     <div class="card">
@@ -94,7 +94,6 @@
                             </button>
                         </div>
                     </div>
-                    <!-- <div class="bottomSpacer"></div> -->
                 </div>
 
                 <!-- Builder Tab -->
@@ -166,7 +165,6 @@
                     <div class="modal-body">
                         <h5>This will remove the selected exercise(s).</h5>
                         <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
-                            <!-- TODO: Fix isButton -->
                             <exercise-list title="Remove Equals Zero" :list="removeEquZero"></exercise-list>
                         </div>
                     </div>
@@ -353,12 +351,6 @@
                 <form>
                     <div class="mb-3">
                         <label for="workoutName" class="form-label">Workout Name</label>
-                        <!-- <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
-                            <option selected value="Select Workout">Select Workout</option>
-                            <option v-for="exercise in workouts" :key="exercise">
-                                {{ exercise.title }}
-                            </option>
-                        </select> -->
                         <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
                             <option selected value="Select Workout">Select Workout</option>
                             <option v-for="workout in workouts" :key="workout.title" :value="workout">

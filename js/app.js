@@ -163,7 +163,9 @@ const app = Vue.createApp({
         },
         
         workoutLibraryList() {
-            return this.workouts.filter((workout) => workout.title !== '');
+            return this.selectedWorkout && this.selectedWorkout.exercises 
+                ? this.selectedWorkout.exercises.filter((exercise) => exercise.name !== '')
+                : [];
         },
     },
 
