@@ -2,17 +2,16 @@ const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
-            selectedWorkout: 'Select Workout',
+            selectedWorkout: null,
             tempBuilderWorkoutName: '',
             exercise: {
-                workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
                 remove: false,
                 completeRemove: false,
-
             },
+
             workouts: [
                 {
                     title: 'Push',
@@ -39,16 +38,6 @@ const app = Vue.createApp({
                 },
                 
             ],
-            exerciseList: [
-                { workoutName: 'Push', name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Push', name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Push', name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Legs', name: 'Deadlift', weight: 335, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Legs', name: 'Squat', weight: 235, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Legs', name: 'Lunges', weight: 40, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Pull', name: 'Pullups', weight: 235, sets: 3, remove: false, completeRemove: false },
-                { workoutName: 'Pull', name: 'DB Row', weight: 235, sets: 3, remove: false, completeRemove: false },
-            ],
             builderTempList: []
         }
     },
@@ -71,7 +60,7 @@ const app = Vue.createApp({
         addExercise() {
             this.exerciseList.push(this.exercise);
             this.exercise = {
-                workoutName: '',
+                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -82,7 +71,7 @@ const app = Vue.createApp({
         addBuildExercise() {
             this.builderTempList.push(this.exercise);
             this.exercise = {
-                workoutName: '',
+                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -96,7 +85,7 @@ const app = Vue.createApp({
         addBuildExerciseToExerciseList() {
             this.builderTempList.forEach((item) => {
                 const exerciseToAdd = {
-                    workoutName: tempBuilderWorkoutName,
+                    // workoutName: tempBuilderWorkoutName,
                     name: item.name,
                     weight: item.weight,
                     sets: item.sets,
@@ -108,7 +97,7 @@ const app = Vue.createApp({
 
             this.builderTempList = [];
             this.exercise = {
-                workoutName: '',
+                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -130,49 +119,32 @@ const app = Vue.createApp({
     computed: {
 
         todoList() {
-            return this.workouts
-                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
-                .flatMap((workout) => workout.exercises)
-                .filter((exercise) => exercise.sets > 0);
+            return this.selectedWorkout && this.selectedWorkout.exercises 
+                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets > 0)
+                : [];
         },
 
         completeList() {
-            return this.workouts
-                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
-                .flatMap((workout) => workout.exercises)
-                .filter((exercise) => exercise.sets <= 0 && exercise.completeRemove == false);
+            return this.selectedWorkout && this.selectedWorkout.exercises 
+                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets <= 0 && !exercise.completeRemove)
+                : [];
         },
-
+        
         removeGrtZero() {
-            return this.workouts
-                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
-                .flatMap((workout) => workout.exercises)
-                .filter((exercise) => exercise.sets > 0 && exercise.remove == true);
+            return this.selectedWorkout && this.selectedWorkout.exercises 
+                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove)
+                : [];
         },
-
+        
         removeEquZero() {
-            return this.workouts
-                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
-                .flatMap((workout) => workout.exercises)
-                .filter((exercise) => exercise.remove == true && exercise.completeRemove == false);
-        },
 
+            return this.selectedWorkout && this.selectedWorkout.exercises 
+                ? this.selectedWorkout.exercises.filter((exercise) => exercise.remove && !exercise.completeRemove)
+                : [];
+        },
+        
         workoutLibraryList() {
-            return this.workouts
-                .filter((workout) => workout.title)
-                .flatMap((workout) => workout.exercises)
-                .filter((exercise) => exercise.sets > 0);
-            // const uniqueWorkoutNames = new Set();
-
-            // this.exerciseList.forEach(function (exercise) {
-            //     uniqueWorkoutNames.add(exercise.workoutName);
-            // });
-
-            // return Array.from(uniqueWorkoutNames);
-        },
-
-        exerciseLibraryList() {
-            // TODO: Create this list so that it returns exercise where workoutName == workoutLibraryList Object.item name
+            return this.workouts.filter((workout) => workout.title !== '');
         },
     },
 

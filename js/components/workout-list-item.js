@@ -35,7 +35,7 @@ app.component('WorkoutListItem', {
                         <label class="form-check-label"
                             for="flexSwitchCheckDefault"></label>
                     </div>
-                    <span class="testing">{{item}}</span>
+                    <span class="testing">{{item.title}}</span>
                 </span>
                 <span class="d-flex justify-content-between py-1">
                     <span class="">Total Exercises: {{}}</span>

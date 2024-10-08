@@ -48,7 +48,7 @@
                         <div class="card-body m-0 px-2 py-0">
                             <div class="d-flex pt-2">
                                 <div class="p-2 flex-grow-1">
-                                    <h4 class="card-title text-start">{{ selectedWorkout }}</h4>
+                                    <h4 class="card-title text-start">{{selectedWorkout ? selectedWorkout.title : 'Start'}}</h4>
                                 </div>
                                 <div class="py-2 d-flex justify-content-end">
                                     <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-<!-- TODO: Fix isButton -->
+                                <!-- TODO: Fix isButton -->
                                 <exercise-list title="Todo List" :list="todoList" :is-button="true"></exercise-list>
                             </div>
                             <div class="py-3 d-flex justify-content-around">
@@ -75,7 +75,7 @@
                         <div class="card-body m-0 px-2 py-0">
                             <div class="d-flex pt-2">
                                 <div class="p-2 flex-grow-1">
-                                    <h3 class="card-title text-start">{{selectedWorkout}}</h3>
+                                    <h3 class="card-title text-start">{{selectedWorkout ? selectedWorkout.title : 'Complete'}}</h3>
                                 </div>
                                 <div class="py-2 d-flex justify-content-end">
                                     <button type="button" class="addWorkout me-1" data-bs-toggle="modal"
@@ -84,7 +84,8 @@
                                 </div>
                             </div>
                             <div class="container-fluid p-0 WorkoutContent overflow-y-auto">
-                                <exercise-list title="Complete List" :list="completeList" :is-button="true"></exercise-list>
+                                <exercise-list title="Complete List" :list="completeList"
+                                    :is-button="true"></exercise-list>
                             </div>
                         </div>
                         <div class="py-3 d-flex justify-content-around">
@@ -165,7 +166,7 @@
                     <div class="modal-body">
                         <h5>This will remove the selected exercise(s).</h5>
                         <div class="container-fluid p-0 WorkoutContentRemove overflow-y-auto">
-<!-- TODO: Fix isButton -->
+                            <!-- TODO: Fix isButton -->
                             <exercise-list title="Remove Equals Zero" :list="removeEquZero"></exercise-list>
                         </div>
                     </div>
@@ -352,10 +353,16 @@
                 <form>
                     <div class="mb-3">
                         <label for="workoutName" class="form-label">Workout Name</label>
-                        <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
+                        <!-- <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
                             <option selected value="Select Workout">Select Workout</option>
                             <option v-for="exercise in workouts" :key="exercise">
                                 {{ exercise.title }}
+                            </option>
+                        </select> -->
+                        <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
+                            <option selected value="Select Workout">Select Workout</option>
+                            <option v-for="workout in workouts" :key="workout.title" :value="workout">
+                                {{ workout.title }}
                             </option>
                         </select>
                     </div>
@@ -382,8 +389,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <h3 for="workoutName" class="form-label text-center">Congratulations on finishing
-                                    your {{selectedWorkout}} Workout!</h3>
+                                <h3 for="workoutName" class="form-label text-center" v-model="selectedWorkout">Congratulations on finishing
+                                    your {{selectedWorkout ? selectedWorkout.title : ''}} Workout!</h3>
                             </div>
                         </div>
                         <div class="modal-footer">
