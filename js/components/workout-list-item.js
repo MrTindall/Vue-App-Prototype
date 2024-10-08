@@ -38,11 +38,11 @@ app.component('WorkoutListItem', {
                     <span class="testing">{{item.title}}</span>
                 </span>
                 <span class="d-flex justify-content-between py-1">
-                    <span class="">Total Exercises: {{item.exercises.length}}</span>
+                    <span>Total Exercises: {{item.exercises.length}}</span>
                 </span>
                 <span class="d-flex justify-content-between py-1">
                     <span></span>
-                    <span class="">
+                    <span>
                         <button class="addWorkout p-0" type="button" @click="toggle()">Display</button>
                         </p>
                     </span>
