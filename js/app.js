@@ -13,6 +13,32 @@ const app = Vue.createApp({
                 completeRemove: false,
 
             },
+            workouts: [
+                {
+                    title: 'Push',
+                    exercises: [
+                        {name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
+                    ] 
+                },
+                {
+                    title: 'Pull',
+                    exercises: [
+                        {name: 'Pullups', weight: 235, sets: 3, remove: false, completeRemove: false },
+                        {name: 'DB Row', weight: 235, sets: 3, remove: false, completeRemove: false },
+                    ] 
+                },
+                {
+                    title: 'Legs',
+                    exercises: [
+                        {name: 'Deadlift', weight: 335, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Squat', weight: 235, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Lunges', weight: 40, sets: 3, remove: false, completeRemove: false },
+                    ] 
+                },
+                
+            ],
             exerciseList: [
                 { workoutName: 'Push', name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
                 { workoutName: 'Push', name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
@@ -103,39 +129,46 @@ const app = Vue.createApp({
     // computed: values that are updated and cached if dependencies change
     computed: {
 
-        // used arrow function because of this for selectedWorkout
         todoList() {
-            return this.exerciseList.filter((exercise) => {
-                return exercise.sets > 0 && exercise.workoutName.toLowerCase() === this.selectedWorkout.toLowerCase();
-            });
+            return this.workouts
+                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
+                .flatMap((workout) => workout.exercises)
+                .filter((exercise) => exercise.sets > 0);
         },
 
         completeList() {
-            return this.exerciseList.filter((exercise) => {
-                return exercise.sets <= 0 && exercise.workoutName.toLowerCase() === this.selectedWorkout.toLowerCase() && exercise.completeRemove == false;
-            });
+            return this.workouts
+                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
+                .flatMap((workout) => workout.exercises)
+                .filter((exercise) => exercise.sets <= 0 && exercise.completeRemove == false);
         },
 
         removeGrtZero() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.remove == true && exercise.sets > 0
-            })
+            return this.workouts
+                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
+                .flatMap((workout) => workout.exercises)
+                .filter((exercise) => exercise.sets > 0 && exercise.remove == true);
         },
 
         removeEquZero() {
-            return this.exerciseList.filter(function (exercise) {
-                return exercise.remove == true && exercise.completeRemove == false
-            })
+            return this.workouts
+                .filter((workout) => workout.title.toLowerCase() === this.selectedWorkout.toLowerCase())
+                .flatMap((workout) => workout.exercises)
+                .filter((exercise) => exercise.remove == true && exercise.completeRemove == false);
         },
 
         workoutLibraryList() {
-            const uniqueWorkoutNames = new Set();
+            return this.workouts
+                .filter((workout) => workout.title)
+                .flatMap((workout) => workout.exercises)
+                .filter((exercise) => exercise.sets > 0);
+            // const uniqueWorkoutNames = new Set();
 
-            this.exerciseList.forEach(function (exercise) {
-                uniqueWorkoutNames.add(exercise.workoutName);
-            });
+            // this.exerciseList.forEach(function (exercise) {
+            //     uniqueWorkoutNames.add(exercise.workoutName);
+            // });
 
-            return Array.from(uniqueWorkoutNames);
+            // return Array.from(uniqueWorkoutNames);
         },
 
         exerciseLibraryList() {

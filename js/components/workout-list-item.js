@@ -1,3 +1,4 @@
+const bootstrap = require("bootstrap");
 
 app.component('WorkoutListItem', {
     data: function () {
@@ -12,11 +13,16 @@ app.component('WorkoutListItem', {
     },
 
     methods: {
-
+        toggle() {
+            this.workoutCollapse.toggle();
+        }
     },
 
     computed: {
 
+    },
+    mounted() {
+        this.workoutCollapse = new bootstrap.Collapse(this.$refs.theCollapse, {toggle: false});
     },
 
     template: `
@@ -37,16 +43,12 @@ app.component('WorkoutListItem', {
                 <span class="d-flex justify-content-between py-1">
                     <span></span>
                     <span class="">
-                        <button class="addWorkout p-0" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#exercisesList1"
-                            aria-expanded="false" aria-controls="collapseExample1">
-                            Display
-                        </button>
+                        <button class="addWorkout p-0" type="button" @click="toggle()">Display</button>
                         </p>
                     </span>
                 </span>
             </div>
-            <div class="collapse" id="exercisesList1">
+            <div class="collapse" ref="theCollapse">
                 <div class="card card-body card-body-exercisesList">
                     <exercise-list title="Todo List"
                         :list="exerciseLibraryList"></exercise-list>
