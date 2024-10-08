@@ -11,7 +11,9 @@ const app = Vue.createApp({
                 remove: false,
                 completeRemove: false,
             },
-
+            newWorkout: {
+                title: '',
+            },
             workouts: [
                 {
                     title: 'Push',
@@ -56,11 +58,28 @@ const app = Vue.createApp({
                 item.completeRemove = true;
             }
         },
+        createWorkout() {
+            if (this.newWorkout.title && this.builderTempList.length > 0) {
+                this.workouts.push({
+                    title: this.newWorkout.title,
+                    exercises: this.builderTempList.map(exercise => ({
+                        name: exercise.name,
+                        weight: exercise.weight,
+                        sets: exercise.sets,
+                        remove: false,
+                        completeRemove: false,
+                    }))
+                });
 
+                this.newWorkout = { title: '' };  // Reset title
+                this.builderTempList = []; // Clear the builder list
+            } else {
+                alert("Please provide a valid workout name and at least one exercise.");
+            }
+        },
         addExercise() {
             this.exerciseList.push(this.exercise);
             this.exercise = {
-                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -71,7 +90,6 @@ const app = Vue.createApp({
         addBuildExercise() {
             this.builderTempList.push(this.exercise);
             this.exercise = {
-                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -85,19 +103,20 @@ const app = Vue.createApp({
         addBuildExerciseToExerciseList() {
             this.builderTempList.forEach((item) => {
                 const exerciseToAdd = {
-                    // workoutName: tempBuilderWorkoutName,
                     name: item.name,
                     weight: item.weight,
                     sets: item.sets,
                     remove: false,
                     completeRemove: false,
                 };
-                this.exerciseList.push(exerciseToAdd);
+                this.workouts.push(exerciseToAdd);
             });
-
-            this.builderTempList = [];
+        
+            // Clear the builderTempList after adding to workouts
+            this.builderTempList = []; 
+            
+            // Reset the exercise object to its default state
             this.exercise = {
-                // workoutName: '',
                 name: '',
                 weight: 0,
                 sets: 3,
@@ -111,7 +130,7 @@ const app = Vue.createApp({
               item.completeRemove = false;
               item.sets = 3;
             });
-            this.selectedWorkout = 'Start';
+            this.selectedWorkout = null;
         }
     },
 

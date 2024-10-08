@@ -239,14 +239,14 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="WorkoutName1">Name</span>
                                     <input type="text" class="form-control" aria-label="WorkoutName"
-                                        aria-describedby="WorkoutName1" v-model="exercise.workoutName">
+                                        aria-describedby="WorkoutName1" v-model="newWorkout.title">
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Disable the button when workoutName is empty -->
                                 <button class="btn btn-primary btn-bg-color" data-bs-target="#buildWorkoutModalStep2"
-                                    data-bs-toggle="modal" :disabled="!exercise.workoutName"
+                                    data-bs-toggle="modal" :disabled="!newWorkout.title"
                                     @click="setTempBuilderWorkoutName()">Next</button>
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                 <button class="btn btn-secondary" data-bs-target="#buildWorkoutModal"
                                     data-bs-toggle="modal">Back</button>
                                 <button type="button" class="btn btn-primary btn-bg-color" data-bs-dismiss="modal"
-                                    @click="addBuildExerciseToExerciseList()">Build</button>
+                                    @click="createWorkout()">Build</button>
                             </div>
                         </div>
                     </div>
