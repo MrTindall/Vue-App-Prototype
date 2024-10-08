@@ -71,8 +71,8 @@ const app = Vue.createApp({
                     }))
                 });
 
-                this.newWorkout = { title: '' };  // Reset title
-                this.builderTempList = []; // Clear the builder list
+                this.newWorkout = { title: '' };
+                this.builderTempList = [];
             } else {
                 alert("Please provide a valid workout name and at least one exercise.");
             }
@@ -112,10 +112,8 @@ const app = Vue.createApp({
                 this.workouts.push(exerciseToAdd);
             });
         
-            // Clear the builderTempList after adding to workouts
+
             this.builderTempList = []; 
-            
-            // Reset the exercise object to its default state
             this.exercise = {
                 name: '',
                 weight: 0,
