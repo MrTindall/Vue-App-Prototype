@@ -22,7 +22,7 @@ app.component('WorkoutListItem', {
 
     },
     mounted() {
-        this.workoutCollapse = new bootstrap.Collapse(this.$refs.theCollapse, {toggle: false});
+        this.workoutCollapse = new bootstrap.Collapse(this.$refs.theCollapse, { toggle: false });
     },
 
     template: `
@@ -50,8 +50,7 @@ app.component('WorkoutListItem', {
             </div>
             <div class="collapse" ref="theCollapse">
                 <div class="card card-body card-body-exercisesList">
-                    <exercise-list title="Todo List"
-                        :list="exerciseLibraryList"></exercise-list>
+
                 </div>
             </div>
         </li>

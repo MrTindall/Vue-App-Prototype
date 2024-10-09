@@ -124,12 +124,12 @@ const app = Vue.createApp({
         },
         finishWorkout(list) {
             list.forEach((item) => {
-              item.remove = false;
-              item.completeRemove = false;
-              item.sets = 3;
+                item.remove = false;
+                item.completeRemove = false;
+                item.sets = this.selectedWorkout.exercises.sets;
             });
             this.selectedWorkout = null;
-        }
+        },
     },
 
     // computed: values that are updated and cached if dependencies change
@@ -161,8 +161,8 @@ const app = Vue.createApp({
         },
         
         workoutLibraryList() {
-            return this.selectedWorkout && this.selectedWorkout.exercises 
-                ? this.selectedWorkout.exercises.filter((exercise) => exercise.name !== '')
+            return this.workouts
+                ? this.workouts.filter((workout) => workout.title !== '')          
                 : [];
         },
     },
