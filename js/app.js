@@ -159,12 +159,6 @@ const app = Vue.createApp({
                 ? this.selectedWorkout.exercises.filter((exercise) => exercise.remove && !exercise.completeRemove)
                 : [];
         },
-        
-        workoutLibraryList() {
-            return this.workouts
-                ? this.workouts.filter((workout) => workout.title !== '')          
-                : [];
-        },
     },
 
     //mounted:  called after the instance has been mounted,

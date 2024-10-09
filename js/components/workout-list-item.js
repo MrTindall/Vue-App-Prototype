@@ -1,5 +1,3 @@
-const bootstrap = require("bootstrap");
-
 app.component('WorkoutListItem', {
     data: function () {
         return {}
@@ -18,9 +16,6 @@ app.component('WorkoutListItem', {
         }
     },
 
-    computed: {
-
-    },
     mounted() {
         this.workoutCollapse = new bootstrap.Collapse(this.$refs.theCollapse, { toggle: false });
     },
@@ -30,10 +25,8 @@ app.component('WorkoutListItem', {
             <div class="d-flex flex-column flex-lg-row justify-content-between">
                 <span class="d-flex py-1">
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch"
-                            id="flexSwitchCheckDefault">
-                        <label class="form-check-label"
-                            for="flexSwitchCheckDefault"></label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                     </div>
                     <span class="testing">{{item.title}}</span>
                 </span>
@@ -44,13 +37,12 @@ app.component('WorkoutListItem', {
                     <span></span>
                     <span>
                         <button class="addWorkout p-0" type="button" @click="toggle()">Display</button>
-                        </p>
                     </span>
                 </span>
             </div>
             <div class="collapse" ref="theCollapse">
                 <div class="card card-body card-body-exercisesList">
-
+                    <exercise-list :title="'Exercises'" :list="item.exercises" :isButton="true"></exercise-list>
                 </div>
             </div>
         </li>
