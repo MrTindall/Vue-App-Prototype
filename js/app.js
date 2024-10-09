@@ -124,12 +124,15 @@ const app = Vue.createApp({
         },
         finishWorkout(list) {
             list.forEach((item) => {
-                item.remove = false;
-                item.completeRemove = false;
-                item.sets = this.selectedWorkout.exercises.sets;
-            });
-            this.selectedWorkout = null;
-        },
+                item.exercises.forEach((exercise) => {
+                    exercise.remove = false;
+                    exercise.completeRemove = false;
+                    exercise.sets = 3;
+                });
+        });
+
+        this.selectedWorkout = null; // Reset selectedWorkout
+    },
     },
 
     // computed: values that are updated and cached if dependencies change
