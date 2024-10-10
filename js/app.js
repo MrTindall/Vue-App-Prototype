@@ -139,28 +139,20 @@ const app = Vue.createApp({
     computed: {
 
         todoList() {
-            return this.selectedWorkout && this.selectedWorkout.exercises 
-                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets > 0)
-                : [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0) ?? [];
         },
 
         completeList() {
-            return this.selectedWorkout && this.selectedWorkout.exercises 
-                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets <= 0 && !exercise.completeRemove)
-                : [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets <= 0 && !exercise.completeRemove) ?? [];
         },
         
         removeGrtZero() {
-            return this.selectedWorkout && this.selectedWorkout.exercises 
-                ? this.selectedWorkout.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove)
-                : [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove) ?? [];
         },
         
         removeEquZero() {
 
-            return this.selectedWorkout && this.selectedWorkout.exercises 
-                ? this.selectedWorkout.exercises.filter((exercise) => exercise.remove && !exercise.completeRemove)
-                : [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.completeRemove) ?? [];
         },
     },
 
