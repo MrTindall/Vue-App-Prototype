@@ -21,7 +21,6 @@ app.component('ExerciseList', {
         <div class="d-flex flex-wrap mb-3 justify-content-start">
             <exercise-list-item 
                 v-for="item in list" 
-                :key="item.id" 
                 :item="item" 
                 :isButton="isButton"
                 class="mx-2 mb-1"
