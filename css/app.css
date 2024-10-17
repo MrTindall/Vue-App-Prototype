@@ -12167,7 +12167,7 @@ button.startWorkout:active {
   border-radius: 10px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1190px) {
   .background-image {
     border-bottom: 0;
   }
@@ -12181,6 +12181,18 @@ button.startWorkout:active {
   button.save {
     width: 80px;
   }
+  .custom-card {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 990px) {
+  .custom-card {
+    width: 199px;
+    height: 150px;
+    border-radius: 10px;
+  }
 }
 @media (max-width: 1100px) {
   .workoutTabs .nav-item a {
@@ -12190,7 +12202,14 @@ button.startWorkout:active {
     padding: 5px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 520px) {
+  .custom-card {
+    width: 80vw;
+    height: 150px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 350px) {
   .custom-card {
     width: 270px;
     height: 150px;
