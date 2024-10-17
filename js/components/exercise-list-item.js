@@ -48,7 +48,6 @@ app.component('ExerciseListItem', {
                     <span class="d-flex py-1">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="item.remove">
-                            <label class="form-check-label" for="flexCheckDefault">Remove</label>
                         </div>
                         {{item.name}}
                     </span>
