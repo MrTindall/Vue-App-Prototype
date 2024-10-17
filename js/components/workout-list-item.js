@@ -1,6 +1,8 @@
 app.component('WorkoutListItem', {
     data: function () {
-        return {}
+        return {
+            isCollapsed: true, // Initialize the collapsed state
+        };
     },
 
     props: {
@@ -12,7 +14,8 @@ app.component('WorkoutListItem', {
 
     methods: {
         toggle() {
-            this.workoutCollapse.toggle();
+            this.isCollapsed = !this.isCollapsed; // Toggle the local state
+            this.workoutCollapse.toggle(); // Keep your existing toggle method
         }
     },
 
@@ -36,7 +39,22 @@ app.component('WorkoutListItem', {
                 <span class="d-flex justify-content-between py-1">
                     <span></span>
                     <span>
-                        <button class="addWorkout p-0" type="button" @click="toggle()">Display</button>
+                        <button 
+                            class="qtyChange p-0"
+                            type="button" 
+                            @click="toggle()"
+                            v-show="isCollapsed"
+                        >
+                            &#x23F5; <!-- Right-pointing chevron -->
+                        </button>
+                        <button 
+                            class="qtyChange p-0"
+                            type="button" 
+                            @click="toggle()"
+                            v-show="!isCollapsed"
+                        >
+                            &#x25BC; <!-- Down-pointing chevron -->
+                        </button>
                     </span>
                 </span>
             </div>

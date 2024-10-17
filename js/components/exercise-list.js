@@ -20,7 +20,7 @@ app.component('ExerciseList', {
     template: `
         <div class="d-flex flex-wrap mb-3 justify-content-start">
             <exercise-list-item 
-                v-for="item in list" 
+                v-for="item in list"
                 :item="item" 
                 :isButton="isButton"
                 class="mx-2 mb-1"

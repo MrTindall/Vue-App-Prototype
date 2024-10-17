@@ -141,11 +141,11 @@ const app = Vue.createApp({
     computed: {
 
         todoList() {
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0) ?? [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0 && !exercise.remove) ?? [];
         },
 
         completeList() {
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets <= 0 && !exercise.completeRemove) ?? [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets <= 0 || exercise.remove) ?? [];
         },
         
         removeGrtZero() {
