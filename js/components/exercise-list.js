@@ -1,4 +1,3 @@
-
 app.component('ExerciseList', {
     data: function () {
         return {}
@@ -18,17 +17,15 @@ app.component('ExerciseList', {
         }
     },
 
-    methods: {
-
-    },
-
-    computed: {
-
-    },
-
     template: `
-        <ul class="list-group list-group-flush mb-3">
-            <exercise-list-item v-for="item in list" :item="item" :isButton="isButton"></exercise-list-item>
-        </ul>
+        <div class="d-flex flex-wrap mb-3 justify-content-start">
+            <exercise-list-item 
+                v-for="item in list" 
+                :key="item.id" 
+                :item="item" 
+                :isButton="isButton"
+                class="mx-2 mb-1"
+            ></exercise-list-item>
+        </div>
     `,
 });

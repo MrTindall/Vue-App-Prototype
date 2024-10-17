@@ -342,7 +342,11 @@ button.startWorkout:active {
 .btn-outline-secondary.dropdown-toggle.dropdown-toggle-split {
     width: 30px;
 }
-
+.custom-card {
+    width: 295px;
+    height: 150px;
+    border-radius: 10px;
+}
 
 @media (max-width:1200px) {
     .background-image {
@@ -370,6 +374,14 @@ button.startWorkout:active {
         font-size: 10px;
         padding: 5px;
     }
-
     
+}
+
+@media (max-width: 768px) {
+
+    .custom-card {
+        width: 270px;
+        height: 150px;
+        border-radius: 10px;
+    } 
 }

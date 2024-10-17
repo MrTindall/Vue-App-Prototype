@@ -21,6 +21,8 @@ const app = Vue.createApp({
                         {name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
                         {name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
                         {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
                     ] 
                 },
                 {

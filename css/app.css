@@ -12161,6 +12161,12 @@ button.startWorkout:active {
   width: 30px;
 }
 
+.custom-card {
+  width: 295px;
+  height: 150px;
+  border-radius: 10px;
+}
+
 @media (max-width: 1200px) {
   .background-image {
     border-bottom: 0;
@@ -12182,6 +12188,13 @@ button.startWorkout:active {
     font-weight: 600;
     font-size: 10px;
     padding: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .custom-card {
+    width: 270px;
+    height: 150px;
+    border-radius: 10px;
   }
 }
 

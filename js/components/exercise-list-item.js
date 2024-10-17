@@ -1,4 +1,3 @@
-
 app.component('ExerciseListItem', {
     data: function () {
         return {}
@@ -35,42 +34,40 @@ app.component('ExerciseListItem', {
                 this.item.weight -= 2.5;
             }
         },
-
-    },
-
-    computed: {
-
     },
 
     template: `
-        <li class="list-group-item mt-3 mx-2">
-                <div class="d-flex flex-column flex-lg-row justify-content-between">
-                    <span class="d-flex py-1">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="item.remove">
-                        </div>
-                        {{item.name}}
-                    </span>
-                    <span class="d-flex justify-content-between py-1">
-                        lbs: {{item.weight}}
-                        <div v-show="isButton">
-                            <button type="button" class="qtyChange plus ms-2"
-                                @click="addWeight()">+</button>
-                            <button type="button" class="qtyChange minus"
-                                @click="subtractWeight()">-</button>
-                        </div>
-                    </span>
-                    <span class="d-flex justify-content-between  py-1">
-                        Set: {{item.sets}}
-                        <div v-show="isButton">
-                            <button type="button" class="qtyChange plus ms-2"
-                                @click="addSet()">+</button>
-                            <button type="button" class="qtyChange minus"
-                                @click="subtractSet()">-</button>
-                        </div>
-                    </span>
-                    <span></span>
+        <div class="card custom-card mt-3 mx-2">
+            <div class="card-body p-3">
+                <!-- Item Name with Checkbox -->
+                <div class="d-flex align-items-center justify-content-start mb-2">
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" v-model="item.remove" id="removeSwitch">
+                    </div>
+                    <span>{{item.name}}</span>
+                    
                 </div>
-            </li>
+                
+                <!-- Weight Information with Increment/Decrement Buttons -->
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <strong>lbs:</strong>
+                    <span>{{item.weight}}</span>
+                    <div v-show="isButton" class="ms-2">
+                        <button type="button" class="qtyChange plus ms-1" @click="addWeight()">+</button>
+                        <button type="button" class="qtyChange minus ms-1" @click="subtractWeight()">-</button>
+                    </div>
+                </div>
+                
+                <!-- Set Information with Increment/Decrement Buttons -->
+                <div class="d-flex align-items-center justify-content-between">
+                    <strong>Set:</strong>
+                    <span>{{item.sets}}</span>
+                    <div v-show="isButton" class="ms-2">
+                        <button type="button" class="qtyChange plus ms-1" @click="addSet()">+</button>
+                        <button type="button" class="qtyChange minus ms-1" @click="subtractSet()">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     `,
 });
