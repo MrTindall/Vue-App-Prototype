@@ -44,45 +44,34 @@ app.component('ExerciseListItem', {
 
     template: `
         <li class="list-group-item mt-3 mx-2">
-            <div class="row">
-
-                <!-- Left Column: Checkbox and Name -->
-                <div class="col-12 col-lg-3 d-flex align-items-center py-1">
-                    <div class="form-check me-2">
-                        <input class="form-check-input" type="checkbox" id="flexCheckboxDefault" v-model="item.remove">
-                        <label class="form-check-label" for="flexCheckboxDefault"></label>
-                    </div>
-                    <span>{{item.name}}</span>
+                <div class="d-flex flex-column flex-lg-row justify-content-between">
+                    <span class="d-flex py-1">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" v-model="item.remove">
+                            <label class="form-check-label" for="flexCheckDefault">Remove</label>
+                        </div>
+                        {{item.name}}
+                    </span>
+                    <span class="d-flex justify-content-between py-1">
+                        lbs: {{item.weight}}
+                        <div v-show="isButton">
+                            <button type="button" class="qtyChange plus ms-2"
+                                @click="addWeight()">+</button>
+                            <button type="button" class="qtyChange minus"
+                                @click="subtractWeight()">-</button>
+                        </div>
+                    </span>
+                    <span class="d-flex justify-content-between  py-1">
+                        Set: {{item.sets}}
+                        <div v-show="isButton">
+                            <button type="button" class="qtyChange plus ms-2"
+                                @click="addSet()">+</button>
+                            <button type="button" class="qtyChange minus"
+                                @click="subtractSet()">-</button>
+                        </div>
+                    </span>
+                    <span></span>
                 </div>
-
-                <!-- Right Column: Weight and Set Controls -->
-                <div class="col-12 col-lg-9">
-                    <div class="d-flex flex-column flex-lg-row justify-content-around">
-
-                        <!-- Weight Section -->
-                        <div class="d-flex align-items-center justify-content-between py-1">
-                            <span>Weight: {{item.weight}} lbs.</span>
-                            <div v-show="isButton" class="d-flex ms-2">
-                                <button type="button" class="qtyChange plus ms-2" @click="addWeight()">+</button>
-                                <button type="button" class="qtyChange minus ms-1" @click="subtractWeight()">-</button>
-                            </div>
-                        </div>
-
-                        <!-- Sets Section -->
-                        <div class="d-flex align-items-center justify-content-between py-1">
-                            <span>Set: {{item.sets}}</span>
-                            <div v-show="isButton" class="d-flex ms-2">
-                                <button type="button" class="qtyChange plus ms-2" @click="addSet()">+</button>
-                                <button type="button" class="qtyChange minus ms-1" @click="subtractSet()">-</button>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between py-1">
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </li>
+            </li>
     `,
 });
