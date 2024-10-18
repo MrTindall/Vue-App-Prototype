@@ -9,7 +9,7 @@ const app = Vue.createApp({
                 weight: 0,
                 sets: 3,
                 remove: false,
-                completeRemove: false,
+                isActive: false,
             },
             newWorkout: {
                 title: '',
@@ -51,7 +51,7 @@ const app = Vue.createApp({
                         weight: 0, 
                         sets: 0, 
                         remove: false, 
-                        completeRemove: false 
+                        isActive: false 
                     }]
                 },
         }
@@ -81,7 +81,7 @@ const app = Vue.createApp({
 
         removeEquZeroExercise(list) {
             for (item of list) {
-                item.completeRemove = true;
+                item.isActive = true;
             }
         },
         createWorkout() {
@@ -182,7 +182,7 @@ const app = Vue.createApp({
         
         removeEquZero() {
 
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.completeRemove) ?? [];
+            return this.selectedWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.isActive) ?? [];
         },
     },
 
