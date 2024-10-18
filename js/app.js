@@ -149,7 +149,7 @@ const app = Vue.createApp({
             };
         },
         finishWorkout() {
-            this.tempWorkout =
+            this.tempWorkout = // Reset tempWorkout
             {
                 title: '',
                 exercises: [{
@@ -177,12 +177,12 @@ const app = Vue.createApp({
         },
         
         removeGrtZero() {
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove) ?? [];
+            return this.tempWorkout?.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove) ?? [];
         },
         
         removeEquZero() {
 
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.isActive) ?? [];
+            return this.tempWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.isActive) ?? [];
         },
     },
 
