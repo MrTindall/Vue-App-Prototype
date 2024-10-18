@@ -11848,10 +11848,6 @@ body {
   background-color: rgb(25, 25, 25);
 }
 
-.added-background-color {
-  background-color: rgb(25, 25, 25);
-}
-
 .navContainer .navbar {
   font-size: 3vh;
   border-bottom: solid 2px white;
@@ -12163,6 +12159,10 @@ button.startWorkout:active {
 
 .btn-outline-secondary.dropdown-toggle.dropdown-toggle-split {
   width: 30px;
+}
+
+.added-background-color {
+  background-color: rgb(25, 25, 25);
 }
 
 .custom-card {

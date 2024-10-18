@@ -59,7 +59,7 @@ app.component('WorkoutListItem', {
                 </span>
             </div>
             <div class="collapse" ref="theCollapse">
-                <div class="card card-body card-body-exercisesList">
+                <div class="card card-body card-body-exercisesList added-background-color">
                     <exercise-list :title="'Exercises'" :list="item.exercises" :isButton="true"></exercise-list>
                 </div>
             </div>

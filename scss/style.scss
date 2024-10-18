@@ -14,9 +14,7 @@ $display-font-weight: 600;
 body {
     background-color: $dark;
 }
-.added-background-color {
-    background-color: $dark;
-}
+
 .navContainer {
     .navbar {
         font-size: 3vh;
@@ -343,6 +341,9 @@ button.startWorkout:active {
 
 .btn-outline-secondary.dropdown-toggle.dropdown-toggle-split {
     width: 30px;
+}
+.added-background-color {
+    background-color: $dark;
 }
 .custom-card {
     width: 295px;
