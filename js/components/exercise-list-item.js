@@ -48,8 +48,7 @@ app.component('ExerciseListItem', {
                 </div>
                 
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <strong>lbs:</strong>
-                    <span>{{item.weight}}</span>
+                    <span>lbs: {{item.weight}}</span>
                     <div v-show="isButton" class="ms-2">
                         <button type="button" class="qtyChange plus ms-1" @click="addWeight()">+</button>
                         <button type="button" class="qtyChange minus ms-1" @click="subtractWeight()">-</button>
@@ -57,8 +56,7 @@ app.component('ExerciseListItem', {
                 </div>
                 
                 <div class="d-flex align-items-center justify-content-between">
-                    <strong>Set:</strong>
-                    <span>{{item.sets}}</span>
+                    <span>Set: {{item.sets}}</span>
                     <div v-show="isButton" class="ms-2">
                         <button type="button" class="qtyChange plus ms-1" @click="addSet()">+</button>
                         <button type="button" class="qtyChange minus ms-1" @click="subtractSet()">-</button>
