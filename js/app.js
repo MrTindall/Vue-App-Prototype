@@ -18,36 +18,60 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
-                        {name: 'Bench Press', weight: 185, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Incline DB Press', weight: 50, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Pushups', weight: 0, sets: 3, remove: false, completeRemove: false },
+                        {name: 'Bench Press', weight: 185, sets: 3, remove: false, isActive: false },
+                        { name: 'Incline DB Press', weight: 50, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 {
                     title: 'Pull',
                     exercises: [
-                        {name: 'Pullups', weight: 235, sets: 3, remove: false, completeRemove: false },
-                        {name: 'DB Row', weight: 235, sets: 3, remove: false, completeRemove: false },
+                        { name: 'Pullups', weight: 235, sets: 3, remove: false, isActive: false },
+                        { name: 'DB Row', weight: 235, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 {
                     title: 'Legs',
                     exercises: [
-                        {name: 'Deadlift', weight: 335, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Squat', weight: 235, sets: 3, remove: false, completeRemove: false },
-                        {name: 'Lunges', weight: 40, sets: 3, remove: false, completeRemove: false },
+                        { name: 'Deadlift', weight: 335, sets: 3, remove: false, isActive: false },
+                        { name: 'Squat', weight: 235, sets: 3, remove: false, isActive: false },
+                        { name: 'Lunges', weight: 40, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 
             ],
-            builderTempList: []
+            builderTempList: [],
+            tempWorkout: 
+                {
+                    title: '',
+                    exercises: [{
+                        name: 'Benc Press', 
+                        weight: 0, 
+                        sets: 0, 
+                        remove: false, 
+                        completeRemove: false 
+                    }]
+                },
         }
     },
 
     // methods: usually "events" triggered by v-on:
     methods: {
+        chooseWorkout() {
+            this.tempWorkout = {
+                title: this.selectedWorkout.title,
+                exercises: this.selectedWorkout.exercises.map(exercise => ({
+                    name: exercise.name,
+                    weight: exercise.weight,
+                    sets: exercise.sets,
+                    remove: false,
+                    isActive: true
+                }))
+            };
+        },
+
         removeGrtZeroExercise(list) {
             for (item of list) {
                 item.sets = 0;
@@ -69,7 +93,7 @@ const app = Vue.createApp({
                         weight: exercise.weight,
                         sets: exercise.sets,
                         remove: false,
-                        completeRemove: false,
+                        isActive: false,
                     }))
                 });
 
@@ -86,7 +110,7 @@ const app = Vue.createApp({
                 weight: 0,
                 sets: 3,
                 remove: false,
-                completeRemove: false,
+                isActive: false,
             };
         },
         addBuildExercise() {
@@ -96,7 +120,7 @@ const app = Vue.createApp({
                 weight: 0,
                 sets: 3,
                 remove: false,
-                completeRemove: false,
+                isActive: false,
             };
         },
         setTempBuilderWorkoutName() {
@@ -109,7 +133,7 @@ const app = Vue.createApp({
                     weight: item.weight,
                     sets: item.sets,
                     remove: false,
-                    completeRemove: false,
+                    isActive: false,
                 };
                 this.workouts.push(exerciseToAdd);
             });
@@ -121,31 +145,35 @@ const app = Vue.createApp({
                 weight: 0,
                 sets: 3,
                 remove: false,
-                completeRemove: false,
+                isActive: false,
             };
         },
-        finishWorkout(list) {
-            list.forEach((item) => {
-                item.exercises.forEach((exercise) => {
-                    exercise.remove = false;
-                    exercise.completeRemove = false;
-                    exercise.sets = 3;
-                });
-        });
-
-        this.selectedWorkout = null; // Reset selectedWorkout
-    },
+        finishWorkout() {
+            this.tempWorkout =
+            {
+                title: '',
+                exercises: [{
+                    name: '',
+                    weight: 0,
+                    sets: 0,
+                    remove: false,
+                    isActive: false
+                }]
+            },
+            
+          this.selectedWorkout = null; // Reset selectedWorkout
+        },
     },
 
     // computed: values that are updated and cached if dependencies change
     computed: {
 
         todoList() {
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets > 0 && !exercise.remove) ?? [];
+            return this.tempWorkout?.exercises.filter((exercise) => exercise.sets > 0 && !exercise.remove && exercise.isActive === true) ?? [];
         },
 
         completeList() {
-            return this.selectedWorkout?.exercises.filter((exercise) => exercise.sets <= 0 || exercise.remove) ?? [];
+            return this.tempWorkout?.exercises.filter((exercise) => exercise.sets <= 0 && exercise.isActive === true || exercise.remove && exercise.isActive === true) ?? [];
         },
         
         removeGrtZero() {
