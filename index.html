@@ -352,7 +352,6 @@
                     <div class="mb-3">
                         <label for="workoutName" class="form-label">Workout Name</label>
                         <select class="form-select" v-model="selectedWorkout" aria-label="workoutName">
-                            <option selected value="Select Workout">Select Workout</option>
                             <option v-for="workout in workouts" :key="workout.title" :value="workout">
                                 {{ workout.title }}
                             </option>

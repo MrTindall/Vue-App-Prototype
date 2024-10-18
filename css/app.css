@@ -11848,6 +11848,10 @@ body {
   background-color: rgb(25, 25, 25);
 }
 
+.added-background-color {
+  background-color: rgb(25, 25, 25);
+}
+
 .navContainer .navbar {
   font-size: 3vh;
   border-bottom: solid 2px white;
