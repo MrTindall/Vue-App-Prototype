@@ -23,6 +23,12 @@ const app = Vue.createApp({
                         { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
                         { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
                         { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 {

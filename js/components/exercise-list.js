@@ -18,12 +18,12 @@ app.component('ExerciseList', {
     },
 
     template: `
-        <div class="d-flex flex-wrap mb-3 justify-content-start">
+        <div class="d-flex flex-wrap mb-3 justify-content-start mx-2">
             <exercise-list-item 
                 v-for="item in list"
                 :item="item" 
                 :isButton="isButton"
-                class="mx-2 mb-1"
+                class="mb-1"
             ></exercise-list-item>
         </div>
     `,

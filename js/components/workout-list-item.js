@@ -45,7 +45,7 @@ app.component('WorkoutListItem', {
                             @click="toggle()"
                             v-show="isCollapsed"
                         >
-                            &#x23F5; <!-- Right-pointing chevron -->
+                            &#x25B2; <!-- Up-pointing Triangle -->
                         </button>
                         <button 
                             class="qtyChange p-0"
