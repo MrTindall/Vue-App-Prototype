@@ -10,6 +10,10 @@ app.component('WorkoutListItem', {
             type: Object,
             required: true,
         },
+        isButton: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     methods: {
@@ -60,7 +64,7 @@ app.component('WorkoutListItem', {
             </div>
             <div class="collapse" ref="theCollapse">
                 <div class="card card-body card-body-exercisesList added-background-color">
-                    <exercise-list :title="'Exercises'" :list="item.exercises" :isButton="true"></exercise-list>
+                    <exercise-list :title="'Exercises'" :list="item.exercises" :isButton="isButton"></exercise-list>
                 </div>
             </div>
         </li>
