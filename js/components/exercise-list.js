@@ -24,6 +24,7 @@ app.component('ExerciseList', {
                 :item="item" 
                 :isButton="isButton"
                 class="mb-1"
+                :key="item.name"
             ></exercise-list-item>
         </div>
     `,
