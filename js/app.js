@@ -1,9 +1,15 @@
+import {Exercise} from './model/exercise';
+import {CardioExercise} from './model/cardio-exercise';
+import {WeightExercise} from './model/weight-exercise';
+
 const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
             selectedWorkout: null,
             tempBuilderWorkoutName: '',
+            
+            // TODO: Ask if this is needed and if so, doesnt it need to be changed to match new data structure
             exercise: {
                 name: '',
                 weight: 0,
@@ -18,6 +24,7 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
+                        new Exercise(new WeightExercise('Arnold Press', 60, 4)),
                         {name: 'Bench Press', weight: 185, sets: 3, remove: false, isActive: false },
                         { name: 'Incline DB Press', weight: 50, sets: 3, remove: false, isActive: false },
                         { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
@@ -76,14 +83,15 @@ const app = Vue.createApp({
             };
         },
 
-        removeGrtZeroExercise(list) {
+
+        removeExercise(list) {
             for (item of list) {
                 item.sets = 0;
-                item.remove = false;
+                item.remove = true;
             }
         },
 
-        removeEquZeroExercise(list) {
+        setIsActive(list) {
             for (item of list) {
                 item.isActive = true;
             }
@@ -180,11 +188,11 @@ const app = Vue.createApp({
             return this.tempWorkout?.exercises.filter((exercise) => exercise.sets <= 0 && exercise.isActive === true || exercise.remove && exercise.isActive === true) ?? [];
         },
         
-        removeGrtZero() {
+        removeExerciseList() {
             return this.tempWorkout?.exercises.filter((exercise) => exercise.sets > 0 && exercise.remove) ?? [];
         },
         
-        removeEquZero() {
+        isActiveList() {
 
             return this.tempWorkout?.exercises.filter((exercise) => exercise.remove && !exercise.isActive) ?? [];
         },
