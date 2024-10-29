@@ -1,7 +1,7 @@
-function WeightExercise(name, amount, sets) {
+function WeightExercise(name, amount, sets, isActive) {
 
     Exercise.call(this, name);
-    Exercise.call(this.isActive);
+    Exercise.call(this, isActive);
     this.amount = amount ?? 0;
     this.sets = sets ?? 3;
 
