@@ -238,12 +238,20 @@
                                     <input type="text" class="form-control" aria-label="WorkoutName"
                                         aria-describedby="WorkoutName1" v-model="newWorkout.title">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="workoutName" class="form-label">Type of Workout</label>
+                                    <select class="form-select" v-model="selectedExerciseType" aria-label="Select Exercise Type">
+                                        <option v-for="(type, key) in exerciseType" :key="key" :value="type">
+                                            {{ key.charAt(0) + key.slice(1).toLowerCase() }} <!-- Displays the type name nicely, e.g., "Weight" -->
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Disable the button when workoutName is empty -->
                                 <button class="btn btn-primary btn-bg-color" data-bs-target="#buildWorkoutModalStep2"
-                                    data-bs-toggle="modal" :disabled="!newWorkout.title"
+                                    data-bs-toggle="modal" :disabled="!newWorkout.title || !selectedExerciseType"
                                     @click="setTempBuilderWorkoutName()">Next</button>
                             </div>
                         </div>

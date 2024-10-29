@@ -3,16 +3,22 @@ const app = Vue.createApp({
     // data: all the data for the app, must return an object
     data: function () {
         return {
+            exerciseType: Object.freeze({
+                WEIGHT: 'Weight',
+                CARDIO: 'Cardio',
+            }),
+            selectedExerciseType: null,
             selectedWorkout: null,
             tempBuilderWorkoutName: '',
             
+            
             // TODO: Ask if this is needed and if so, doesnt it need to be changed to match new data structure
             exercise: {
-                name: '',
-                amount: 0,
-                sets: 3,
-                remove: false,
-                isActive: false,
+                // name: '',
+                // amount: 0,
+                // sets: 3,
+                // remove: false,
+                // isActive: false,
             },
             newWorkout: {
                 title: '',
@@ -21,17 +27,17 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
-                        new WeightExercise('Arnold Press', 60, 4),
-                        new CardioExercise('Running', 45),
-                        {name: 'Bench Press', amount: 185, sets: 3, remove: false, isActive: false },
-                        { name: 'Incline DB Press', amount: 50, sets: 3, remove: false, isActive: false },
-                        { name: 'Pushups', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Cable Crossover', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Shoulder Press', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Lateral Raises', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Front Raise', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Tricep Extensions', amount: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Skull Crushers', amount: 0, sets: 3, remove: false, isActive: false },
+                        new CardioExercise('Run', 10, 1),
+                        new WeightExercise('Arnold Press', 185, 4),
+                        new WeightExercise('Bench Press', 185, 4),
+                        new WeightExercise('Incline DB Press', 50, 4),
+                        new WeightExercise('Pushups', 0, 4),
+                        new WeightExercise('Cable Crossover', 60, 4),
+                        new WeightExercise('Shoulder Press', 60, 4),
+                        new WeightExercise('Lateral Raises', 60, 4),
+                        new WeightExercise('Front Raise', 60, 4),
+                        new WeightExercise('Tricep Extensions', 60, 4),
+                        new WeightExercise('Skull Crushers', 60, 4),
                     ] 
                 },
                 {
@@ -52,19 +58,6 @@ const app = Vue.createApp({
                 
             ],
             builderTempList: [],
-            // tempWorkout: 
-            // {
-            //     title: '',
-            //     exercises: [
-            //         // {
-            //         //     name: 'Benc Press', 
-            //         //     amount: 0, 
-            //         //     sets: 0, 
-            //         //     remove: false, 
-            //         //     isActive: false 
-            //         // }
-            //     ]
-            // },
             tempWorkout: {
                 title: '',
                 exercises: []
@@ -84,19 +77,6 @@ const app = Vue.createApp({
             })
         },
 
-
-        // removeExercise(list) {
-        //     for (item of list) {
-        //         item.sets = 0;
-        //         item.remove = true;
-        //     }
-        // },
-
-        // setIsActive(list) {
-        //     for (item of list) {
-        //         item.isActive = true;
-        //     }
-        // },
         createWorkout() {
             if (this.newWorkout.title && this.builderTempList.length > 0) {
                 this.workouts.push({
