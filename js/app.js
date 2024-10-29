@@ -10,7 +10,7 @@ const app = Vue.createApp({
             exercise: {
                 name: '',
                 amount: 0,
-                sets: 3
+                sets: 3,
                 remove: false,
                 isActive: false,
             },
