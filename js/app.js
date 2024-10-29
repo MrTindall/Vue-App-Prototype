@@ -43,16 +43,18 @@ const app = Vue.createApp({
                 {
                     title: 'Pull',
                     exercises: [
-                        { name: 'Pullups', amount: 235, sets: 3, remove: false, isActive: false },
-                        { name: 'DB Row', amount: 235, sets: 3, remove: false, isActive: false },
+                        new CardioExercise('Run', 10, 1),
+                        new WeightExercise('Pullups', 0, 4),
+                        new WeightExercise('DB Row', 185, 4),
                     ] 
                 },
                 {
                     title: 'Legs',
                     exercises: [
-                        { name: 'Deadlift', amount: 335, sets: 3, remove: false, isActive: false },
-                        { name: 'Squat', amount: 235, sets: 3, remove: false, isActive: false },
-                        { name: 'Lunges', amount: 40, sets: 3, remove: false, isActive: false },
+                        new CardioExercise('Run', 10, 1),
+                        new WeightExercise('Deadlift', 335, 3),
+                        new WeightExercise('Squat', 235, 3),
+                        new WeightExercise('Lunges', 40, 4),
                     ] 
                 },
                 
@@ -79,17 +81,23 @@ const app = Vue.createApp({
 
         createWorkout() {
             if (this.newWorkout.title && this.builderTempList.length > 0) {
-                this.workouts.push({
-                    title: this.newWorkout.title,
-                    exercises: this.builderTempList.map(exercise => ({
-                        name: exercise.name,
-                        amount: exercise.amount,
-                        sets: exercise.sets,
-                        remove: false,
-                        isActive: false,
-                    }))
-                });
-
+                if (this.selectedExerciseType === this.exerciseType.WEIGHT) {
+                    this.workouts.push({
+                        title: this.newWorkout.title,
+                        exercises: this.builderTempList.map(exercise => 
+                            new WeightExercise(exercise.name, exercise.amount, exercise.sets)
+                        )
+                    });
+                } else if (this.selectedExerciseType === this.exerciseType.CARDIO) {
+                    this.workouts.push({
+                        title: this.newWorkout.title,
+                        exercises: this.builderTempList.map(exercise => 
+                            new CardioExercise(exercise.name, exercise.amount)
+                        )
+                    });
+                }
+        
+                // Reset fields after adding workout
                 this.newWorkout = { title: '' };
                 this.builderTempList = [];
             } else {

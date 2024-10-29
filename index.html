@@ -238,20 +238,13 @@
                                     <input type="text" class="form-control" aria-label="WorkoutName"
                                         aria-describedby="WorkoutName1" v-model="newWorkout.title">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="workoutName" class="form-label">Type of Workout</label>
-                                    <select class="form-select" v-model="selectedExerciseType" aria-label="Select Exercise Type">
-                                        <option v-for="(type, key) in exerciseType" :key="key" :value="type">
-                                            {{ key.charAt(0) + key.slice(1).toLowerCase() }} <!-- Displays the type name nicely, e.g., "Weight" -->
-                                        </option>
-                                    </select>
-                                </div>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Disable the button when workoutName is empty -->
                                 <button class="btn btn-primary btn-bg-color" data-bs-target="#buildWorkoutModalStep2"
-                                    data-bs-toggle="modal" :disabled="!newWorkout.title || !selectedExerciseType"
+                                    data-bs-toggle="modal" :disabled="!newWorkout.title"
                                     @click="setTempBuilderWorkoutName()">Next</button>
                             </div>
                         </div>
@@ -268,6 +261,14 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body builder">
+                                <div class="mb-3">
+                                    <label for="workoutName" class="form-label">Type of Exercise</label>
+                                    <select class="form-select" v-model="selectedExerciseType" aria-label="Select Exercise Type">
+                                        <option v-for="(type, key) in exerciseType" :key="key" :value="type">
+                                            {{ key.charAt(0) + key.slice(1).toLowerCase() }}
+                                        </option>
+                                    </select>
+                                </div>
                                 <!-- Exercise Input -->
                                 <div class="d-flex justify-content-between py-1">
                                     <div class="input-group mb-3">
@@ -287,6 +288,7 @@
                                             maxlength="25" v-model="exercise.name">
                                     </div>
                                 </div>
+                                
 
                                 <!-- Weight Input -->
                                 <div class="d-flex justify-content-between py-1">
@@ -331,7 +333,7 @@
                                 <!-- Buttons for adding/removing -->
                                 <div class="d-flex justify-content-end mb-3">
                                     <button type="button" class="addWorkout me-2">Remove</button>
-                                    <button type="button" class="addWorkout" :disabled="!exercise.name"
+                                    <button type="button" class="addWorkout" :disabled="!exercise.name || !selectedExerciseType"
                                         @click.prevent="addBuildExercise()">Add</button>
                                 </div>
 
@@ -413,6 +415,7 @@
     <script src="js/components/app-modal.js"></script>
     <script src="js/components/workout-list.js"></script>
     <script src="js/components/workout-list-item.js"></script>
+    <script src="js/components/exercise-item-card.js"></script>
     <script src="js/model/exercise.js"></script>
     <script src="js/model/weight-exercise.js"></script>
     <script src="js/model/cardio-exercise.js"></script>
