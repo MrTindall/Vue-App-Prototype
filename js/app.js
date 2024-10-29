@@ -1,6 +1,3 @@
-import {Exercise} from './model/exercise';
-import {CardioExercise} from './model/cardio-exercise';
-import {WeightExercise} from './model/weight-exercise';
 
 const app = Vue.createApp({
     // data: all the data for the app, must return an object
@@ -12,8 +9,8 @@ const app = Vue.createApp({
             // TODO: Ask if this is needed and if so, doesnt it need to be changed to match new data structure
             exercise: {
                 name: '',
-                weight: 0,
-                sets: 3,
+                amount: 0,
+                sets: 3
                 remove: false,
                 isActive: false,
             },
@@ -24,48 +21,55 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
-                        new Exercise(new WeightExercise('Arnold Press', 60, 4)),
-                        {name: 'Bench Press', weight: 185, sets: 3, remove: false, isActive: false },
-                        { name: 'Incline DB Press', weight: 50, sets: 3, remove: false, isActive: false },
-                        { name: 'Pushups', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Cable Crossover', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Shoulder Press', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Lateral Raises', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Front Raise', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Tricep Extensions', weight: 0, sets: 3, remove: false, isActive: false },
-                        { name: 'Skull Crushers', weight: 0, sets: 3, remove: false, isActive: false },
+                        new WeightExercise('Arnold Press', 60, 4),
+                        new CardioExercise('Running', 45),
+                        {name: 'Bench Press', amount: 185, sets: 3, remove: false, isActive: false },
+                        { name: 'Incline DB Press', amount: 50, sets: 3, remove: false, isActive: false },
+                        { name: 'Pushups', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Cable Crossover', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Shoulder Press', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Lateral Raises', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Front Raise', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Tricep Extensions', amount: 0, sets: 3, remove: false, isActive: false },
+                        { name: 'Skull Crushers', amount: 0, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 {
                     title: 'Pull',
                     exercises: [
-                        { name: 'Pullups', weight: 235, sets: 3, remove: false, isActive: false },
-                        { name: 'DB Row', weight: 235, sets: 3, remove: false, isActive: false },
+                        { name: 'Pullups', amount: 235, sets: 3, remove: false, isActive: false },
+                        { name: 'DB Row', amount: 235, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 {
                     title: 'Legs',
                     exercises: [
-                        { name: 'Deadlift', weight: 335, sets: 3, remove: false, isActive: false },
-                        { name: 'Squat', weight: 235, sets: 3, remove: false, isActive: false },
-                        { name: 'Lunges', weight: 40, sets: 3, remove: false, isActive: false },
+                        { name: 'Deadlift', amount: 335, sets: 3, remove: false, isActive: false },
+                        { name: 'Squat', amount: 235, sets: 3, remove: false, isActive: false },
+                        { name: 'Lunges', amount: 40, sets: 3, remove: false, isActive: false },
                     ] 
                 },
                 
             ],
             builderTempList: [],
-            tempWorkout: 
-                {
-                    title: '',
-                    exercises: [{
-                        name: 'Benc Press', 
-                        weight: 0, 
-                        sets: 0, 
-                        remove: false, 
-                        isActive: false 
-                    }]
-                },
-        }
+            // tempWorkout: 
+            // {
+            //     title: '',
+            //     exercises: [
+            //         // {
+            //         //     name: 'Benc Press', 
+            //         //     amount: 0, 
+            //         //     sets: 0, 
+            //         //     remove: false, 
+            //         //     isActive: false 
+            //         // }
+            //     ]
+            // },
+            tempWorkout: {
+                title: '',
+                exercises: []
+            },
+    }
     },
 
     // methods: usually "events" triggered by v-on:
@@ -73,36 +77,33 @@ const app = Vue.createApp({
         chooseWorkout() {
             this.tempWorkout = {
                 title: this.selectedWorkout.title,
-                exercises: this.selectedWorkout.exercises.map(exercise => ({
-                    name: exercise.name,
-                    weight: exercise.weight,
-                    sets: exercise.sets,
-                    remove: false,
-                    isActive: true
-                }))
+                exercises: [...this.selectedWorkout.exercises]
             };
+            this.tempWorkout.exercises.forEach((exercise) => {
+                exercise.isActive = true;
+            })
         },
 
 
-        removeExercise(list) {
-            for (item of list) {
-                item.sets = 0;
-                item.remove = true;
-            }
-        },
+        // removeExercise(list) {
+        //     for (item of list) {
+        //         item.sets = 0;
+        //         item.remove = true;
+        //     }
+        // },
 
-        setIsActive(list) {
-            for (item of list) {
-                item.isActive = true;
-            }
-        },
+        // setIsActive(list) {
+        //     for (item of list) {
+        //         item.isActive = true;
+        //     }
+        // },
         createWorkout() {
             if (this.newWorkout.title && this.builderTempList.length > 0) {
                 this.workouts.push({
                     title: this.newWorkout.title,
                     exercises: this.builderTempList.map(exercise => ({
                         name: exercise.name,
-                        weight: exercise.weight,
+                        amount: exercise.amount,
                         sets: exercise.sets,
                         remove: false,
                         isActive: false,
@@ -119,7 +120,7 @@ const app = Vue.createApp({
             this.exerciseList.push(this.exercise);
             this.exercise = {
                 name: '',
-                weight: 0,
+                amount: 0,
                 sets: 3,
                 remove: false,
                 isActive: false,
@@ -129,7 +130,7 @@ const app = Vue.createApp({
             this.builderTempList.push(this.exercise);
             this.exercise = {
                 name: '',
-                weight: 0,
+                amount: 0,
                 sets: 3,
                 remove: false,
                 isActive: false,
@@ -142,7 +143,7 @@ const app = Vue.createApp({
             this.builderTempList.forEach((item) => {
                 const exerciseToAdd = {
                     name: item.name,
-                    weight: item.weight,
+                    amount: item.amount,
                     sets: item.sets,
                     remove: false,
                     isActive: false,
@@ -154,7 +155,7 @@ const app = Vue.createApp({
             this.builderTempList = []; 
             this.exercise = {
                 name: '',
-                weight: 0,
+                amount: 0,
                 sets: 3,
                 remove: false,
                 isActive: false,
@@ -166,7 +167,7 @@ const app = Vue.createApp({
                 title: '',
                 exercises: [{
                     name: '',
-                    weight: 0,
+                    amount: 0,
                     sets: 0,
                     remove: false,
                     isActive: false

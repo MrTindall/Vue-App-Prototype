@@ -15,25 +15,25 @@ app.component('ExerciseListItem', {
     },
 
     methods: {
-        addSet() {
-            this.item.sets++
-        },
+        // addSet() {
+        //     this.item.sets++
+        // },
 
-        subtractSet() {
-            if (this.item.sets > 0) {
-                this.item.sets--;
-            }
-        },
+        // subtractSet() {
+        //     if (this.item.sets > 0) {
+        //         this.item.sets--;
+        //     }
+        // },
 
-        addWeight() {
-            this.item.weight = this.item.weight + 2.5
-        },
+        // addWeight() {
+        //     this.item.amount = this.item.amount + 2.5
+        // },
 
-        subtractWeight() {
-            if (this.item.weight > 0) {
-                this.item.weight -= 2.5;
-            }
-        },
+        // subtractWeight() {
+        //     if (this.item.amount > 0) {
+        //         this.item.amount -= 2.5;
+        //     }
+        // },
     },
 
     template: `
@@ -48,18 +48,18 @@ app.component('ExerciseListItem', {
                 </div>
                 
                 <div class="d-flex align-items-center justify-content-between mb-2">
-                    <span>lbs: {{item.weight}}</span>
+                    <span>lbs: {{item.amount}}</span>
                     <div v-show="isButton" class="ms-2">
-                        <button type="button" class="qtyChange plus ms-1" @click="addWeight()">+</button>
-                        <button type="button" class="qtyChange minus ms-1" @click="subtractWeight()">-</button>
+                        <button type="button" class="qtyChange plus ms-1" @click="item.addWeight()">+</button>
+                        <button type="button" class="qtyChange minus ms-1" @click="item.subtractWeight()">-</button>
                     </div>
                 </div>
                 
                 <div class="d-flex align-items-center justify-content-between">
                     <span>Set: {{item.sets}}</span>
                     <div v-show="isButton" class="ms-2">
-                        <button type="button" class="qtyChange plus ms-1" @click="addSet()">+</button>
-                        <button type="button" class="qtyChange minus ms-1" @click="subtractSet()">-</button>
+                        <button type="button" class="qtyChange plus ms-1" @click="item.addSet()">+</button>
+                        <button type="button" class="qtyChange minus ms-1" @click="item.subtractSet()">-</button>
                     </div>
                 </div>
             </div>
