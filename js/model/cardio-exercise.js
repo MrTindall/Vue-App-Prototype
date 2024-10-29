@@ -1,6 +1,5 @@
 function CardioExercise(name, amount, isActive) {
     Exercise.call(this, name);
-    // this.isActive = isActive;
     Exercise.call(this, isActive);
     this.amount = amount ?? 10;
     this.sets = 1;
@@ -8,4 +7,4 @@ function CardioExercise(name, amount, isActive) {
 
 CardioExercise.prototype = Object.create(Exercise.prototype);
 CardioExercise.prototype.constructor = CardioExercise;
-WeightExercise.type = 'Cardio';
+CardioExercise.type = 'Cardio';

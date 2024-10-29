@@ -1,5 +1,5 @@
 function Exercise(name, amount) {
-    this.name = name ?? '';
+    this.name = name;
     this.amount = amount;
     this.remove = false;
     this.isActive = false
