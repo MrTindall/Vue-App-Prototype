@@ -59,6 +59,13 @@ app.component('CardioExercise', {
                         <button type="button" class="qtyChange minus ms-1" @click="item.subtractDuration()">-</button>
                     </div>
                 </div>
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>Sets: {{ item.sets }}</span>
+                    <div v-show="isButton" class="ms-2">
+                        <button type="button" class="qtyChange plus ms-1" @click="item.addSet()">+</button>
+                        <button type="button" class="qtyChange minus ms-1" @click="item.subtractSet()">-</button>
+                    </div>
+                </div>
             </div>
         </div>
     `
