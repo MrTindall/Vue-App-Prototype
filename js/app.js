@@ -27,16 +27,16 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
-                        new CardioExercise('Run', 10, 1),
+                        new CardioExercise('Run', 10),
                         new WeightExercise('Arnold Press', 185, 4),
                         new WeightExercise('Bench Press', 185, 4),
                         new WeightExercise('Incline DB Press', 50, 4),
                         new WeightExercise('Pushups', 0, 4),
                         new WeightExercise('Cable Crossover', 60, 4),
-                        new WeightExercise('Shoulder Press', 60, 4),
-                        new WeightExercise('Lateral Raises', 60, 4),
-                        new WeightExercise('Front Raise', 60, 4),
-                        new WeightExercise('Tricep Extensions', 60, 4),
+                        new WeightExercise('Shoulder Press', 40, 4),
+                        new WeightExercise('Lateral Raises', 15, 4),
+                        new WeightExercise('Front Raise', 15, 4),
+                        new WeightExercise('Tricep Extensions', 40, 4),
                         new WeightExercise('Skull Crushers', 60, 4),
                     ] 
                 },
@@ -76,7 +76,9 @@ const app = Vue.createApp({
             };
             this.tempWorkout.exercises.forEach((exercise) => {
                 exercise.isActive = true;
+                console.log(exercise)
             })
+            
         },
 
         createWorkout() {
@@ -85,14 +87,14 @@ const app = Vue.createApp({
                     this.workouts.push({
                         title: this.newWorkout.title,
                         exercises: this.builderTempList.map(exercise => 
-                            new WeightExercise(exercise.name, exercise.amount, exercise.sets)
+                            new WeightExercise(exercise.name, exercise.amount, exercise.sets, exercise.isActive = false)
                         )
                     });
                 } else if (this.selectedExerciseType === this.exerciseType.CARDIO) {
                     this.workouts.push({
                         title: this.newWorkout.title,
                         exercises: this.builderTempList.map(exercise => 
-                            new CardioExercise(exercise.name, exercise.amount)
+                            new CardioExercise(exercise.name, exercise.amount, exercise.isActive = false)
                         )
                     });
                 }
@@ -115,13 +117,25 @@ const app = Vue.createApp({
             };
         },
         addBuildExercise() {
-            this.builderTempList.push(this.exercise);
+            let newExercise;
+            // Check if the current exercise is Cardio or Weight
+            if (this.selectedExerciseType === this.exerciseType.CARDIO) {
+                newExercise = new CardioExercise(this.exercise.name, this.exercise.amount, this.exercise.sets);
+            } else if(this.selectedExerciseType === this.exerciseType.WEIGHT) {
+                newExercise = new WeightExercise(this.exercise.name, this.exercise.amount, this.exercise.sets);
+            }
+        
+            // Push the new exercise to the list
+            this.builderTempList.push(newExercise);
+        
+            // Reset the exercise input fields
             this.exercise = {
                 name: '',
                 amount: 0,
                 sets: 3,
                 remove: false,
                 isActive: false,
+                isCardio: false, // Ensure to reset the exercise type
             };
         },
         setTempBuilderWorkoutName() {
@@ -153,13 +167,7 @@ const app = Vue.createApp({
             this.tempWorkout = // Reset tempWorkout
             {
                 title: '',
-                exercises: [{
-                    name: '',
-                    amount: 0,
-                    sets: 0,
-                    remove: false,
-                    isActive: false
-                }]
+                exercises: []
             },
             
           this.selectedWorkout = null; // Reset selectedWorkout

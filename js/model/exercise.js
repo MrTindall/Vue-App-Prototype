@@ -1,8 +1,8 @@
 function Exercise(name, amount) {
     this.name = name;
     this.amount = amount;
-    this.remove = false;
-    this.isActive = false
+    // this.remove = false;
+    // this.isActive = false
 
 
     this.removeExercise = function(list) {
@@ -27,14 +27,6 @@ function Exercise(name, amount) {
         }
     }
 
-    this.addWeight = function () {
-        this.amount = this.amount + 2.5
-    }
-
-    this.subtractWeight = function () {
-        if (this.amount > 0) {
-            this.amount -= 2.5;
-        }
-    }
+    
     
 }

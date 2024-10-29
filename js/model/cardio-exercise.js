@@ -1,6 +1,6 @@
 function CardioExercise(name, amount, isActive) {
     Exercise.call(this, name);
-    Exercise.call(this, isActive);
+    this.isActive = isActive;
     this.amount = amount ?? 10;
     this.sets = 1;
 }
