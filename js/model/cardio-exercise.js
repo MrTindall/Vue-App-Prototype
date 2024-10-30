@@ -9,7 +9,7 @@ function CardioExercise(name, amount, sets, isActive) {
     }
 
     this.subtractDuration = function () {
-        if (this.amount > 0) {
+        if (this.amount > 1) {
             this.amount--;
         }
     }
