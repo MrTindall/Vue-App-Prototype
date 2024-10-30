@@ -1,8 +1,8 @@
-function CardioExercise(name, amount, isActive) {
+function CardioExercise(name, amount, sets, isActive) {
     Exercise.call(this, name);
     this.isActive = isActive;
     this.amount = amount ?? 10;
-    this.sets = 1;
+    this.sets = sets;
 
     this.addDuration = function () {
         this.amount++

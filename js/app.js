@@ -25,7 +25,7 @@ const app = Vue.createApp({
                 {
                     title: 'Push',
                     exercises: [
-                        new CardioExercise('Run', 10),
+                        new CardioExercise('Run', 10, 1),
                         new WeightExercise('Arnold Press', 185, 4),
                         new WeightExercise('Bench Press', 185, 4),
                         new WeightExercise('Incline DB Press', 50, 4),
@@ -41,7 +41,7 @@ const app = Vue.createApp({
                 {
                     title: 'Pull',
                     exercises: [
-                        new CardioExercise('Run', 10, 1),
+                        new CardioExercise('Run', 10, 1, 1),
                         new WeightExercise('Pullups', 0, 4),
                         new WeightExercise('DB Row', 185, 4),
                     ] 
@@ -49,7 +49,7 @@ const app = Vue.createApp({
                 {
                     title: 'Legs',
                     exercises: [
-                        new CardioExercise('Run', 10, 1),
+                        new CardioExercise('Run', 10, 12, 1),
                         new WeightExercise('Deadlift', 335, 3),
                         new WeightExercise('Squat', 235, 3),
                         new WeightExercise('Lunges', 40, 4),
