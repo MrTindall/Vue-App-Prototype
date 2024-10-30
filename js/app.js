@@ -12,11 +12,11 @@ const app = Vue.createApp({
             tempBuilderWorkoutName: '',
             
             exercise: {
-                // name: '',
-                // amount: 0,
-                // sets: 3,
-                // remove: false,
-                // isActive: false,
+                name: '',
+                amount: 0,
+                sets: 3,
+                remove: false,
+                isActive: false,
             },
             newWorkout: {
                 title: '',
