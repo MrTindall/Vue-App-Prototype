@@ -18,8 +18,8 @@ app.component('WorkoutListItem', {
 
     methods: {
         toggle() {
-            this.isCollapsed = !this.isCollapsed; // Toggle the local state
-            this.workoutCollapse.toggle(); // Keep your existing toggle method
+            this.isCollapsed = !this.isCollapsed;
+            this.workoutCollapse.toggle();
         }
     },
 

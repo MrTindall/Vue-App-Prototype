@@ -11,8 +11,6 @@ const app = Vue.createApp({
             selectedWorkout: null,
             tempBuilderWorkoutName: '',
             
-            
-            // TODO: Ask if this is needed and if so, doesnt it need to be changed to match new data structure
             exercise: {
                 // name: '',
                 // amount: 0,

@@ -1,8 +1,6 @@
 function Exercise(name, amount) {
     this.name = name;
     this.amount = amount;
-    // this.remove = false;
-    // this.isActive = false
 
 
     this.removeExercise = function(list) {
@@ -12,11 +10,13 @@ function Exercise(name, amount) {
         }
     }
 
+// Might use later
     // this.setIsActive = function(list) {
     //     for (item of list) {
     //         item.isActive = true;
     //     }
     // }
+    
     this.addSet = function () {
         this.sets++
     }
