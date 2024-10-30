@@ -14,6 +14,8 @@ function WeightExercise(name, amount, sets, isActive) {
             this.amount -= 2.5;
         }
     }
+
+    
 }
 WeightExercise.prototype = Object.create(Exercise.prototype);
 WeightExercise.prototype.constructor = WeightExercise;
