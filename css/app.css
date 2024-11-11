@@ -12166,7 +12166,6 @@ button.startWorkout:active {
 }
 
 .custom-card {
-  width: 244px;
   height: 140px;
   border-radius: 10px;
 }
@@ -12175,11 +12174,6 @@ span {
   font-size: 16px;
 }
 
-@media (max-width: 1400px) {
-  .custom-card {
-    width: 193px;
-  }
-}
 @media (max-width: 1199px) {
   .background-image {
     border-bottom: 0;
@@ -12194,14 +12188,6 @@ span {
   button.save {
     width: 80px;
   }
-  .custom-card {
-    width: 200px;
-  }
-}
-@media (max-width: 1171px) {
-  .custom-card {
-    width: 201px;
-  }
 }
 @media (max-width: 1100px) {
   .workoutTabs .nav-item a {
@@ -12209,31 +12195,6 @@ span {
     font-weight: 600;
     font-size: 10px;
     padding: 5px;
-  }
-}
-@media (max-width: 990px) {
-  .custom-card {
-    width: 187px;
-  }
-}
-@media (max-width: 768px) {
-  .custom-card {
-    width: 200px;
-  }
-}
-@media (max-width: 575px) {
-  .custom-card {
-    width: 217px;
-  }
-}
-@media (max-width: 571px) {
-  .custom-card {
-    width: 80vw;
-  }
-}
-@media (max-width: 350px) {
-  .custom-card {
-    width: 270px;
   }
 }
 
